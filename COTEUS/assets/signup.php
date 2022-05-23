@@ -47,7 +47,7 @@
                     <label for="Name">Name</label><br>
                     <input type='text' name='name' placeholder='nombre' require><br>
                     <label for="Mail">Enter Email</label><br>
-                    <input type='mail' name='email' placeholder='email' require>
+                    <input type='email' name='email' placeholder='email' require>
                     
                     <!--Capcha-->
                     <label >Aqui va el captcha</label>
