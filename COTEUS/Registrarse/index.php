@@ -15,7 +15,7 @@
     $stmt->bindParam(':telephono', $_POST['telephono']);
 
     if ($stmt->execute()) {
-      $message = 'usuario creado!!';
+      $message = 'Usuario creado';
     } else {
       $message = 'ERROR: usuario no creado';
     }
@@ -29,38 +29,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Register</title>
+        <title>COTEUS | Registro</title>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" type="text/css" href="style-LogOn.css">
+        <link rel="stylesheet" href="style-register.css">
+        <link rel="icon" type="image/svg" href="../Recurses/Coteus_Emblema.svg">
     </head>
     <body>
         <div class="Register-box">
-            <img src="../img/Coteus Emblema.png" class="avatar" alt="Avatar Image">
-            <h2>Register Here</h2>
+            <img src="../Recurses/Coteus_Logo_Azul.svg" class="avatar">
+            <h2>Registro</h2>
             <form action="" method="post">
                 <div class="Columns">
-                    <label for="Name">Name</label><br>
-                    <input type="text" placeholder="Jesús Maria Ernesto"><br>
-                    <label for="Mail">Enter Email</label><br>
-                    <input type="email" placeholder="blabla123@gmail.com">
+                    <label for="Name">Nombre</label><br>
+                    <input type="text">
+                    <label for="Mail">Correo electr&oacute;nico</label><br>
+                    <input type="email">
                     <!--Capcha-->
-                    <label >Aqui va el captcha</label>
+                    <img id="captcha" src="../Recurses/e12e.png">
+                </div>
+                <div class="Columns">
+                    <label for="Last-Name">Apellido</label><br>
+                    <input type="text">
+                    <label for="Username">Nombre de usuario</label><br>
+                    <input type="text">
+                    <br><br><br><br><br>
+                    <input type="text">
                     <br><br><br><br><br><br>
-                    <a href="../Login" style="color: black;">Do you have an account?</a><br>
+                    <input class="butca" type="submit" value="Crear cuenta">
                 </div>
                 <div class="Columns">
-                    <label for="Last-Name">Last Name</label><br>
-                    <input type="text" placeholder="Zerda Cazal"><br>
-                    <label for="Username">Username</label><br>
-                    <input type="text" placeholder="Pbgii99">
-                    <br><br><br><br>
-                    <input type="submit" value="Sign in">
-                </div>
-                <div class="Columns">
-                    <label for="Birth">Date of Birth</label><br>
-                    <input type="date" style="color: rgb(53, 50, 50);"><br>
-                    <label for="Password">Password</label><br>
-                    <input type="password" placeholder="8 characters words/numbers">
+                    <label for="Birth">Fecha de nacimiento</label><br>
+                    <input type="date" style="color: rgb(53, 50, 50);">
+                    <label for="Password">Contraseña</label><br>
+                    <input type="password">
+                    <br>
+                    <button class="bcb" onclick="volver()">Volver</button>
+                    <script type="text/javascript">
+                          function volver(){
+                         location.href = "../LogIn/LogIn.html";
+                         }
+                    </script>
                 </div>
             </form>
         </div>
