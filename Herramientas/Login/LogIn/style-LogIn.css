@@ -1,0 +1,179 @@
+<<<<<<<< HEAD:Login/styles/main.css
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/typing.webp) no-repeat center top;
+    background-size: cover;
+    font-family: sans-serif;
+    height: 100vh;
+  }
+  ::placeholder {color: rgb(53, 50, 50);}
+  .login-box {
+    width: 320px;
+    height: 420px;
+    background: #009EFA;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+  }
+  
+  .login-box .avatar {
+    width: 155px;
+    height: 115px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(43% - 50px);
+  }
+  
+  .login-box h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .login-box label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .login-box input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .login-box input[type="text"], .login-box input[type="password"] {
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+  }
+  
+  .login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background-image: linear-gradient(to right ,#0683cc, rgb(23, 86, 202));
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+  .login-box input[type="submit"]:hover {
+    cursor: pointer;
+    background: #000000;
+    color: #000;
+  }
+  
+  .login-box a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .login-box a:hover {
+    color: rgb(0, 0, 0);
+========
+body {
+    margin: 0;
+    padding: 0;
+    background-image:url(../Recurses/Coteus_Carpetas_Icons.svg);
+	background-repeat: repeat;
+	background-attachment: fixed;
+	background-size: all;
+	background-color: #0c27ac;
+    font-family: sans-serif;
+    height: 100vh;
+  }
+  
+  ::placeholder {color: rgb(53, 50, 50);}
+  .login-box {
+    width: 320px;
+    height: 550px;
+    background: #f5f7fb;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+  }
+  
+  .login-box .avatar {
+    width: 155px;
+    height: 115px;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: calc(43% - 50px);
+  }
+  
+  .login-box h1 {
+    margin-top: 100px;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .login-box label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .login-box input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .login-box input[type="text"], .login-box input[type="password"] {
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+  }
+  
+  .login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background-image: linear-gradient(to right ,#0683cc, rgb(23, 86, 202));
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+  .login-box input[type="submit"]:hover {
+    cursor: pointer;
+    color: white;
+  }
+  
+  .login-box a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .login-box a:hover {
+    color: rgb(0, 0, 0);
+>>>>>>>> 92fad7a9998368220492c22770b5e391a372a910:Herramientas/Login/LogIn/style-LogIn.css
+  }
