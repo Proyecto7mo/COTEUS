@@ -11,15 +11,12 @@
 	<?php
 	  require("partials/LinkCSS.php");
 	?>
-	
-	<!-- Links IMG -->
-	<link rel="icon" type="image/svg" href="/img/emblema.svg">
 </head>
 
 <body class="body">
 	<center>
 	<section class="section">
-		<center><img src="img/logoAzul.svg" class="Clogo"></center>
+		<center><img src="img/emblema.svg" class="Clogo"></center>
 		<div id="text_recuad">
 			<br>
 			<br>
