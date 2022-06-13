@@ -1,0 +1,20 @@
+archivo → funcionalidades
+-------------------------- 
+Login/index.html → Ingresar correo y contraseña para iniciar sesion. Boton de Registrarse y de olvide mi contraseña.
+Login/styles/main.css → estiliza Login/index.html
+Login/js/index.js → valida los datos en Login/index.html
+
+Registrarse/index.html → Ingresar todos los datos del empleado para registrarse. Boton de Iniciar Sesion (ya tengo cuenta).
+Registrarse/styles/main.css → estiliza Registrarse/index.html
+Registrarse/js/index.js → valida los datos en Registrarse/index.html
+
+Home/index.html → Subir Archivos, Enlistar Tareas, Ver grupo, Ver archivos Personales, Crear Grupo, buscar archivos.
+Home/styles/main.css → Estiliza Home/index.html 
+Home/js/index.js → Valida las busquedas.
+
+Grupo/index.html → Subir Archivos, Enlistar Tareas, Ir Home, Ver los archivos, busca los archivos.
+Grupo/styles/main.css → Estiliza Grupo/index.html
+Grupo/js/index.js → Valida las busquedas.
+
+calculadora → funciones de la calculadora.
+tareas → enlistar Tareas.

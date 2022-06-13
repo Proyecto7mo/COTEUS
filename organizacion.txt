@@ -1,0 +1,28 @@
+Formato de las partes
+parte
+  - index.html
+  - styles
+    - main.css
+  - js
+    - index.js
+  - img
+    - <nombre>.svg
+    - <nombre>.jpg // en caso de foto
+
+el archivo index.html de inicio (incio != login) sera una excepcion, pues si esta en un directorio no se habre.
+sus carpetas de css y js estaran tambien sueltos
+
+coteus.com
+  - index.html
+  - css 
+    - main.css 
+  - js
+    - index.js
+  - img
+    <nombre>.svg
+
+Si hacemos que todas las partes vayan a un directorio general y tenemos a varios usuarios usando varias partes, todas las partes iran a ese directorio general, habra mucho trafico para ese directorio, entonces, es mejor descentralizar las cosas, como las imagenes. Cada imagen que use cada parte estara dentro de ella misma aunque varias partes usen la misma imagen pero en ubicaciones diferentes. No se sigue la misma idea con partials, pero ésta es solo de organizacion, luego se la hara la correcta configuración a la hora de subirlo.
+
+Cada uno Modifica el directorio que le toque, en el sistema que le toque.
+
+ya esta asignada cada tarea en el docs.google.com
