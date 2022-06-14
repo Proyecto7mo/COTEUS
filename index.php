@@ -1,3 +1,12 @@
+<?php
+  
+  session_start();
+
+  if (isset($_SESSION['user_id'])) {
+    header('Location: Home');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +20,7 @@
 	<?php
 	  require("partials/LinkCSS.php");
 	?>
+  
 </head>
 
 <body class="body">

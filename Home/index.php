@@ -1,3 +1,11 @@
+<?php
+  session_start();
+
+  if (isset($_SESSION['user_id'])) {
+    header('Location: ../');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,7 +36,7 @@
   <body>
     <!-- INICIO HEADER -->
     <header class="d-flex justify-content-center">
-      <img src="../img/CoteusLogoBlanco.svg" alt="" />
+      <img src="../img/coteus/logoAzul.svg" alt="" />
     </header>
 
     <nav
@@ -65,6 +73,9 @@
             <li class="nav-item">
               <a class="nav-link" href="../Home/">CUENTA</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="php/logout.php">SALIR</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -86,7 +97,7 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Usuario</h5>
+              <h5 class="card-title"> Hola <?php $_SESSION['name'];?> </h5>
               <p class="card-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing.
               </p>

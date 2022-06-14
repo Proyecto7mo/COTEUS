@@ -5,8 +5,6 @@
   if (isset($_SESSION['user_id'])) {
     header('Location: ../Home');
   }
-  
-
 
   require '../database/database.php';
 
@@ -20,11 +18,11 @@
 
     $message = '';
 
-    if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
+    if (count($results) > 0 && $_POST['password'] == $results['password']) {
       $_SESSION['user_id'] = $results['id_user'];
       header("Location: ../Home");
     } else {
-      $message = 'Sorry, those credentials do not match';
+      $message = 'las credenciales no matchean';
     }
   }
 ?>
@@ -49,10 +47,10 @@
             <form action="index.php" method="post">
               <!-- USERNAME INPUT -->
               <label for="Username">Username</label>
-              <input type="text" placeholder="Enter Username">
+              <input type="text" placeholder="Enter Username" name="nameuser">
               <!-- PASSWORD INPUT -->
               <label for="Password">Password</label>
-              <input type="password" placeholder="Enter Password">
+              <input type="password" placeholder="Enter Password" name="password">
               <input type="submit" value="Log In">
               <a href="#">Lost your Password?</a><br>
               <a href="../Registrarme/">Don't have An account?</a>

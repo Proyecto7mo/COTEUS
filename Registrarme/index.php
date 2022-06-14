@@ -16,8 +16,13 @@
     $stmt->bindParam(':name', $_POST['name']);
     $stmt->bindParam(':surname', $_POST['surname']);
     $stmt->bindParam(':nameuser', $_POST['nameuser']);
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':password', $password);
+
+    $stmt->bindParam(':password', $_POST['password']);
+    /*
+      $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+      $stmt->bindParam(':password', $password);
+    */
+
     $stmt->bindParam(':email', $_POST['email']);
     $stmt->bindParam(':telephono', $_POST['telephono']);
 
