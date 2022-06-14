@@ -1,6 +1,5 @@
-<<<<<<<< HEAD:styles/main.css
 .body{
-	background-image: url(../../img/CoteusCarpetasIcons.svg);
+	background-image: url(../img/carpetas.svg);
 	background-repeat: repeat;
 	background-attachment: fixed;
 	background-size: all;
@@ -43,51 +42,3 @@
 	background-color: #3272ff;
 	color: white; 
 }
-
-========
-.body{
-	background-image: url(../../img/CoteusCarpetasIcons.svg);
-	background-repeat: repeat;
-	background-attachment: fixed;
-	background-size: all;
-	background-color: #0c27ac;
-}
-
-.section{
-	width: 40%;
-	margin-top: 60px;
-	align-content: center;
-	border-radius: 20px;
-	display: grid;
-	background-color: #f5f7fb;
-	padding: 30px;
-}
-
-.Clogo{
-	caption-side: center;
-	width: 537px;
-	height: 174px;
-}
-
-#text_recuad{
-	font-weight: bolder;
-	font-family: arial;
-}
-
-#logbuttons{
-	border-color: #0c27ac;
-	border-radius: 20px;
-	width: 160px;
-	height: 40px;
-	font-size: 20px;
-	background-color: #0c27ac;
-	color: #3272ff; 
-}
-
-#logbuttons:hover{
-	border-color: #3272ff;
-	background-color: #3272ff;
-	color: white; 
-}
-
->>>>>>>> 92fad7a9998368220492c22770b5e391a372a910:Herramientas/Login/Inicio/css/main.css

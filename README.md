@@ -1,4 +1,5 @@
 # COTEUS
-COTEUS - Gestor de Archivos para Grupos de Trabajo
+COTEUS
+COTEUS es un aplicacion web que ofrece los servicios de Gestion de Documentos de Grupos de Trabajo y administración y organización entre compañeros.
 
-Dirección: https://github.io/COTEUS/index.html
+Dirección: https://github.io/COTEUS/
