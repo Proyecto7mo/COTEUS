@@ -1,11 +1,16 @@
 <?php
+  
   session_start();
+  
+  require("../database/database.php");
 
-  if (isset($_SESSION['user_id'])) {
-    header('Location: ../');
-  }
+  $records = $conexion->prepare('SELECT name, nameuser, surname FROM users_t WHERE id_user = :id_user');
+  $records->bindParam(':id_user', $_SESSION['user_id']);
+  $records->execute();
+
+  $results = $records->fetch(PDO::FETCH_ASSOC);
+
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +25,9 @@
     ></script>
     <!-- font awesome -->
 
-    <link rel="stylesheet" href="/css/main.css" />
+    <?php
+      require("../partials/linkCSS.php");
+    ?>
 
     <title>Cuenta</title>
 
@@ -63,18 +70,18 @@
               <a
                 class="nav-link btn btn-outline-info rounded-pill shadow-sm mb bg-body rounded"
                 aria-current="page"
-                href="../Inicio/"
-                >INICIO</a
+                href="../Home/"
+                >HOME</a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../Grupo/">GRUPOS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../Home/">CUENTA</a>
+              <a class="nav-link" href="../Cuenta/">CUENTA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="php/logout.php">SALIR</a>
+              <a class="nav-link" href="../partials/logout.php">SALIR</a>
             </li>
           </ul>
         </div>
@@ -97,7 +104,7 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"> Hola <?php $_SESSION['name'];?> </h5>
+              <h5 class="card-title"> Hola <?php $results['name']; ?>! </h5>
               <p class="card-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing.
               </p>
