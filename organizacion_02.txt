@@ -1,21 +1,57 @@
 
-archivo → funcionalidades
+archivo -> funcionalidades
 -------------------------- 
-Login/index.html → Ingresar correo y contraseña para iniciar sesion. Boton de Registrarse y de olvide mi contraseña.
-Login/styles/main.css → estiliza Login/index.html
-Login/js/index.js → valida los datos en Login/index.html
 
-Registrarse/index.html → Ingresar todos los datos del empleado para registrarse. Boton de Iniciar Sesion (ya tengo cuenta).
-Registrarse/styles/main.css → estiliza Registrarse/index.html
-Registrarse/js/index.js → valida los datos en Registrarse/index.html
+Fase 1. FrontEnd
+---------------------------------
+Consiste en brindar todas las herramientas (botones, etc.) para lograr las paginas funcionen mediante una interfaz.
 
-Home/index.html → Subir Archivos, Enlistar Tareas, Ver grupo, Ver archivos Personales, Crear Grupo, buscar archivos.
-Home/styles/main.css → Estiliza Home/index.html 
-Home/js/index.js → Valida las busquedas.
+origin/index.php -> describe a COTEUS y sus funcionalidades, servicios, etc. | Boton de Registrarme | Boton de Login.
 
-Grupo/index.html → Subir Archivos, Enlistar Tareas, Ir Home, Ver los archivos, busca los archivos.
-Grupo/styles/main.css → Estiliza Grupo/index.html
-Grupo/js/index.js → Valida las busquedas.
+Login/index.php -> Ingresar correo y contraseña | Boton Iniciar Sesion | Boton de Registrarse y de olvide mi contraseña.
+Login/styles/main.css -> estiliza Login/index.php
+Login/js/index.js -> valida los datos en Login/index.php
 
-calculadora → funciones de la calculadora.
-tareas → enlistar Tareas.
+Registrarse/index.php -> Ingresar todos los datos del empleado para registrarse | Boton de Registrarme | Boton de Iniciar Sesion (ya tengo cuenta).
+Registrarse/styles/main.css -> estiliza Registrarse/index.php
+Registrarse/js/index.js -> valida los datos en Registrarse/index.php
+
+Home/index.php -> Subir Archivos | Enlistar Tareas | Ver grupo | Ver archivos Personales | Crear Grupo | Buscar archivos.
+Home/styles/main.css -> Estiliza Home/index.php 
+Home/js/index.js -> Valida las busquedas
+
+Grupo/index.php -> Subir Archivos | Enlistar Tareas | Ver grupo | Ver archivos Personales | Crear Grupo | Buscar archivos | Ir a Home.
+Grupo/styles/main.css -> Estiliza Grupo/index.php
+Grupo/js/index.js -> Valida las busquedas.
+
+calculadora -> funciones de la calculadora. Esta interfaz se desarrolla en partials/calculator.php por flexibilidad, la usa solo Home.
+
+tareas -> Esta interfaz se desarrolla en partials/tasks.php ya que la usa Home y Grupo. La interfaz debe seguir el EjemploDiagrama.png | ingresa: titulo de la tarea, duracion, fecha inicio, fecha fin, asignacion a intergante | Se ingresan tareas.
+
+upLoadFile -> Esta interfaz se comparte con Home y Grupo. Sube archivos.
+
+Cuenta/index.php -> Configurar las propiedades de una Cuenta | Boton Aplicar Cambios | Boton Cancelar.
+Cuenta/styles/main.css -> Estiliza Cuenta/index.php
+Cuenta/js/index.js -> Valida las configuraciones a aplicar.
+
+Fase 2. Backend
+Caracteristicas DE ESTA FASE:
+ + No se podran ver los perfiles de los distintos usuarios.
+ + No se podran abrir los archivos en el navegador.
+ + Si se quiere modificar un archivo, se descarga el archivo, se modifica y se lo reemplaza en COTEUS, asi colaboran en el grupo.
+ + El grupo es colaborativo pero los integrantes no podran colaborar al mismo tiempo, cada archivo tiene un estado de si se esta modificando por otro integrante o no, si se esta usando no lo dejara descargar, si no, si: Estan los intergantes A y B. A sube un archivo vacio llamado 1.txt. se lo descarga, lo esta modificando. B ingresa a COTEUS y quiere modificar el archivo 1.txt, le aparecera un mensaje de modificandose asi evitamos conflictos.
+
+Consiste en Lograr que funcione los servicios de cada parte de COTEUS.
+
+Base de Datos -> rehacer la base de datos con datos de un empleado, no de un usuario, y con todos los datos pertinentes para la funcionalidad de las funcionalidades
+
+Login / Registrarme -> consiste en poder loguearse y registrarse a COTEUS.
+
+Subir archivos -> consiste en poder subir archivos personales.
+
+Cuenta -> Modificar propiedades de la cuenta.
+
+Tasks -> Poder confeccionar las tareas.
+
+Calculadora -> Poder servirse de las funcionalidades de las tareas.
+

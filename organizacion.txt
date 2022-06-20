@@ -23,6 +23,28 @@ coteus.com
 
 Si hacemos que todas las partes vayan a un directorio general y tenemos a varios usuarios usando varias partes, todas las partes iran a ese directorio general, habra mucho trafico para ese directorio, entonces, es mejor descentralizar las cosas, como las imagenes. Cada imagen que use cada parte estara dentro de ella misma aunque varias partes usen la misma imagen pero en ubicaciones diferentes. No se sigue la misma idea con partials, pero ésta es solo de organizacion, luego se la hara la correcta configuración a la hora de subirlo.
 
-Cada uno Modifica el directorio que le toque, en el sistema que le toque.
+Cada uno Modifica el directorio que le toque, en el sistema que le toque. Este �punto es fundamental para evitar conflictos de versiones entre las ramas.
 
-ya esta asignada cada tarea en el docs.google.com
+ya esta asignada cada tarea en el archivo .mpp
+
+--------------------------------------
+|            Estandares              |
+--------------------------------------
+ + Toda nomenclatura de directorios visibles por el usurio sera en PascalCase (Login, Home, etc) NO database, partials, esas seran en camelCase.
+ + Toda nomenclatura de archivos sera en camelCase.
+
+Arbol de directorios sin las partes
+database
+  coteus.sql -> base de datos importada
+  database.php -> conecta con la base de datos.
+
+partials
+  general
+    main.css -> son los estilos de los elementos HTML
+  footer.php -> elemento HTML de todas las paginas
+  header.php
+  nav.php
+  linkCSS.php -> son los lnks de los archivos css
+  linkJS.php -> son los lnks de los archivos js
+  tasks.php -> es la interfaz total para subir las tareas.
+  calculator.php -> es la interfaz total para subir la calculadora.
