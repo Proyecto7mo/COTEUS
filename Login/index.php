@@ -8,6 +8,8 @@
 
   require '../database/database.php';
 
+  $message = '';
+
   if (!empty($_POST['nameuser']) && !empty($_POST['password'])) {
     $records = $conexion->prepare('SELECT id_user, nameuser, password FROM users_t WHERE nameuser = :nameuser');
     $records->bindParam(':nameuser', $_POST['nameuser']);
@@ -15,8 +17,6 @@
     $records->execute();
     
     $results = $records->fetch(PDO::FETCH_ASSOC);
-
-    $message = '';
 
     if (count($results) > 0 && $_POST['password'] == $results['password']) {
       $_SESSION['user_id'] = $results['id_user'];
