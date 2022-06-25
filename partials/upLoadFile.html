@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UpLoadFile</title>
+
+  <link rel="stylesheet" href="general/main.css">
+</head>
+<body>
+  <div class="UpLoadFile-container">
+    <div class="UpLoadFile">
+      <h2 class="UpLoadFile__LBLTitle">Arrastra y suelta tus documentos</h2>
+      <p class="UpLoadFile__PRFInstruccion">
+        Para arrastrar un archivo debe hacerlo desde el Explorador de Archivos o puede
+        <a id="link"> hacer clic Aqui</a></p>
+      <button class="UpLoadFile__BTN">Selecciona tus archivos</button>
+      <input id="INPFile" type="file" name="file" hidden multiple>
+    </div>
+    
+    <div class="UpLoadFile-container__preview"></div>
+
+    <button type="button" class="send"> Subir </button>
+
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

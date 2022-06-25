@@ -1,18 +1,117 @@
 *{
-  /* variables de colores */
-  /* definir las variables globales */
-  /* definir la paleta de colores */
+  margin: 0%;
+  box-sizing: border-box;
 }
 
-footer{
-
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-nav{
-
+.UpLoadFile-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-header{
-
+.UpLoadFile-container__preview{
+  background-color: rgb(241, 241, 241);
+  margin-top: 30px;
 }
-
+.UpLoadFile{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 4px dashed rgb(29, 4, 255);
+  background-color: rgb(190, 190, 190);
+  padding: 15px 10px;
+  border-radius: 15px;
+  width: 600px;
+  
+  font-family: 'Inconsolata', monospace;
+}
+#link{
+  color: blue;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.UploadFile__Link{
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+.UpLoadFile.active{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px 10px;
+  border-radius: 15px;
+  width: 600px;
+  
+  font-family: 'Inconsolata', monospace;
+  
+  background-color: #4aa8ff;
+  color: black;
+  border: 2px dashed rgb(0, 0, 100);
+}
+.UpLoadFile__Title{
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+  letter-spacing: .2rem;
+}
+.UpLoadFile__BTN{
+  padding: 10px 25px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 10px;
+  outline: 0;
+  background-color: #3942eb;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.file-container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: solid 1px #ddd;
+}
+#preview{
+  margin-top: 10px;
+}
+.status-text{
+   padding: 0 10px;
+}
+.sucess{
+  color: #52ad5a;
+}
+.failure{
+  color: red;
+}
+.archivoInvalido{
+  display: flex;
+  align-items: center;
+  width: 550px;
+  border: solid black 2px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #e66666;
+}
+.send{
+  background-color: #408cff;
+  outline: none;
+  border-radius: 5px;
+  border: 0;
+  padding: 7px 50px;
+  font-size: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
