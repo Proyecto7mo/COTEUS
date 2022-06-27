@@ -15,11 +15,7 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.UpLoadFile-container__preview{
-  background-color: rgb(241, 241, 241);
-  margin-top: 30px;
+  gap: 20px;
 }
 .UpLoadFile{
   display: flex;
@@ -34,31 +30,11 @@ body{
   
   font-family: 'Inconsolata', monospace;
 }
-#link{
+.UpLoadFile__LNKInstruction{
   color: blue;
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
-}
-.UploadFile__Link{
-  text-decoration: underline;
-  color: blue;
-  cursor: pointer;
-}
-.UpLoadFile.active{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 15px 10px;
-  border-radius: 15px;
-  width: 600px;
-  
-  font-family: 'Inconsolata', monospace;
-  
-  background-color: #4aa8ff;
-  color: black;
-  border: 2px dashed rgb(0, 0, 100);
 }
 .UpLoadFile__Title{
   font-size: 30px;
@@ -66,7 +42,7 @@ body{
   color: black;
   letter-spacing: .2rem;
 }
-.UpLoadFile__BTN{
+.UpLoadFile__BTN-file{
   padding: 10px 25px;
   font-size: 20px;
   border: 0;
@@ -77,25 +53,23 @@ body{
   margin-top: 20px;
   margin-bottom: 10px;
 }
-.file-container{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border: solid 1px #ddd;
-}
-#preview{
-  margin-top: 10px;
-}
-.status-text{
-   padding: 0 10px;
-}
-.sucess{
-  color: #52ad5a;
-}
-.failure{
-  color: red;
-}
+  .preview__file{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: solid 1px #ddd;
+    background-color: #f3f3f3;
+  }
+  .preview__fileLoad{
+    padding: 0 10px;
+  }
+  .preview__fileUploaded{
+    color: #52ad5a;
+  }
+  .preview__fileFailed{
+    color: red;
+  }
 .archivoInvalido{
   display: flex;
   align-items: center;
@@ -103,15 +77,16 @@ body{
   border: solid black 2px;
   border-radius: 5px;
   padding: 10px;
+  margin-top: 5px;
+  gap: 5px;
   background-color: #e66666;
 }
-.send{
+.UpLoadFile-container__BTN-send{
   background-color: #408cff;
   outline: none;
   border-radius: 5px;
   border: 0;
   padding: 7px 50px;
   font-size: 20px;
-  margin-top: 20px;
   cursor: pointer;
 }

@@ -3,22 +3,29 @@
 // Resumen: Este archivo permite cargar los archivos que el usuario desee subir al sistema.
 //
 
+// obteniendo datos de elementos HTML.
 const UpLoadFile = document.querySelector(".UpLoadFile");
-const dragText = UpLoadFile.querySelector("h2");
-const button = UpLoadFile.querySelector(".UpLoadFile__BTN");
-const input = UpLoadFile.querySelector("#INPFile");
-const send = document.querySelector(".send");
-const link = document.getElementById("link");
+const title = UpLoadFile.querySelector(".UpLoadFile__LBLTitle");
+const button = UpLoadFile.querySelector(".UpLoadFile__BTN-file");
+const input = UpLoadFile.querySelector(".UpLoadFile__INPFile");
+const send = document.querySelector(".UpLoadFile-container__BTN-send");
+const link = document.querySelector(".UpLoadFile__LNKInstruction");
 let files;
 
-link.onclick = () => { button.click(); };
+link.addEventListener("click", e => {
+  button.click();
+});
 
 button.addEventListener("click", (e) => {
   input.click();
 });
 
+// cada vez que cambia el valor el input, se guardan los archivos
 input.addEventListener("change", (e) => {
+  
+  //se guardan los archivos del input a files
   files = input.files;
+  
   UpLoadFile.classList.add("active");
   ShowFiles(files);
   UpLoadFile.classList.remove("active");
@@ -27,7 +34,7 @@ input.addEventListener("change", (e) => {
 UpLoadFile.addEventListener("dragover", (e) => {
   e.preventDefault();
   UpLoadFile.classList.add("active");
-  dragText.textContent = "Suelta el archivo para subirlo.";
+  title.textContent = "Suelta el archivo para subirlo.";
 });
 
 UpLoadFile.addEventListener("dragleave", (e) => {
@@ -44,7 +51,7 @@ UpLoadFile.addEventListener("drop", (e) => {
 
 function RemoverClaseActive(){
   UpLoadFile.classList.remove("active");
-  dragText.textContent = "Arrastra y suelta tus documentos";
+  title.textContent = "Arrastra y suelta tus documentos";
 }
 
 function ShowFiles(files){
@@ -71,11 +78,11 @@ function processFile(file){
     fileReader.addEventListener('load', (e) => {
       const fileURL = fileReader.result;
       const image = `
-      <div id="${id}" class="file-container">
+      <div id="${id}" class="preview__file">
         <img src="${fileURL}" width="50">
         <div class="status">
           <span>${file.name}</span>
-          <span class="status-text">
+          <span class="preview__fileLoad">
             Cargando...
           </span>
         </div>
@@ -87,7 +94,9 @@ function processFile(file){
     });
 
     fileReader.readAsDataURL(file);
-    // SubirArchivo(file, id)
+    
+    SubirArchivo(file, id)
+  
   }else{
     ArchivoInvalido(file);
   }
@@ -97,7 +106,7 @@ send.addEventListener("click", e => {
   SubirArchivo (file, id);
 });
 
-/* async function SubirArchivo (file, id) {
+async function SubirArchivo (file, id) {
   const formData = new FormData();
 
   formData.append("file", file);
@@ -111,12 +120,12 @@ send.addEventListener("click", e => {
     const responseText = await response.text();
     console.log(responseText);
     
-    document.querySelector(`#${id} .status-text`).innerHTML = `<span class="sucess"> Archivo Subido Correctamente... </span>`;
+    document.querySelector(`#${id} .preview__fileLoad`).innerHTML = `<span class="preview__fileUploaded"> Archivo Subido Correctamente... </span>`;
   } catch(error) {
     const responseText = await response.text();
-    document.querySelector(`#${id} .status-text`).innerHTML = `<span class="failure"> Error al subir el archivo... </span>`; 
+    document.querySelector(`#${id} .preview__fileLoad`).innerHTML = `<span class="preview__fileFailed"> Error al subir el archivo... </span>`; 
   }
-} */
+}
 
 function ArchivoInvalido(file){
   let preview = document.querySelector('.UpLoadFile-container__preview');
