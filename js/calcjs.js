@@ -43,10 +43,18 @@ function AñInputs()
     var divInputs=document.getElementById("Inputs");
     var contador=0;
     var formula=document.getElementById("formula").value;
+    formula=formula.replaceAll("^","**");
     var words="abcdefghijklmnñopqrstuvwxyz";
     var Words=words.split("");
     divInputs.innerHTML="";
-    var Formula=formula.toLowerCase().split("");
+    formula=formula.toLowerCase();
+    var ri;
+    var rin;
+    rin=formula.indexOf("=");
+    ri=formula.slice(0,rin+1);
+    formula=formula.replaceAll(ri,"");
+    formula=formula.split("");
+    var Formula=formula;
 
     for(i=0;i<Formula.length;i++)
     {
@@ -75,9 +83,6 @@ function AñInputs()
     var arrids=[];
     function operacion()
     {
-        var divInputs=document.getElementById("Inputs");
-        var formula=document.getElementById("formula").value;
-        var Formula=formula.toLowerCase();
         $("#Inputs > input[type=\"number\"]").each(function(){
                 var para=document.getElementById($(this).attr('id')).value;
               if(para!="")
@@ -91,7 +96,8 @@ function AñInputs()
         arrids=[];
     }
     
-    
+    var ri;
+    var rin;
     function operacion2()
     {
         if(c==0)
@@ -99,6 +105,11 @@ function AñInputs()
             var f;
             var formula=document.getElementById("formula").value;
             formul=formula.toLowerCase();
+
+            rin=formul.indexOf("=");
+            ri=formul.slice(0,rin+1);
+            formul=formul.replaceAll(ri,"");
+
             formulaux=formul;
             c++;
             }
@@ -117,7 +128,7 @@ function AñInputs()
         var label=document.createElement("label");
         divRespuesta.innerHTML="";
         label.textContent="";
-        label.textContent=r;
+        label.textContent=ri+""+r;
         label.type = "number";
         label.id = "labres";
         label.name = "labres";
