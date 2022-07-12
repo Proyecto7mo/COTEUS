@@ -44,7 +44,7 @@
         <div class="login-box">
             <img src="img/emblemaBlanco.svg" class="avatar" alt="Avatar Image">
             <h1>Login Here</h1>
-            <form action="index.php" method="post">
+            <form action="index.php" method="post" autocomplete="off">
               <!-- USERNAME INPUT -->
               <label for="Username">Usuario</label>
               <input type="text" placeholder="Ingrese Usuario" name="nameuser">
