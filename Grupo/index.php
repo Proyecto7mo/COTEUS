@@ -93,6 +93,13 @@
       crossorigin="anonymous"
     ></script>
 
+    <br>
+    <br>
+    <br>
+    <?php
+      require "../partials/footer.php";
+    ?>
+
     <!-- bootstrap -->
   </body>
 </html>
