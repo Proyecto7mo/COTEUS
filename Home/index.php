@@ -18,9 +18,7 @@
     ></script>
     <!-- font awesome -->
 
-    <?php
-      require("../partials/linkCSS.php");
-    ?>
+    <link rel="stylesheet" href="../partials/UpLoadFiles/main.css">
 
     <title>Cuenta</title>
 
@@ -121,7 +119,7 @@
     <!-- ARCHIVOS -->
 
     <?php
-      require '../partials/upLoadFile.html';
+      require '../partials/upLoadFiles/upLoadFile.html';
     ?>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
