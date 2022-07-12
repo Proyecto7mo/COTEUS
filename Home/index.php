@@ -2,14 +2,7 @@
   
   session_start();
   
-  require("../database/database.php");
-
-  $records = $conexion->prepare('SELECT name, nameuser, surname FROM users_t WHERE id_user = :id_user');
-  $records->bindParam(':id_user', $_SESSION['user_id']);
-  $records->execute();
-
-  $results = $records->fetch(PDO::FETCH_ASSOC);
-
+  require("../datos/datos.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,7 +97,13 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"> Hola <?php $results['name']; ?>! </h5>
+              <h5 class="card-title"> 
+                Hola 
+                <?php
+                  $empleado = obtener_empleado($_SESSION['user_id']);
+                  $empleado['name'];
+                ?> !
+              </h5>
               <p class="card-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing.
               </p>
@@ -120,6 +119,10 @@
     <!-- CARD USUARIO -->
 
     <!-- ARCHIVOS -->
+
+    <?php
+      require '../partials/upLoadFile.html';
+    ?>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
       <div class="col">
