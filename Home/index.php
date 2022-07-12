@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+
     <!-- font awesome -->
     <script
       src="https://kit.fontawesome.com/3a5da5265b.js"
@@ -18,9 +19,7 @@
     ></script>
     <!-- font awesome -->
 
-    <link rel="stylesheet" href="../partials/UpLoadFiles/main.css">
-
-    <title>Cuenta</title>
+    <title>Home</title>
 
     <!-- bootstrap -->
     <link
@@ -35,6 +34,7 @@
     <!-- INICIO HEADER -->
     <header class="d-flex justify-content-center">
       <img src="../img/coteus/logoAzul.svg" alt="" />
+
     </header>
 
     <nav
@@ -66,7 +66,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../Grupo/">GRUPOS</a>
+              <a class="nav-link" href="../Grupo/">GRUPO</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../Cuenta/">CUENTA</a>
@@ -118,9 +118,14 @@
 
     <!-- ARCHIVOS -->
 
-    <?php
-      require '../partials/upLoadFiles/upLoadFile.html';
-    ?>
+    <div class="funcionalidades">
+      <?php
+        require '../partials/upLoadFiles/upLoadFile.html';
+      ?>
+      <?php
+        // require '../partials/tasks/tasks.html';
+      ?>
+    </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
       <div class="col">
