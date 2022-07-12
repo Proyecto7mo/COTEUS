@@ -10,7 +10,7 @@
     }
 </script>
 <?php
-$conexion=mysqli_connect("localhost", "root", "", "test") or die("Problemas de conexion");
+$conexion=mysqli_connect("localhost", "root", "123456789", "coteus") or die("Problemas de conexion");
 $registros=mysqli_query($conexion, "select name_function, formula_function from calculator_t") or die("Problemas de select".mysqli_error($conexion));
     while ($reg = mysqli_fetch_array($registros))
     {
