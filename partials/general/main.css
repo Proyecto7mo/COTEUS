@@ -1,18 +1,5 @@
-*{
-  /* variables de colores */
-  /* definir las variables globales */
-  /* definir la paleta de colores */
+.funcionalidades{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 }
-
-footer{
-
-}
-
-nav{
-
-}
-
-header{
-
-}
-

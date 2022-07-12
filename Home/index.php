@@ -2,14 +2,7 @@
   
   session_start();
   
-  require("../database/database.php");
-
-  $records = $conexion->prepare('SELECT name, nameuser, surname FROM users_t WHERE id_user = :id_user');
-  $records->bindParam(':id_user', $_SESSION['user_id']);
-  $records->execute();
-
-  $results = $records->fetch(PDO::FETCH_ASSOC);
-
+  require("../datos/datos.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+
     <!-- font awesome -->
     <script
       src="https://kit.fontawesome.com/3a5da5265b.js"
@@ -25,11 +19,7 @@
     ></script>
     <!-- font awesome -->
 
-    <?php
-      require("../partials/linkCSS.php");
-    ?>
-
-    <title>Cuenta</title>
+    <title>Home</title>
 
     <!-- bootstrap -->
     <link
@@ -44,6 +34,7 @@
     <!-- INICIO HEADER -->
     <header class="d-flex justify-content-center">
       <img src="../img/coteus/logoAzul.svg" alt="" />
+
     </header>
 
     <nav
@@ -75,7 +66,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../Grupo/">GRUPOS</a>
+              <a class="nav-link" href="../Grupo/">GRUPO</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../Cuenta/">CUENTA</a>
@@ -104,7 +95,13 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"> Hola <?php $results['name']; ?>! </h5>
+              <h5 class="card-title"> 
+                Hola 
+                <?php
+                  $empleado = obtener_empleado($_SESSION['user_id']);
+                  $empleado['name'];
+                ?> !
+              </h5>
               <p class="card-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing.
               </p>
@@ -120,6 +117,15 @@
     <!-- CARD USUARIO -->
 
     <!-- ARCHIVOS -->
+
+    <div class="funcionalidades">
+      <?php
+        require '../partials/upLoadFiles/upLoadFile.html';
+      ?>
+      <?php
+        // require '../partials/tasks/tasks.html';
+      ?>
+    </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
       <div class="col">
