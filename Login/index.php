@@ -46,14 +46,14 @@
             <h1>Login Here</h1>
             <form action="index.php" method="post">
               <!-- USERNAME INPUT -->
-              <label for="Username">Username</label>
-              <input type="text" placeholder="Enter Username" name="nameuser">
+              <label for="Username">Usuario</label>
+              <input type="text" placeholder="Ingrese Usuario" name="nameuser">
               <!-- PASSWORD INPUT -->
-              <label for="Password">Password</label>
-              <input type="password" placeholder="Enter Password" name="password">
+              <label for="Password">Contraseña</label>
+              <input type="password" placeholder="Ingrese Contraseña" name="password">
               <input type="submit" value="Log In">
-              <a href="#">Lost your Password?</a><br>
-              <a href="../Registrarme/">Don't have An account?</a>
+              <a href="#">¿No recuerdas tu Contraseña?</a><br>
+              <a href="../Registrarme/">¿No tienes una Cuenta?</a>
             </form>
           </div>
     </body>
