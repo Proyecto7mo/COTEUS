@@ -1,4 +1,4 @@
-*{
+/* *{
   margin: 0%;
   box-sizing: border-box;
 }
@@ -10,7 +10,8 @@ body{
   min-height: 100vh;
 }
 
-.UpLoadFile-container{
+ */
+ .UpLoadFile-container{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +23,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 4px dashed rgb(29, 4, 255);
+  border: 4px dashed rgb(25, 0, 255);
   background-color: rgb(190, 190, 190);
   padding: 15px 10px;
   border-radius: 15px;
@@ -48,7 +49,7 @@ body{
   border: 0;
   border-radius: 10px;
   outline: 0;
-  background-color: #3942eb;
+  background-color: #3977eb;
   cursor: pointer;
   margin-top: 20px;
   margin-bottom: 10px;
