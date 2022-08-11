@@ -16,10 +16,8 @@
 	
 	<title>COTEUS</title>
 	
-	<!-- Links CSS -->
-	<?php
-	  require("partials/LinkCSS.php");
-	?>
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="partials/general/main.css">
   
 </head>
 
@@ -55,7 +53,7 @@
 	</center>
 
   <?php
-    require("partials/footer.php");
+    require("partials/HTML/footer/footer.php");
   ?>
 </body>
 </html>
