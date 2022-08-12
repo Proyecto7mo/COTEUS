@@ -6,12 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cuenta</title>
+  <?php
+      require '../partials/linkCSS.php'
+    ?>
 </head>
 <body>
+  <header>
+    <?php
+      require '../partials/HTML/nav/nav.php'
+    ?>
+  </header>
   <div class="contenedor">
     <div class="contenedor__profilePhoto">
       <p class="profilePhoto__name-user"> fulano0903 </p>
-      <img class="profilePhoto__photo" src="../Home/img/ProfilePhoto.jpg" alt="" height="300">
+      <img class="profilePhoto__photo" src="../Home/img/ProfilePhoto.JPG" alt="" height="300">
     </div>
 
     <div class="contenedor__group">
