@@ -1,5 +1,15 @@
-.funcionalidades{
+@import '../HTML/footer/footer.css';
+@import '../HTML/nav/nav.css';
+
+*{
+  /* paleta de colores */
+}
+
+.functions{
   display: flex;
-  flex-direction: row;
-  gap: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  gap: 30px;
 }
