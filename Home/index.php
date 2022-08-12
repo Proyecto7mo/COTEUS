@@ -28,6 +28,10 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+
+    <?php include "../partials/linkCSS.php"; ?>
+    <link rel="stylesheet" href="../partials/upload_files/upload_files.css">
+
     <!-- bootstrap -->
   </head>
   <body>
@@ -35,16 +39,12 @@
     <header class="d-flex justify-content-center">
       <img src="../img/coteus/logoAzul.svg" alt="" />
 
+      <?php include "../partials/HTML/nav/nav.php"; ?>
+
     </header>
-
-    <?php
-      require "../partials/nav.php";
-    ?>
-
     <!-- FIN HEADER -->
 
     <!-- CARD USUARIO -->
-
     <div class="d-flex justify-content-center">
       <div class="mb-3 mt-4" style="max-width: 540px">
         <div class="row">
@@ -78,17 +78,14 @@
 
     <!-- CARD USUARIO -->
 
-    <!-- ARCHIVOS -->
-
-    <div class="funcionalidades">
+    <div class="functions">
       <?php
-        require '../partials/upLoadFiles/upLoadFile.html';
-      ?>
-      <?php
-        // require '../partials/tasks/tasks.html';
-      ?>
+        include '../partials/upload_files/upload_files.html';
+        include '../partials/task/add_task.html';
+        ?>
     </div>
-
+    
+    <!-- ARCHIVOS -->
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
       <div class="col">
         <div class="card h-100">
@@ -339,7 +336,7 @@
 
     <!-- bootstrap -->
 
-    <?php require("../partials/footer.php"); ?>
+    <?php include("../partials/HTML/footer/footer.php"); ?>
 
   </body>
 </html>
