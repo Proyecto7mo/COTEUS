@@ -1,0 +1,17 @@
+<div class="upload-files-container">
+  <form class="upload-files" action="../partials/upload_files/upload_files.php" method="post" enctype="multipart/form-data">
+    <h2 class="upload-files__title">Arrastra y suelta tus documentos</h2>
+    <p class="upload-files__label">
+      Para arrastrar un archivo debe hacerlo desde el Explorador de Archivos o puede
+      <a class="upload-files__link"> hacer clic Aqui</a>
+    </p>
+    <button class="upload-files__btn-files">Selecciona tus archivos</button>
+    <input class="upload-files__inp-file" type="file" name="file" hidden multiple>
+    
+    <div class="upload-files-container__preview"></div>
+    
+    <button class="upload-files-container__btn-send" type="submit"> Subir </button>
+  </form>
+</div>
+  
+<script src="../partials/upload_files/upload_files.js"></script>
