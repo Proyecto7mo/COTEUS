@@ -33,7 +33,9 @@
     <head>
         <title>Login</title>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="styles/main.css">
+        <?php
+          require '../partials/linkCSS.php'
+        ?>
     </head>
     <body>
 
@@ -57,4 +59,8 @@
             </form>
           </div>
     </body>
+
+    <?php
+      require '../partials/HTML/footer/footer.php';
+    ?>
 </html>
