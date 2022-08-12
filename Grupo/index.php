@@ -13,7 +13,7 @@
     ></script>
     <!-- font awesome -->
 
-    <title>Coteus</title>
+    <title>COTEUS</title>
 
     <!-- bootstrap -->
     <link
@@ -22,10 +22,12 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="../partials/upload_files/upload_files.css">
     <!-- bootstrap -->
 
-    <!-- No existe el archivo grupos.css | Jeremias Cuello 23/5 -->
-    <!-- <link rel="stylesheet" href="../css/grupos.css" /> -->
+    <?php
+      require '../partials/linkCSS.php';
+    ?>
   </head>
   <body>
     <!-- INICIO HEADER -->
@@ -34,7 +36,7 @@
     </header>
 
     <?php
-      require "../partials/nav.php";
+      include "../partials/HTML/nav/nav.php";
     ?>
 
     <!-- FIN HEADER -->
@@ -47,9 +49,10 @@
 
     <!-- titulo -->
 
-    <div class="funcionalidades">
+    <div class="functions">
       <?php
-        require "../partials/UpLoadFiles/upLoadFile.html";
+        include '../partials/upload_files/upload_files.html';
+        include '../partials/task/add_task.html';
       ?>
     </div>
 
