@@ -32,7 +32,7 @@ CREATE TABLE `calculator_t` (
   `id_calculator` int(2) NOT NULL,
   `name_function` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `formula_function` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ CREATE TABLE `chores_t` (
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
   `predecessor` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `enterprise_t` (
   `id_enterprise` int(2) NOT NULL,
   `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cuit` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -75,7 +75,7 @@ CREATE TABLE `files_t` (
   `owner` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `lastModification` datetime NOT NULL,
   `state` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -89,19 +89,19 @@ CREATE TABLE `groups_t` (
   `admin` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `id_files` int(2) NOT NULL,
   `id_chores` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users_t`
+-- Estructura de tabla para la tabla `employees_t`
 --
 
-CREATE TABLE `users_t` (
-  `id_user` int(2) NOT NULL,
+CREATE TABLE `employees_t` (
+  `id_employee` int(2) NOT NULL,
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `surname` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `nameuser` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `nameemployee` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` char(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cuil` int(11) NOT NULL,
@@ -110,13 +110,13 @@ CREATE TABLE `users_t` (
   `id_files` int(2) NOT NULL,
   `id_calculator` int(2) NOT NULL,
   `id_enterprise` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `users_t`
+-- Volcado de datos para la tabla `employees_t`
 --
 
-INSERT INTO `users_t` (`id_user`, `name`, `surname`, `nameuser`, `password`, `email`, `cuil`, `id_chores`, `id_groups`, `id_files`, `id_calculator`, `id_enterprise`) VALUES
+INSERT INTO `employees_t` (`id_employee`, `name`, `surname`, `nameemployee`, `password`, `email`, `cuil`, `id_chores`, `id_groups`, `id_files`, `id_calculator`, `id_enterprise`) VALUES
 (22, 'Jeremias', 'Cuello', 'jeremias0901', '$2y$10$F0OWwBY0bimlIo2.e5GV3up', 'cuellojeremiasnatanael@gmail.com', 0, 0, 0, 0, 0, 0),
 (29, 'elias', 'gomez', 'elias0101', 'a', 'elias@gmail.com', 0, 0, 0, 0, 0, 0),
 (30, 'bilu', 'cuello', 'bilu2309', '1', 'bilu@gmail.com', 0, 0, 0, 0, 0, 0),
@@ -157,10 +157,10 @@ ALTER TABLE `groups_t`
   ADD PRIMARY KEY (`id_groups`);
 
 --
--- Indices de la tabla `users_t`
+-- Indices de la tabla `employees_t`
 --
-ALTER TABLE `users_t`
-  ADD PRIMARY KEY (`id_user`);
+ALTER TABLE `employees_t`
+  ADD PRIMARY KEY (`id_employee`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -197,10 +197,10 @@ ALTER TABLE `groups_t`
   MODIFY `id_groups` int(2) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `users_t`
+-- AUTO_INCREMENT de la tabla `employees_t`
 --
-ALTER TABLE `users_t`
-  MODIFY `id_user` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+ALTER TABLE `employees_t`
+  MODIFY `id_employee` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
