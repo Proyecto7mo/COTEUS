@@ -1,8 +1,20 @@
 <?php
   
-  session_start();
+  require "../class/employee.php";
   
-  require("../datos/datos.php");
+  session_start();
+
+  if($_SESSION){
+    
+    if (isset($_SESSION['id_employee']) ) {
+      $employee = employee::get($_SESSION['id_employee']);
+    }
+    else{
+      echo "<script>alert('Usted no ha iniciado sesion');</script>";
+      header('Location: ../../');
+    }
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,11 +70,7 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title"> 
-                Hola 
-                <?php
-                  $empleado = obtener_empleado($_SESSION['user_id']);
-                  $empleado['name'];
-                ?> !
+                Hola <?php $employee['name']; ?> !
               </h5>
               <p class="card-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing.
