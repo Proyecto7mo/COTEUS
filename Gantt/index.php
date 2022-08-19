@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tabla Grantt</title>
+
+	<link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
+
+    <title>COTEUS | Gantt</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -17,23 +20,28 @@
       require '../partials/linkCSS.php';
     ?>
   </head>
+
   <body>
-    <!-- nav -->
-
-    <header class="d-flex justify-content-center">
-      <img src="../img/logoAzul.svg" alt="" />
-    </header>
-
+    <!-- INICIO HEADER -->
+    
+    <div class="header">
     <?php
-      require '../partials/HTML/nav/nav.php';
+      require "../partials/HTML/header/header.php";
     ?>
+    </div>
 
-    <!-- nav -->
+    <!-- INICIO NAV -->
 
-    <h1 class="mt-5">DIAGRAMA DE GRANTT</h1>
+  <div class="pages">
+    <?php
+      include "../partials/HTML/nav/nav.php";
+    ?>
+</div>
 
-    <h1 class="tarea">Agrega tu tarea aca</h1>
+    <!-- FIN NAV -->
 
+    <h1 class="mt-5">DIAGRAMA DE GANTT</h1>
+    
     <div class="container">
       <form>
         <div class="group">
@@ -202,62 +210,13 @@
       </table>
     </section>
 
-    <!-- FOOTER -->
+     <!-- INICIO FOOTER -->
 
-    <footer class="bg-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-            <div class="">
-              <h6 class="footer-heading text-uppercase text-white">
-                Informacion
-              </h6>
-              <ul class="list-unstyled footer-link mt-4">
-                <li><a href="">Pages</a></li>
-                <li><a href="">Nuestro equipo </a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-lg-3">
-            <div class="">
-              <h6 class="footer-heading text-uppercase text-white">Nosotros</h6>
-              <ul class="list-unstyled footer-link mt-4">
-                <li><a href="">Quienes somos </a></li>
-                <li><a href="">Que hacemos</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-lg-2">
-            <div class="">
-              <h6 class="footer-heading text-uppercase text-white">Ayuda</h6>
-              <ul class="list-unstyled footer-link mt-4">
-                <li><a href="">Sign Up </a></li>
-                <li><a href="">Login</a></li>
-                <li><a href="">Politica y privacidad</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="">
-              <h6 class="footer-heading text-uppercase text-white">
-                Contactate con nosotros
-              </h6>
-              <p class="contact-info mt-4">
-                Contactate con nosotros a travaes de el siguente mail
-              </p>
-              <p class="contact-info">example@coteus.com</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-5">
-        <p class="footer-alt mb-0 f-14">2022 © Coteus, All Rights Reserved</p>
-      </div>
-    </footer>
+     <?php
+      require ("../partials/HTML/footer/footer.php");
+    ?>
+    
+    <!-- FIN FOOTER -->
 
     <!-- <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

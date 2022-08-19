@@ -1,8 +1,10 @@
 <nav
       class="navbar navbar-expand-lg navbar-light d-flex justify-content-center"
     >
+
+    <link rel="stylesheet" type="text/css" href="../partials/HTML/nav/style.css">
+
       <div class="container-fluid">
-        <a class="navbar-brand me-5 p-4" href="../Home">COTEUS</a>
 
         <button
           class="navbar-toggler"
@@ -19,26 +21,30 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a
-                class="nav-link btn btn-outline-info rounded-pill shadow-sm mb bg-body rounded"
-                aria-current="page"
-                href="../Home/"
-                >HOME</a
-              >
+              <a class="nav-link" href="../Home/" id="navtext">HOME</a>
+            </li>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../Grupo/">GRUPO</a>
+              <a class="nav-link" href="../Grupo/" id="navtext">GRUPO</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../Gantt/">GANTT</a>
+              <a class="nav-link" href="../Gantt/" id="navtext">GANTT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../Cuenta/">CUENTA</a>
+              <a class="nav-link" href="../Cuenta/" id="navtext">CUENTA</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../partials/logout.php">SALIR</a>
+              <a class="nav-link" href="../partials/logout.php" id="navtext">SALIR</a>
             </li>
           </ul>
         </div>
-      </div>
+      </div>    
+
+      <div class="BarraHerramientas">
+		<a class="LbTIcon" href="javascript:" onclick="CallLibret()"><img class="toolICON" src="../img/tools_bar/Libreta_Icon.svg"></a>
+		<a class="ClcIcon" href="javascript:" onclick="CallCalc()"><img class="toolICON" src="../img/tools_bar/Calculadora_Icon.svg"></a>
+		<a class="ConfIcon" href="../Configuracion/"><img class="toolICON" id="Gear" src="../img/tools_bar/Configuracion_Icon.svg"></a>
+    <a><img src="../img/tools_bar/null.svg"></a>
+	</div>
+  
     </nav>

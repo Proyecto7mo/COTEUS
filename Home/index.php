@@ -1,20 +1,8 @@
 <?php
   
-  require "../class/employee.php";
-  
   session_start();
-
-  if($_SESSION){
-    
-    if (isset($_SESSION['id_employee']) ) {
-      $employee = employee::get($_SESSION['id_employee']);
-    }
-    else{
-      echo "<script>alert('Usted no ha iniciado sesion');</script>";
-      header('Location: ../../');
-    }
-  }
-
+  
+  require("../datos/datos.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +10,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
 
 
     <!-- font awesome -->
@@ -31,7 +20,7 @@
     ></script>
     <!-- font awesome -->
 
-    <title>Home</title>
+    <title>COTEUS | Home</title>
 
     <!-- bootstrap -->
     <link
@@ -46,15 +35,25 @@
 
     <!-- bootstrap -->
   </head>
+
   <body>
     <!-- INICIO HEADER -->
-    <header class="d-flex justify-content-center">
-      <img src="../img/coteus/logoAzul.svg" alt="" />
+    
+    <div class="header">
+    <?php
+      require "../partials/HTML/header/header.php";
+    ?>
+    </div>
 
-      <?php include "../partials/HTML/nav/nav.php"; ?>
+    <!-- INICIO NAV -->
 
-    </header>
-    <!-- FIN HEADER -->
+  <div class="pages">
+    <?php
+      include "../partials/HTML/nav/nav.php";
+    ?>
+</div>
+
+    <!-- FIN NAV -->
 
     <!-- CARD USUARIO -->
     <div class="d-flex justify-content-center">
@@ -70,7 +69,11 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title"> 
-                Hola <?php $employee['name']; ?> !
+                Hola 
+                <?php
+                  $empleado = obtener_empleado($_SESSION['user_id']);
+                  $empleado['name'];
+                ?> !
               </h5>
               <p class="card-text">
                 Lorem ipsum dolor sit amet consectetur adipisicing.
@@ -344,7 +347,13 @@
 
     <!-- bootstrap -->
 
-    <?php include("../partials/HTML/footer/footer.php"); ?>
+    <!-- INICIO FOOTER -->
+
+    <?php
+      require ("../partials/HTML/footer/footer.php");
+    ?>
+    
+    <!-- FIN FOOTER -->
 
   </body>
 </html>

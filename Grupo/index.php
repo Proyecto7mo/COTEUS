@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grupos</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+	<link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
+    <title>COTEUS | Grupo</title>
 
     <!-- font awesome -->
     <script
@@ -31,20 +33,29 @@
   </head>
   <body>
     <!-- INICIO HEADER -->
-    <header class="d-flex justify-content-center">
-      <img src="./../assets/Coteus Logo Blanco.png" alt="" />
-    </header>
+    
+    <div class="header">
+    <?php
+      require "../partials/HTML/header/header.php";
+    ?>
+    </div>
 
+    <!-- FIN HEADER -->
+
+    <!-- INICIO NAV -->
+
+  <div class="pages">
     <?php
       include "../partials/HTML/nav/nav.php";
     ?>
+</div>
 
-    <!-- FIN HEADER -->
+    <!-- FIN NAV -->
 
     <!-- titulo -->
 
     <div class="grupos m-5">
-      <h2>Grupo</h2>
+      <h2 class="titulo">Grupo</h2>
     </div>
 
     <!-- titulo -->
@@ -52,37 +63,19 @@
     <div class="functions">
       <?php
         include '../partials/upload_files/upload_files.html';
-        include '../partials/task/add_task.html';
       ?>
     </div>
 
+    <div class="functions" id="DGbutton">
+      <?php
+    include '../partials/task/add_task.html';
+    ?>
+  </div>
+
     <!--BUSCADOR -->
 
-    <div class="container mt-5">
-      <form class="d-flex">
-        <input
-          class="form-control rounded-pill shadow p-2 bg-body rounded"
-          type="search"
-          placeholder="BUSCAR"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-info rounded-pill" type="submit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-search"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-            />
-          </svg>
-        </button>
-      </form>
-    </div>
-
+    <?php require ("../partials/HTML/seeker/seeker.php"); ?>
+    
     <!--FIN BUSCADOR -->
 
     <!-- bootstrap -->
@@ -99,9 +92,16 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
+
+    <!-- INICIO FOOTER -->
+
     <?php
-      require "../partials/footer.php";
+      require ("../partials/HTML/footer/footer.php");
     ?>
+    
+    <!-- FIN FOOTER -->
 
     <!-- bootstrap -->
   </body>

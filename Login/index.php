@@ -31,7 +31,8 @@
 
 <html>
     <head>
-        <title>Login</title>
+        <title>COTEUS | Inicio de sesión</title>
+	      <link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
         <meta charset="UTF-8"/>
         <?php
           require '../partials/linkCSS.php'
@@ -45,7 +46,7 @@
       
         <div class="login-box">
             <img src="img/emblemaBlanco.svg" class="avatar" alt="Avatar Image">
-            <h1>Login Here</h1>
+            <h1>Inicio de sesión</h1>
             <form action="index.php" method="post" autocomplete="off">
               <!-- USERNAME INPUT -->
               <label for="Username">Usuario</label>
@@ -63,4 +64,5 @@
     <?php
       require '../partials/HTML/footer/footer.php';
     ?>
+
 </html>
