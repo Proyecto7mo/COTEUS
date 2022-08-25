@@ -1,44 +1,36 @@
 <nav
-      class="navbar navbar-expand-lg navbar-light d-flex justify-content-center"
+  class="navbar navbar-expand-lg navbar-light d-flex justify-content-center"
+>
+
+  <link rel="stylesheet" type="text/css" href="../partials/HTML/nav/style.css">
+
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
     >
-      <div class="container-fluid">
-        <a class="navbar-brand me-5 p-4" href="../Home">COTEUS</a>
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"> <a class="nav-link" href="../Home/"               id="navtext">HOME</a> </li> </li>
+        <li class="nav-item"> <a class="nav-link" href="../Grupo/"              id="navtext">GRUPO</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="../Gantt/"              id="navtext">GANTT</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="../Cuenta/"             id="navtext">CUENTA</a> </li>
+        <li class="nav-item"> <a class="nav-link" href="../partials/logout.php" id="navtext">SALIR</a> </li>
+      </ul>
+    </div>
+  </div>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a
-                class="nav-link btn btn-outline-info rounded-pill shadow-sm mb bg-body rounded"
-                aria-current="page"
-                href="../Home/"
-                >HOME</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../Grupo/">GRUPO</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../Gantt/">GANTT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../Cuenta/">CUENTA</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../partials/logout.php">SALIR</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <div class="BarraHerramientas">
+    <a class="ClcIcon" href="javascript:" onclick="CallCalc()"><img class="toolICON" src="../img/tools_bar/Calculadora_Icon.svg"></a>
+    <a class="ConfIcon" href="../Configuracion/"><img class="toolICON" id="Gear" src="../img/tools_bar/Configuracion_Icon.svg"></a>
+    <a><img src="../img/tools_bar/null.svg"></a>
+  </div>
+</nav>

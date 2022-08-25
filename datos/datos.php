@@ -1,19 +1,20 @@
 <?php
-  
-  require '../database/database.php';
-  
+    
   class datos{
     
-    public static function get_employee($employee_id){
-
-      require("../database/database.php");
-  
-      $records = $conexion->prepare('SELECT * FROM employees_t WHERE id_employee = :id_employee');
-      $records->bindParam(':id_employee', $employee_id);
+    public static function get_employee($employee){
+      
+      require '../database/database.php';
+      echo "|  INI --> ACA ANDA from datos::getemployee()" . "<br>";
+      
+      $records = $conexion->prepare('SELECT * FROM employees_t WHERE email = :email');
+      $records->bindParam(':email', $employee->email);
       $records->execute();
   
       $results = $records->fetch(PDO::FETCH_ASSOC);
   
+      echo "|  FIN --> ACA ANDA from datos::getemployee()" . "<br>";
+      
       return $results;
     }
   
