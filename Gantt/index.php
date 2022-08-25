@@ -35,16 +35,26 @@
     ?>
   </div>
 
-  <h1 class="mt-5">DIAGRAMA DE GANTT</h1>
-  <h1 class="tarea">Agrega tu tarea aca</h1>
-  <div class="container">
-    <form>
-      <div class="group">
-        <input type="text" required />
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>TITULO</label>
-      </div>
+    <!-- INICIO NAV -->
+
+  <div class="pages">
+    <?php
+      include "../partials/HTML/nav/nav.php";
+    ?>
+</div>
+
+    <!-- FIN NAV -->
+
+    <h1 class="mt-5">DIAGRAMA DE GANTT</h1>
+    
+    <div class="container">
+      <form>
+        <div class="group">
+          <input type="text" required />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>TITULO</label>
+        </div>
 
       <div class="group">
         <input type="text" required />
@@ -81,87 +91,87 @@
   <section>
     <!--for demo wrap-->
 
-    <div class="tbl-header">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <thead>
-          <tr>
-            <th>TITULO</th>
-            <th>DURACION</th>
-            <th>FECHA INICIO</th>
-            <th>FECHA FIN</th>
-            <th>PREDECESORA</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <div class="tbl-content">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tbody>
-          <tr>
-            <td>A</td>
-            <td>3 DIAS</td>
-            <td>1/01/22</td>
-            <td>3/01/22</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>B</td>
-            <td>5 DIAS</td>
-            <td>1/01/22</td>
-            <td>5/01/22</td>
-            <td>A</td>
-          </tr>
-          <tr>
-            <td>C</td>
-            <td>2 DIAS</td>
-            <td>5/03/22</td>
-            <td>7/03/22</td>
-            <td>E</td>
-          </tr>
-          <tr>
-            <td>D</td>
-            <td>1 DIA</td>
-            <td>8/03/22</td>
-            <td>9/03/22</td>
-            <td>D</td>
-          </tr>
-          <tr>
-            <td>E</td>
-            <td>7 DIAS</td>
-            <td>12/03/22</td>
-            <td>19/03/22</td>
-            <td>A</td>
-          </tr>
-          <tr>
-            <td>F</td>
-            <td>3 DIAS</td>
-            <td>14/03/22</td>
-            <td>17/03/22</td>
-            <td>G</td>
-          </tr>
-          <tr>
-            <td>G</td>
-            <td>1 DIA</td>
-            <td>18/03/22</td>
-            <td>19/03/22</td>
-            <td>H</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              <th>TITULO</th>
+              <th>DURACION</th>
+              <th>FECHA INICIO</th>
+              <th>FECHA FIN</th>
+              <th>PREDECESORA</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr>
+              <td>A</td>
+              <td>3 DIAS</td>
+              <td>1/01/22</td>
+              <td>3/01/22</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>5 DIAS</td>
+              <td>1/01/22</td>
+              <td>5/01/22</td>
+              <td>A</td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td>2 DIAS</td>
+              <td>5/03/22</td>
+              <td>7/03/22</td>
+              <td>E</td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td>1 DIA</td>
+              <td>8/03/22</td>
+              <td>9/03/22</td>
+              <td>D</td>
+            </tr>
+            <tr>
+              <td>E</td>
+              <td>7 DIAS</td>
+              <td>12/03/22</td>
+              <td>19/03/22</td>
+              <td>A</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>3 DIAS</td>
+              <td>14/03/22</td>
+              <td>17/03/22</td>
+              <td>G</td>
+            </tr>
+            <tr>
+              <td>G</td>
+              <td>1 DIA</td>
+              <td>18/03/22</td>
+              <td>19/03/22</td>
+              <td>H</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-  <section>
-    <table>
-      <tr>
-        <th>LUNES</th>
-        <th>MARTES</th>
-        <th>MIERCOLES</th>
-        <th>JUEVES</th>
-        <th>VIERNES</th>
-        <th>SABADO</th>
-        <th>DOMINGO</th>
-      </tr>
+    <section>
+      <table>
+        <tr>
+          <th>LUNES</th>
+          <th>MARTES</th>
+          <th>MIERCOLES</th>
+          <th>JUEVES</th>
+          <th>VIERNES</th>
+          <th>SABADO</th>
+          <th>DOMINGO</th>
+        </tr>
 
       <tr>
         <td>#</td>

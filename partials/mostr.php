@@ -22,10 +22,10 @@ while ($reg = mysqli_fetch_array($registros))
   echo "<script>";
   echo "var val = '$formula';";
   echo "var nombreform = '$nombreform';";
-  echo 'listform();';
+  echo "listform();";
   echo "</script>";
 }
 
 mysqli_close($conexion);
 
-?>
+

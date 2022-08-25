@@ -1,20 +1,8 @@
 <?php
   
-  require "../class/employee.php";
-  
   session_start();
-
-  if($_SESSION){
-    
-    if (isset($_SESSION['id_employee']) ) {
-      $employee = employee::get($_SESSION['id_employee']);
-    }
-    else{
-      echo "<script>alert('Usted no ha iniciado sesion');</script>";
-      header('Location: ../../');
-    }
-  }
-
+  
+  require("../datos/datos.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
