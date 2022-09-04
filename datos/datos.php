@@ -1,6 +1,6 @@
 <?php
   
-  require '../database/database.php';
+  //require '../database/database.php';
   
   class datos{
     
@@ -49,6 +49,25 @@
       $stmt->bindParam(':lastModification', $file->last_modification);
       $stmt->bindParam(':state', $file->state);
       
+      return $stmt->execute();
+    }
+
+    public static function insert_group(){
+
+      require("../database/database.php");
+      $query="INSERT INTO groups_t (id_groups, name, admin, id_files, id_chores) VALUES (:id, :name, :admin, :idfi, :idch)";
+      $stmt=$conexion->prepare($query);
+      $groupname="aa";
+      $admin="bb";
+      $id=32;
+      $idfi=22;
+      $idch=45;
+      $stmt->bindParam(':id', $id);
+      $stmt->bindParam(':name', $groupname);
+      $stmt->bindParam(':admin', $admin);
+      $stmt->bindParam(':idfi', $idfi);
+      $stmt->bindParam(':idch', $idch);
+      echo "estoy en insertgroupv2";
       return $stmt->execute();
     }
   }
