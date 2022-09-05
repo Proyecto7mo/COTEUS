@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 21-06-2022 a las 01:39:27
--- Versión del servidor: 8.0.17
--- Versión de PHP: 7.3.10
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 05-09-2022 a las 19:22:22
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,7 +31,7 @@ CREATE TABLE `calculator_t` (
   `id_calculator` int(2) NOT NULL,
   `name_function` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `formula_function` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,7 +47,7 @@ CREATE TABLE `chores_t` (
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
   `predecessor` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -60,7 +59,7 @@ CREATE TABLE `enterprise_t` (
   `id_enterprise` int(2) NOT NULL,
   `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `cuit` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -75,7 +74,7 @@ CREATE TABLE `files_t` (
   `owner` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `lastModification` datetime NOT NULL,
   `state` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -89,7 +88,7 @@ CREATE TABLE `groups_t` (
   `admin` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `id_files` int(2) NOT NULL,
   `id_chores` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -104,23 +103,27 @@ CREATE TABLE `users_t` (
   `nameuser` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` char(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `telephono` varchar(30) NOT NULL,
   `cuil` int(11) NOT NULL,
   `id_chores` int(2) NOT NULL,
   `id_groups` int(2) NOT NULL,
   `id_files` int(2) NOT NULL,
   `id_calculator` int(2) NOT NULL,
   `id_enterprise` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users_t`
 --
 
-INSERT INTO `users_t` (`id_user`, `name`, `surname`, `nameuser`, `password`, `email`, `cuil`, `id_chores`, `id_groups`, `id_files`, `id_calculator`, `id_enterprise`) VALUES
-(22, 'Jeremias', 'Cuello', 'jeremias0901', '$2y$10$F0OWwBY0bimlIo2.e5GV3up', 'cuellojeremiasnatanael@gmail.com', 0, 0, 0, 0, 0, 0),
-(29, 'elias', 'gomez', 'elias0101', 'a', 'elias@gmail.com', 0, 0, 0, 0, 0, 0),
-(30, 'bilu', 'cuello', 'bilu2309', '1', 'bilu@gmail.com', 0, 0, 0, 0, 0, 0),
-(31, 'a', 'a', 'a', 'a', 'a@a', 0, 0, 0, 0, 0, 0);
+INSERT INTO `users_t` (`id_user`, `name`, `surname`, `nameuser`, `password`, `email`, `telephono`, `cuil`, `id_chores`, `id_groups`, `id_files`, `id_calculator`, `id_enterprise`) VALUES
+(22, 'Jeremias', 'Cuello', 'jeremias0901', '$2y$10$F0OWwBY0bimlIo2.e5GV3up', 'cuellojeremiasnatanael@gmail.com', '', 0, 0, 0, 0, 0, 0),
+(29, 'elias', 'gomez', 'elias0101', 'a', 'elias@gmail.com', '', 0, 0, 0, 0, 0, 0),
+(30, 'bilu', 'cuello', 'bilu2309', '1', 'bilu@gmail.com', '', 0, 0, 0, 0, 0, 0),
+(31, 'a', 'a', 'a', 'a', 'a@a', '', 0, 0, 0, 0, 0, 0),
+(32, 'elias0101', 'zerda', 'elias0101', '$2y$10$YAE9ZeMocUBAXb8C28Fff.BHBjWhAuXNkR/mbBkm6ZRXqWWCjMJeS', 'evelynbrisa16@gmail.com', '1132266763', 0, 0, 0, 0, 0, 0),
+(33, 'elias0101', 'zerda', 'elias0101', '$2y$10$PnlFfG1A6CDzmP.i8bkLY.WzijTOgy62BbbQ1WgctkKsUpDdvMnz2', 'evelynbrisa16@gmail.com', '1132266763', 0, 0, 0, 0, 0, 0),
+(34, 'elias0101', 'zerda', 'elias0101', '$2y$10$AN61PcXr6b.d7hGg.ieH4Obwnqn0Q2o72Joqf8pU0gCMFWm1.FMNC', 'evelynbrisa16@gmail.com', '1132266763', 0, 0, 0, 0, 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -200,7 +203,7 @@ ALTER TABLE `groups_t`
 -- AUTO_INCREMENT de la tabla `users_t`
 --
 ALTER TABLE `users_t`
-  MODIFY `id_user` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_user` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
