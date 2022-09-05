@@ -6,18 +6,42 @@
     header('Location: ../Home');
   }
 
-  require '../datos/datos.php';
+  require '../datos/datos.php'; 
+  require '../database/database.php'; // para obtener la variable conexion
 
   $messeage = '';
 
-  if(ValidarCampos()){  
-    $consulta = insertar_empleado($_POST['name'], $_POST['surname'], $_POST['nameuser'], $_POST['password'], $_POST['email'], $_POST['telephono']);
+  if(ValidarCampos()){
+    
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $nameuser = $_POST['nameuser'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $telephono = $_POST['telephono'];
+    
+    $query = "INSERT INTO users_t (name, surname, nameuser, password, email, telephono) VALUES (:name, :surname, :nameuser, :password, :email, :telephono)";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':surname', $surname);
+    $stmt->bindParam(':nameuser', $nameuser);
+
+    // hasheando la password
+    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+    // insertando en la base de datos la password hasheada
+    $stmt->bindParam(':password', $password_hashed);
+    
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':telephono', $telephono);
+
+    $stmt->execute();
+    /* $consulta = insertar_empleado($_POST['name'], $_POST['surname'], $_POST['nameuser'], $_POST['email'], $_POST['telephono'], $_POST['password']);
 
     if ($consulta) {
       $message = require '../partials/messeages/userCreated.php';
     } else {
       $message = require '../partials/messeages/userNotCreated.php';
-  }
+    } */
   }
 
   function ValidarCampos(){
@@ -79,17 +103,16 @@
         <label for="confirm_password">Confirmar Contraseña</label>
         <input type='password' name='confirm_password' require>
       </div> 
+      <input type="submit" value="Crear cuenta" id="Registerbutton">
     </form>
-    
     <a href="../Login" style="color: black;" id="Textquestion">¿Ya tienes una cuenta?</a>
-    <input type="submit" value="Crear cuenta" id="Registerbutton">
     <input onclick="window.location.href = '../index.php'"  type="submit" value="Volver" id="backbutton">
 
   </div>
 </center>
 
   <?php
-    require '../partials/HTML/footer/footer.php';
+    // require '../partials/HTML/footer/footer.php';
   ?>
 </body>
 </html>
