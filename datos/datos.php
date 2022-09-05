@@ -1,4 +1,5 @@
 <?php
+
   function obtener_empleado($user_id){
 
     require("../database/database.php");
