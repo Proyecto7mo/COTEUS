@@ -11,7 +11,7 @@
   $message = '';
 
   if (!empty($_POST['nameuser']) && !empty($_POST['password'])) {
-    $records = $conexion->prepare('SELECT id_user, nameuser, password FROM users_t WHERE nameuser = :nameuser');
+    $records = $conexion->prepare('SELECT id_user, nameuser, password FROM employees_t WHERE nameuser = :nameuser');
     $records->bindParam(':nameuser', $_POST['nameuser']);
     
     $records->execute();
