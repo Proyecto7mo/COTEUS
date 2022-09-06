@@ -19,24 +19,32 @@ class datos{
 
   public static function insert_employee($employee){
     
-    require("../database/database.php");
+    require '../database/database.php'; // para obtener la variable conexion
+    $result = 0;
 
     $query = "INSERT INTO employees_t (name, surname, nameuser, password, email, telephono, cuil) VALUES (:name, :surname, :nameuser, :password, :email, :telephono, :cuil)";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':name', $employee->name);
     $stmt->bindParam(':surname', $employee->surname);
-    $stmt->bindParam(':nameuser', $employee->nameuser);
+    $stmt->bindParam(':nameuser', $employee->username);
     $stmt->bindParam(':email', $employee->email);
     $stmt->bindParam(':telephono', $employee->telephono);
-
-    echo "Desde datos" . $employee->to_string();
+    $stmt->bindParam(':cuil', $employee->cuil);
 
     // hasheando la password
     $password_hashed = password_hash($employee->password, PASSWORD_BCRYPT);
     // insertando en la base de datos la password hasheada
-    $stmt->bindParam(':password', $password_hashed);    
+    $stmt->bindParam(':password', $password_hashed);
 
-    $stmt->execute();
+    if($stmt->execute())
+    {
+      $result = 1;
+    }
+    else{
+      $result = -1;
+    }
+
+    return $result;
   }
 
   /* function upload_file($file_path, $file_name, $employee_name, $last_modification, $state)

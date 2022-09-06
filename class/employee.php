@@ -30,33 +30,15 @@ class employee{
   public function signup(){
     
     require "../datos/datos.php";
+    $result = 0;
 
-    datos::insert_employee($this);
-    
-    /* require '../database/database.php'; // para obtener la variable conexion
-    var_dump($conexion); // object(PDO)#3 (0) {}
-    $query = "INSERT INTO employees_t (name, surname, nameuser, password, email, telephono, cuil) VALUES (:name, :surname, :nameuser, :password, :email, :telephono, :cuil)";
-    $stmt = $conexion->prepare($query);
-    $stmt->bindParam(':name', $this->name);
-    $stmt->bindParam(':surname', $this->surname);
-    $stmt->bindParam(':nameuser', $this->username);
-
-    // hasheando la password
-    $password_hashed = password_hash($this->password, PASSWORD_BCRYPT);
-    // insertando en la base de datos la password hasheada
-    $stmt->bindParam(':password', $password_hashed);
-    
-    $stmt->bindParam(':email', $this->email);
-    $stmt->bindParam(':telephono', $this->telephono);
-    $stmt->bindParam(':cuil', $this->cuil);
-
-    if($stmt->execute())
-    {
-      echo "EJECUTE EXECUTE";
+    if(datos::insert_employee($this) > 0){
+      $result = 1;
+    }else{
+      $result = -1;
     }
-    else{
-      echo "NO EJECUTE EL EXECUTE AAAAAAAAAAAAAAAAAAAAH";
-    } */
+
+    return $result;
   }
 
   public function login(){

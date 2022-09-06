@@ -19,7 +19,11 @@
     $cuil = 0;
 
     $user = new employee($name, $surname, $nameuser, $email, $password, $telephono, $cuil);
-    $user->signup();
+    if($user->signup() > 0){
+      $messeage = "../partials/messeages/userCreated.php";
+    }else{
+      $messeage = "../partials/messeages/userNotCreated.php";
+    }
   }
 
   function ValidarCampos(){
@@ -90,7 +94,8 @@
 </center>
 
   <?php
-    //require '../partials/HTML/footer/footer.php';
+    echo require $messeage;
+    require '../partials/HTML/footer/footer.php';
   ?>
 </body>
 </html>
