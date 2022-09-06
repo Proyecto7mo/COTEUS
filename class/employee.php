@@ -1,16 +1,14 @@
 <?php
 
-//require "../datos/datos.php";
-
 class employee{
 
-  private $name;
-  private $surname;
-  private $email;
-  private $username;
-  private $password;
-  private $telephono;
-  private $cuil;
+  public $name;
+  public $surname;
+  public $email;
+  public $username;
+  public $password;
+  public $telephono;
+  public $cuil;
 
   public function __construct($name = "n/n", $surname = "n/n", $username = "n/n", $email = "nn@nn.com", $password = "n/n", $telephono="00-0000-0000", $cuil = 0){
     $this->name = $name;
@@ -30,8 +28,12 @@ class employee{
   }
 
   public function signup(){
-    require '../database/database.php'; // para obtener la variable conexion
+    
+    require "../datos/datos.php";
 
+    datos::insert_employee($this);
+    
+    /* require '../database/database.php'; // para obtener la variable conexion
     var_dump($conexion); // object(PDO)#3 (0) {}
     $query = "INSERT INTO employees_t (name, surname, nameuser, password, email, telephono, cuil) VALUES (:name, :surname, :nameuser, :password, :email, :telephono, :cuil)";
     $stmt = $conexion->prepare($query);
@@ -54,7 +56,7 @@ class employee{
     }
     else{
       echo "NO EJECUTE EL EXECUTE AAAAAAAAAAAAAAAAAAAAH";
-    }
+    } */
   }
 
   public function login(){
