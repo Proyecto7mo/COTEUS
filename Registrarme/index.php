@@ -6,42 +6,24 @@
     header('Location: ../Home');
   }
 
-  require '../datos/datos.php'; 
+  //require '../datos/datos.php'; 
   require '../database/database.php'; // para obtener la variable conexion
 
   $messeage = '';
 
   if(ValidarCampos()){
-    
+    require '../class/employee.php';
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $nameuser = $_POST['nameuser'];
     $password = $_POST['password'];
     $email = $_POST['email'];
     $telephono = $_POST['telephono'];
-    
-    $query = "INSERT INTO users_t (name, surname, nameuser, password, email, telephono) VALUES (:name, :surname, :nameuser, :password, :email, :telephono)";
-    $stmt = $conexion->prepare($query);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':surname', $surname);
-    $stmt->bindParam(':nameuser', $nameuser);
+    $cuil=0;
 
-    // hasheando la password
-    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
-    // insertando en la base de datos la password hasheada
-    $stmt->bindParam(':password', $password_hashed);
-    
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':telephono', $telephono);
-
-    $stmt->execute();
-    /* $consulta = insertar_empleado($_POST['name'], $_POST['surname'], $_POST['nameuser'], $_POST['email'], $_POST['telephono'], $_POST['password']);
-
-    if ($consulta) {
-      $message = require '../partials/messeages/userCreated.php';
-    } else {
-      $message = require '../partials/messeages/userNotCreated.php';
-    } */
+    $user = new employee($name, $surname, $nameuser, $email, $password, $telephono, $cuil);
+    echo $user->to_string();
+    $user->signup();
   }
 
   function ValidarCampos(){
@@ -112,7 +94,7 @@
 </center>
 
   <?php
-    // require '../partials/HTML/footer/footer.php';
+    //require '../partials/HTML/footer/footer.php';
   ?>
 </body>
 </html>

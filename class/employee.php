@@ -1,22 +1,24 @@
 <?php
 
-require "../datos/datos.php";
+//require "../datos/datos.php";
 
 class employee{
 
   private $name;
   private $surname;
-  private $emali;
+  private $email;
   private $username;
   private $password;
+  private $telephono;
   private $cuil;
 
-  public function __construct($name = "n/n", $surname = "n/n", $email = "nn@nn.com", $username = "n/n", $password = "n/n", $cuil = "00-00000000-00"){
+  public function __construct($name = "n/n", $surname = "n/n", $username = "n/n", $email = "nn@nn.com", $password = "n/n", $telephono="00-0000-0000", $cuil = 0){
     $this->name = $name;
-    $this->email = $email;
     $this->surname = $surname;
     $this->username = $username;
+    $this->email = $email;
     $this->password = $password;
+    $this->telephono=$telephono;
     $this->cuil = $cuil;
   }
   
@@ -28,7 +30,31 @@ class employee{
   }
 
   public function signup(){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    var_dump($conexion); // object(PDO)#3 (0) {}
+    $query = "INSERT INTO employees_t (name, surname, nameuser, password, email, telephono, cuil) VALUES (:name, :surname, :nameuser, :password, :email, :telephono, :cuil)";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':name', $this->name);
+    $stmt->bindParam(':surname', $this->surname);
+    $stmt->bindParam(':nameuser', $this->username);
+
+    // hasheando la password
+    $password_hashed = password_hash($this->password, PASSWORD_BCRYPT);
+    // insertando en la base de datos la password hasheada
+    $stmt->bindParam(':password', $password_hashed);
     
+    $stmt->bindParam(':email', $this->email);
+    $stmt->bindParam(':telephono', $this->telephono);
+    $stmt->bindParam(':cuil', $this->cuil);
+
+    if($stmt->execute())
+    {
+      echo "EJECUTE EXECUTE";
+    }
+    else{
+      echo "NO EJECUTE EL EXECUTE AAAAAAAAAAAAAAAAAAAAH";
+    }
   }
 
   public function login(){
@@ -37,5 +63,15 @@ class employee{
 
   public function uploadfile(){
     
+  }
+
+  public function to_string(){
+    return "<br>" . 
+      "Nombre: " . $this->name . "<br>" . 
+      "Apellido: " . $this->surname . "<br>" . 
+      "Email: " . $this->email . "<br>" . 
+      "NameEmployee: " . $this->username . "<br>" .
+      "Password: " . $this->password . "<br>" .
+      "Cuil: " . $this->cuil . "<br>";
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-  function obtener_empleado($user_id){
+  function get_employee($user_id){
 
     require("../database/database.php");
 
@@ -13,7 +13,7 @@
     return $results;    
   }
 
-  function insertar_empleado($name, $surname, $nameuser, $email, $telephono, $name_enterprise){
+  function insert_employee($name, $surname, $nameuser, $email, $telephono, $name_enterprise){
     
     require("../database/database.php");
 
@@ -34,7 +34,7 @@
     return $stmt->execute();
   }
 
-  function insertar_archivo($file_path, $file_name, $employee_name, $last_modification, $state)
+  function upload_file($file_path, $file_name, $employee_name, $last_modification, $state)
   {
     require("../database/database.php");
     
