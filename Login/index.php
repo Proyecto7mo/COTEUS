@@ -18,11 +18,13 @@
     
     $results = $records->fetch(PDO::FETCH_ASSOC);
 
-    if (count($results) > 0 && $_POST['password'] == $results['password']) {
+    // if (count($results) > 0 && $_POST['password'] == $results['password']) {
+    if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
       $_SESSION['user_id'] = $results['id_user'];
+      $message = '../partials/messeages/userLoged';
       header("Location: ../Home");
     } else {
-      $message = 'las credenciales no matchean';
+      $message = '../partials/messeages/userNotLoged';
     }
   }
 ?>
@@ -41,7 +43,7 @@
     <body>
 
       <p>
-        <?= $message ?>
+        <?php echo include $message ?>
       </p>
       
         <div class="login-box">

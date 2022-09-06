@@ -94,7 +94,7 @@
 </center>
 
   <?php
-    echo require $messeage;
+    echo include $messeage;
     require '../partials/HTML/footer/footer.php';
   ?>
 </body>
