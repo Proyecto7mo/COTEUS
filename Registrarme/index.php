@@ -6,9 +6,6 @@
     header('Location: ../Home');
   }
 
-  //require '../datos/datos.php'; 
-  require '../database/database.php'; // para obtener la variable conexion
-
   $messeage = '';
 
   if(ValidarCampos()){
@@ -19,10 +16,9 @@
     $password = $_POST['password'];
     $email = $_POST['email'];
     $telephono = $_POST['telephono'];
-    $cuil=0;
+    $cuil = 0;
 
     $user = new employee($name, $surname, $nameuser, $email, $password, $telephono, $cuil);
-    echo $user->to_string();
     $user->signup();
   }
 
