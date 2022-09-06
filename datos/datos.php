@@ -14,7 +14,7 @@ class datos{
 
     $results = $records->fetch(PDO::FETCH_ASSOC);
 
-    return $results;
+    $results;
   }
 
   public static function insert_employee($employee){
