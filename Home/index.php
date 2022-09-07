@@ -2,7 +2,7 @@
   
   session_start();
   
-  require("../datos/datos.php");
+  require("../class/employee.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
+	  <link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
 
 
     <!-- font awesome -->
@@ -71,8 +71,13 @@
               <h5 class="card-title"> 
                 Hola 
                 <?php
-                  $empleado = obtener_empleado($_SESSION['user_id']);
-                  $empleado['name'];
+                  // echo $_SESSION['user_id'];
+                  require("../database/database.php");
+                  $stmt = $conexion->prepare('SELECT * FROM employees_t WHERE id_user = :id_user');
+                  $stmt->bindParam(':id_user', $_SESSION['user_id']);
+                  $stmt->execute();
+                  $record = $stmt->fetch(PDO::FETCH_ASSOC);
+                  echo $record['name'];
                 ?> !
               </h5>
               <p class="card-text">

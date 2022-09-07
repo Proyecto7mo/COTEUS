@@ -2,19 +2,19 @@
 
 class datos{
   
-  public static function get_employee($employee_key){
+  public static function get_employee($employee){
 
-    // employee_key es la columna primary key de la tabla. sea el mail sea lo que sea.
+    // de $employee se usa la columna primary key de la tabla.
 
     require("../database/database.php");
 
-    $records = $conexion->prepare('SELECT * FROM employees_t WHERE id_user = :id_user');
-    $records->bindParam(':id_user', $employee_key);
-    $records->execute();
+    $stmt = $conexion->prepare('SELECT * FROM employees_t WHERE nameuser = :nameuser');
+    $stmt->bindParam(':nameuser', $employee->username);
+    $stmt->execute();
 
-    $results = $records->fetch(PDO::FETCH_ASSOC);
+    $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $results;
+    return $record;
   }
 
   public static function insert_employee($employee){
@@ -60,5 +60,27 @@ class datos{
     $stmt->bindParam(':state', $state);
     
     return $stmt->execute();
+  } */
+
+/*   public static function employee_registered($employee){
+
+    // indica si esta registrado <<el nameuser>> del empleado.
+
+    require "../database/database.php"; // para obtener la variable de conexion
+    $registered = false;
+
+    $stmt = $conexion->prepare('SELECT id_user, nameuser, password FROM employees_t WHERE nameuser = :nameuser');
+    $stmt->bindParam(':nameuser', $employee->email);
+    $stmt->execute();
+    
+    $records = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if($records > 0){
+      $registered = true;
+    }else{
+      $registered = false;
+    }
+
+    return $registered;
   } */
 }

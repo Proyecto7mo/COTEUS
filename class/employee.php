@@ -20,11 +20,11 @@ class employee{
     $this->cuil = $cuil;
   }
   
-  public static function get($id_employee){
+  public function get(){
+    require "../datos/datos.php";
+    $employee = datos::get_employee($this);
     
-    $employee = datos::get_employee($id_employee);
-    
-    return (isset($employee)) ? $employee : null;
+    return (count($employee) > 0) ? $employee : null;
   }
 
   public function signup(){
@@ -39,10 +39,6 @@ class employee{
     }
 
     return $result;
-  }
-
-  public function login(){
-    
   }
 
   public function uploadfile(){

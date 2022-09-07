@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-09-2022 a las 13:10:58
+-- Tiempo de generación: 07-09-2022 a las 00:39:51
 -- Versión del servidor: 8.0.17
 -- Versión de PHP: 7.3.10
 
@@ -61,7 +61,7 @@ CREATE TABLE `employees_t` (
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `surname` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `nameuser` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` char(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `telephono` varchar(30) NOT NULL,
   `cuil` int(11) NOT NULL,
@@ -77,15 +77,9 @@ CREATE TABLE `employees_t` (
 --
 
 INSERT INTO `employees_t` (`id_user`, `name`, `surname`, `nameuser`, `password`, `email`, `telephono`, `cuil`, `id_chores`, `id_groups`, `id_files`, `id_calculator`, `id_enterprise`) VALUES
-(22, 'Jeremias', 'Cuello', 'jeremias0901', '$2y$10$F0OWwBY0bimlIo2.e5GV3up', 'cuellojeremiasnatanael@gmail.com', '', 0, 0, 0, 0, 0, 0),
-(29, 'elias', 'gomez', 'elias0101', 'a', 'elias@gmail.com', '', 0, 0, 0, 0, 0, 0),
-(30, 'bilu', 'cuello', 'bilu2309', '1', 'bilu@gmail.com', '', 0, 0, 0, 0, 0, 0),
 (31, 'a', 'a', 'a', 'a', 'a@a', '', 0, 0, 0, 0, 0, 0),
-(32, 'elias0101', 'zerda', 'elias0101', '$2y$10$YAE9ZeMocUBAXb8C28Fff.BHBjWhAuXNkR/mbBkm6ZRXqWWCjMJeS', 'evelynbrisa16@gmail.com', '1132266763', 0, 0, 0, 0, 0, 0),
-(33, 'elias0101', 'zerda', 'elias0101', '$2y$10$PnlFfG1A6CDzmP.i8bkLY.WzijTOgy62BbbQ1WgctkKsUpDdvMnz2', 'evelynbrisa16@gmail.com', '1132266763', 0, 0, 0, 0, 0, 0),
-(34, 'elias0101', 'zerda', 'elias0101', '$2y$10$AN61PcXr6b.d7hGg.ieH4Obwnqn0Q2o72Joqf8pU0gCMFWm1.FMNC', 'evelynbrisa16@gmail.com', '1132266763', 0, 0, 0, 0, 0, 0),
-(39, 'Jesus', 'Zerda', 'Jesus8978', '$2y$10$ksAgZqBV0fOMMvfXzBARg.VndEDBxvxGxMH/jrj9mvQdFn5niJcTS', 'jesus@gamil.com', '1132266676', 0, 0, 0, 0, 0, 0),
-(43, 'Jeremias', 'ww', 'qq', '$2y$10$MoKKqJESyBnhbskqHj5CuOVDupFpo7c.OXZqGaTFdNwpxi5q2AMee', 'qq@gmail.com', '42', 0, 0, 0, 0, 0, 0);
+(56, 'b', 'b', 'b', '$2y$10$25icbrgKgganqTPfsyIe7eDbKfqn0Bv3NcLXlq4f0lDeSt4E4EoaC', 'b@b', '0123456789', 0, 0, 0, 0, 0, 0),
+(57, 'jesus', 'zerda', 'jesus9898', '$2y$10$gQU3jC8hdimDFbMcBFTXq.KUORY5AjDM82d7uYvmVo0ieu1PLTH7C', 'jesus@jesus.com', '0123456789', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -188,7 +182,7 @@ ALTER TABLE `chores_t`
 -- AUTO_INCREMENT de la tabla `employees_t`
 --
 ALTER TABLE `employees_t`
-  MODIFY `id_user` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_user` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `enterprise_t`
@@ -212,15 +206,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-/*
-  Analisis de mercado
-
-  Objetivo, Limite y Alcance.
-
-  Ej: Quiero comprar 
-
-  packaging
-  vias de comercializacion
-*/
