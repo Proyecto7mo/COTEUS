@@ -30,9 +30,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `calculator_t` (
   `id_calculator` int(2) NOT NULL,
-  `name_function` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `formula_function` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `name_function` varchar(50) NOT NULL,
+  `formula_function` varchar(100) NOT NULL
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 
@@ -42,13 +42,13 @@ CREATE TABLE `calculator_t` (
 
 CREATE TABLE `chores_t` (
   `id_chores` int(2) NOT NULL,
-  `title` varchar(80) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `assignment` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(80) NOT NULL,
+  `assignment` varchar(20) NOT NULL,
   `duracion` datetime NOT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
   `predecessor` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 
@@ -58,11 +58,11 @@ CREATE TABLE `chores_t` (
 
 CREATE TABLE `employees_t` (
   `id_user` int(2) NOT NULL,
-  `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `surname` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `nameuser` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(256) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `surname` varchar(20) NOT NULL,
+  `nameuser` varchar(20) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `telephono` varchar(30) NOT NULL,
   `cuil` int(11) NOT NULL,
   `id_chores` int(2) NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE `employees_t` (
   `id_files` int(2) NOT NULL,
   `id_calculator` int(2) NOT NULL,
   `id_enterprise` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 --
 -- Volcado de datos para la tabla `employees_t`
@@ -89,9 +89,9 @@ INSERT INTO `employees_t` (`id_user`, `name`, `surname`, `nameuser`, `password`,
 
 CREATE TABLE `enterprise_t` (
   `id_enterprise` int(2) NOT NULL,
-  `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(30) NOT NULL,
   `cuit` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 
@@ -101,12 +101,12 @@ CREATE TABLE `enterprise_t` (
 
 CREATE TABLE `files_t` (
   `id_files` int(2) NOT NULL,
-  `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `path` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `owner` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `path` varchar(50) NOT NULL,
+  `owner` varchar(20) NOT NULL,
   `lastModification` datetime NOT NULL,
   `state` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 
@@ -116,11 +116,11 @@ CREATE TABLE `files_t` (
 
 CREATE TABLE `groups_t` (
   `id_groups` int(2) NOT NULL,
-  `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `admin` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `admin` varchar(20) NOT NULL,
   `id_files` int(2) NOT NULL,
   `id_chores` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB;
 
 --
 -- Índices para tablas volcadas
