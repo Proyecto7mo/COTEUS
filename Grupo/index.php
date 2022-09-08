@@ -1,3 +1,23 @@
+<?php
+
+  session_start();
+  if(isset($_SESSION['user_id'])){
+  $user_id=$_SESSION['user_id'];
+  $groupname=$_POST['groupname'];
+  if(isset($groupname)){
+    require '../class/group.php';
+    $grcreated=new group($user_id, $groupname);
+    $result=$grcreated->newgroup();
+    if($result>0){
+      echo $result;
+    }
+  }
+  }
+  else{
+    header('Location: ../');
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,6 +79,17 @@
     </div>
 
     <!-- titulo -->
+
+    <!-- PRUEBA DE GRUPOS -->
+    <div class="group-list">
+      <form action="./" method="post">
+        <label for="groupname"></label>
+        <input type="text" name="groupname" id="groupname">
+        <br>
+        <input type="submit" value="Crear Grupo">
+      </form>
+    </div>
+  <!-- PRUEBA DE GRUPOS -->
 
     <div class="functions">
       <?php

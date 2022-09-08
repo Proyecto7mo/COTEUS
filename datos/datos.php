@@ -83,4 +83,26 @@ class datos{
 
     return $registered;
   } */
+
+  public static function insert_group($group){
+    require '../database/database.php'; // para obtener la variable conexion
+    $result=0;
+
+    $DateCreated=date('y-m-d h:i:s', time());
+    $query="INSERT INTO groups_t (admin, name, fecha) VALUES (:id_user, :groupname, :fecha)";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':id_user',$group->admin);
+    $stmt->bindParam(':groupname',$group->groupname);
+    $stmt->bindParam(':fecha',$DateCreated);
+
+    if($stmt->execute())
+    {
+      $result = 1;
+    }
+    else{
+      $result = -1;
+    }
+
+    return $result;
+  }
 }
