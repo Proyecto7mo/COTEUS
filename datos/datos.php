@@ -89,12 +89,12 @@ class datos{
     $result=0;
 
     $DateCreated=date('y-m-d h:i:s', time());
-    $query="INSERT INTO groups_t (admin, name, fecha) VALUES (:id_user, :groupname, :fecha)";
+    $query="INSERT INTO groups_t (admin, name, fecha) VALUES (:id_user, :groupname, :fecha);
+    INSERT INTO regisgroup_t (id_user, id_groups, fecha) VALUES (:id_user, (SELECT MAX(id_groups) idgroup FROM groups_t WHERE admin=:id_user), :fecha);";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_user',$group->admin);
     $stmt->bindParam(':groupname',$group->groupname);
     $stmt->bindParam(':fecha',$DateCreated);
-
     if($stmt->execute())
     {
       $result = 1;
@@ -102,6 +102,21 @@ class datos{
     else{
       $result = -1;
     }
+    /*$conexion=null;
+    require '../database/database.php'; // para obtener la variable conexion
+    $query2="SELECT MAX(id_groups) idgroup FROM groups_t WHERE admin=:admin";
+    $stmt2->$conexion->prepare($query2);
+    $stmt2->bindParam(':admin', $group->admin);
+    $stmt2->execute();
+    $idgroup=$stmt2->fetch();
+    $stmt->execute();
+    $stmt2->execute();
+    require '../database/database.php'; // para obtener la variable conexion
+    $query3="INSERT INTO regisgroup_t (id_user, id_groups, fecha) VALUES (:id_user, (SELECT MAX(id_groups) idgroup FROM groups_t WHERE admin=:admin), :fecha)";
+    $stmt3->$conexion->prepare($query3);
+    $stmt3->bindParam(':id_user', $group->admin);
+    $stmt3->bindParam(':id_group', $idgroup[0]);
+    $stmt3->execute();*/
 
     return $result;
   }
