@@ -24,7 +24,13 @@ class employee{
     require "../datos/datos.php";
     $employee = datos::get_employee($this);
     
-    return (count($employee) > 0) ? $employee : null;
+    $result = null;
+
+    if($employee) {
+      $result = $employee;
+    }
+
+    return $result;
   }
 
   public function signup(){

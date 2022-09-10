@@ -7,6 +7,7 @@
   }
 
   require "../class/employee.php";
+  
   $nameuser_input = $_POST['nameuser'];
   $password_input = $_POST['password'];
   $message = "";
@@ -14,19 +15,19 @@
   $employee = new employee("n/n", "n/n", $nameuser_input, "nn@nn", $password_input, "00-0000-0000", 0);
   $record = $employee->get();
 
-  if(count($record) > 0){
+  if($record){
     // si el registro existe quiere decir que solo el nameuser_input esta registrado porque se obtiene el
     // registro a traves del nameuser_input, pero falta verificar la contraseña
 
     if(password_verify($employee->password, $record['password'])){
       $_SESSION['user_id'] = $record['id_user'];
-      $message = '../partials/messeages/userLoged';
+      $message = '../partials/messeages/userLoged.php';
       header("Location: ../Home");
     }else{
-      $message = '../partials/messeages/userNotLoged';
+      $message = '../partials/messeages/userNotLoged.php';
     }
   }else{
-    $message = '../partials/messeages/userNotLoged';
+    $message = '../partials/messeages/userNotLoged.php';
   }
 
   /* require '../database/database.php';
