@@ -2,16 +2,28 @@
   
   session_start();
   
+  if (!isset($_SESSION['user_id'])) {
+    require "../datos/datos.php";
+    
+    $employee = datos::get_employee_id($_SESSION['user_id']);
+
+    if(!$employee->username){
+      echo "<script> alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.'); window.location.href = 'http://localhost/COTEUS/Login'; </script>";
+    }
+    else{
+      echo "<script> alert('Ya inicio sesion.');</script>";
+    }
+  }
+  
   require("../class/employee.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	  <link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
-
 
     <!-- font awesome -->
     <script
@@ -30,7 +42,7 @@
       crossorigin="anonymous"
     />
 
-    <?php include "../partials/linkCSS.php"; ?>
+    <?php include "C:/xampp/htdocs/COTEUS/partials/linkCSS.php"; ?>
     <link rel="stylesheet" href="../partials/upload_files/upload_files.css">
 
     <!-- bootstrap -->
@@ -72,11 +84,8 @@
                 Hola 
                 <?php
                   // echo $_SESSION['user_id'];
-                  require("../database/database.php");
-                  $stmt = $conexion->prepare('SELECT * FROM employees_t WHERE id_user = :id_user');
-                  $stmt->bindParam(':id_user', $_SESSION['user_id']);
-                  $stmt->execute();
-                  $record = $stmt->fetch(PDO::FETCH_ASSOC);
+                  require "../datos/datos.php";
+                  $record = datos::get_employee_id($_SESSION['user_id']);
                   echo $record['name'];
                 ?> !
               </h5>

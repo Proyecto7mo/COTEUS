@@ -4,12 +4,25 @@ class datos{
   
   public static function get_employee($employee){
 
-    // de $employee se usa la columna primary key de la tabla.
-
     require("../database/database.php");
 
     $stmt = $conexion->prepare('SELECT * FROM employees_t WHERE nameuser = :nameuser');
     $stmt->bindParam(':nameuser', $employee->username);
+    $stmt->execute();
+
+    $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $record;
+  }
+
+  public static function get_employee_id($employee_id){
+
+    // de $employee_id se usa la columna primary key de la tabla.
+
+    require("../database/database.php");
+
+    $stmt = $conexion->prepare('SELECT * FROM employees_t WHERE id_user = :id_user');
+    $stmt->bindParam(':id_user', $employee_id);
     $stmt->execute();
 
     $record = $stmt->fetch(PDO::FETCH_ASSOC);
