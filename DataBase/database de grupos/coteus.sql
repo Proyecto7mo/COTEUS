@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-09-2022 a las 02:18:31
+-- Tiempo de generación: 11-09-2022 a las 03:31:01
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -128,7 +128,8 @@ CREATE TABLE `groups_t` (
 --
 
 INSERT INTO `groups_t` (`id_groups`, `admin`, `name`, `fecha`, `id_files`, `id_chores`) VALUES
-(1, 58, 'w', '2022-09-08 02:13:28', 0, 0);
+(30, 58, 'a', '2022-09-11 03:28:31', 0, 0),
+(31, 58, 'b', '2022-09-11 03:28:35', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -142,6 +143,14 @@ CREATE TABLE `regisgroup_t` (
   `id_groups` int(11) NOT NULL,
   `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `regisgroup_t`
+--
+
+INSERT INTO `regisgroup_t` (`id_regis`, `id_user`, `id_groups`, `fecha`) VALUES
+(8, 58, 30, '2022-09-11 03:28:31'),
+(9, 58, 31, '2022-09-11 03:28:35');
 
 --
 -- Índices para tablas volcadas
@@ -181,16 +190,15 @@ ALTER TABLE `files_t`
 -- Indices de la tabla `groups_t`
 --
 ALTER TABLE `groups_t`
-  ADD PRIMARY KEY (`id_groups`),
-  ADD UNIQUE KEY `admin` (`admin`);
+  ADD PRIMARY KEY (`id_groups`);
 
 --
 -- Indices de la tabla `regisgroup_t`
 --
 ALTER TABLE `regisgroup_t`
   ADD PRIMARY KEY (`id_regis`),
-  ADD UNIQUE KEY `id_user` (`id_user`),
-  ADD UNIQUE KEY `id_group` (`id_groups`);
+  ADD UNIQUE KEY `id_group` (`id_groups`),
+  ADD KEY `id_user` (`id_user`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -230,13 +238,13 @@ ALTER TABLE `files_t`
 -- AUTO_INCREMENT de la tabla `groups_t`
 --
 ALTER TABLE `groups_t`
-  MODIFY `id_groups` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_groups` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `regisgroup_t`
 --
 ALTER TABLE `regisgroup_t`
-  MODIFY `id_regis` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_regis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
