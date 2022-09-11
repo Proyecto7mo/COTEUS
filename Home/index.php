@@ -10,9 +10,6 @@
     if(!$employee->username){
       echo "<script> alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.'); window.location.href = 'http://localhost/COTEUS/Login'; </script>";
     }
-    else{
-      echo "<script> alert('Ya inicio sesion.');</script>";
-    }
   }
   
   require("../class/employee.php");
