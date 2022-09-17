@@ -21,7 +21,7 @@ class employee{
   }
   
   public function get(){
-    require "../datos/datos.php";
+    require_once "../datos/datos.php";
     $employee = datos::get_employee($this);
     
     $result = null;
