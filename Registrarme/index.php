@@ -18,9 +18,18 @@
     $telephono = $_POST['telephono'];
     $cuil = 0;
 
-    $user = new employee($name, $surname, $nameuser, $email, $password, $telephono, $cuil);
-    if($user->signup() > 0){
+    $employee = new employee($name, $surname, $nameuser, $email, $password, $telephono, $cuil);
+    if($employee->signup() > 0){
+
+      $record_employee = $employee->get();
       $messeage = "../partials/messeages/userCreated.php";
+      
+      mkdir("../files_users/" . $record_employee['nameuser'], 0777, true);
+      
+      $_SESSION['user_id'] = $record_employee['id_user'];
+      echo $record_employee['id_employee'];
+      header("Location: ../Home");
+      
     }else{
       $messeage = "../partials/messeages/userNotCreated.php";
     }
