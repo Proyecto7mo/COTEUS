@@ -12,9 +12,11 @@
       echo $result;
     }
   }
-  require_once '../class/group.php';
+  //BUSCAR GRUPOS
+  /*require_once '../class/group.php';
   $groups_list=group::getgroups($user_id);
-  echo $groups_list;
+  echo $groups_list;*/
+  //FIN DE BUSCAR GRUPOS
   }
   else{
     header('Location: ../');
@@ -86,13 +88,16 @@
     <!-- titulo -->
 
     <!-- PRUEBA DE GRUPOS -->
-    <div class="group-list">
+    <div class="new-group">
       <form action="./" method="post">
         <label for="groupname"></label>
         <input type="text" name="groupname" id="groupname">
         <br>
         <input type="submit" value="Crear Grupo">
       </form>
+    </div>
+    <div class="enter-group">
+      <form action=""></form>
     </div>
   <!-- PRUEBA DE GRUPOS -->
 
@@ -110,7 +115,14 @@
 
     <!--BUSCADOR -->
 
-    <?php require ("../partials/HTML/seeker/seeker.php"); ?>
+    <?php require ("../partials/HTML/seeker/seeker.php"); 
+    //BUSCAR GRUPOS
+    require_once '../class/group.php';
+    $groups_list=group::getgroups($user_id);
+    $res=group::to_String($groups_list);
+    echo $res;
+    //FIN DE BUSCAR GRUPOS
+    ?>
     
     <!--FIN BUSCADOR -->
 

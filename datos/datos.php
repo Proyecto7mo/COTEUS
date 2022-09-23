@@ -102,12 +102,14 @@ class datos{
     $result=0;
 
     $DateCreated=date('y-m-d h:i:s', time());
-    $query="INSERT INTO groups_t (admin, name, fecha) VALUES (:id_user, :groupname, :fecha);
+    $query="INSERT INTO groups_t (admin, name, fecha, clave) VALUES (:id_user, :groupname, :fecha, :clave);
     INSERT INTO regisgroup_t (id_user, id_groups, fecha) VALUES (:id_user, (SELECT MAX(id_groups) idgroup FROM groups_t WHERE admin=:id_user), :fecha);";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_user',$group->admin);
     $stmt->bindParam(':groupname',$group->groupname);
     $stmt->bindParam(':fecha',$DateCreated);
+    $clave_hashed = password_hash(random_int(0, 9999), PASSWORD_BCRYPT);
+    $stmt->bindParam(':clave',$clave_hashed);
     if($stmt->execute())
     {
       $result = 1;
@@ -138,7 +140,7 @@ class datos{
     require '../database/database.php'; // para obtener la variable conexion
     $result;
 
-    $query="SELECT groups_t.name FROM groups_t INNER JOIN regisgroup_t ON groups_t.id_groups=regisgroup_t.id_groups INNER JOIN employees_t ON employees_t.id_user=regisgroup_t.id_user WHERE employees_t.id_user=:id_user";
+    $query="SELECT groups_t.id_groups, groups_t.admin, groups_t.name, groups_t.fecha, groups_t.clave FROM groups_t INNER JOIN regisgroup_t ON groups_t.id_groups=regisgroup_t.id_groups INNER JOIN employees_t ON employees_t.id_user=regisgroup_t.id_user WHERE employees_t.id_user=:id_user";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_user', $user_id);
     $stmt->execute();
