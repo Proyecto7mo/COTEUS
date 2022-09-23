@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 21-09-2022 a las 02:43:27
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Servidor: localhost
+-- Tiempo de generación: 23-09-2022 a las 20:36:04
+-- Versión del servidor: 8.0.17
+-- Versión de PHP: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,7 +32,7 @@ CREATE TABLE `calculator_t` (
   `id_calculator` int(2) NOT NULL,
   `name_function` varchar(50) NOT NULL,
   `formula_function` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -47,7 +48,7 @@ CREATE TABLE `chores_t` (
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
   `predecessor` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,7 @@ CREATE TABLE `employees_t` (
   `cuil` int(11) NOT NULL,
   `id_groups` int(2) NOT NULL,
   `id_calculator` int(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `employees_t`
@@ -97,7 +98,7 @@ CREATE TABLE `enterprise_t` (
   `name` varchar(30) NOT NULL,
   `cuit` int(11) NOT NULL,
   `id_employee` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `enterprise_t`
@@ -119,7 +120,7 @@ CREATE TABLE `files_t` (
   `owner` varchar(20) NOT NULL,
   `lastModification` datetime NOT NULL,
   `state` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -132,19 +133,22 @@ CREATE TABLE `groups_t` (
   `admin` int(2) NOT NULL,
   `name` varchar(20) NOT NULL,
   `fecha` datetime NOT NULL,
+  `clave` varchar(256) NOT NULL,
   `id_files` int(2) NOT NULL,
   `id_chores` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `groups_t`
 --
 
-INSERT INTO `groups_t` (`id_groups`, `admin`, `name`, `fecha`, `id_files`, `id_chores`) VALUES
-(30, 58, 'a', '2022-09-11 03:28:31', 0, 0),
-(31, 58, 'b', '2022-09-11 03:28:35', 0, 0),
-(32, 59, 'grupo1', '2022-09-11 03:40:47', 0, 0),
-(33, 59, 'grupo2', '2022-09-11 03:41:09', 0, 0);
+INSERT INTO `groups_t` (`id_groups`, `admin`, `name`, `fecha`, `clave`, `id_files`, `id_chores`) VALUES
+(30, 58, 'a', '2022-09-11 03:28:31', '', 0, 0),
+(31, 58, 'b', '2022-09-11 03:28:35', '', 0, 0),
+(32, 59, 'grupo1', '2022-09-11 03:40:47', '', 0, 0),
+(33, 59, 'grupo2', '2022-09-11 03:41:09', '', 0, 0),
+(34, 57, 'jere', '2022-09-23 01:24:51', '', 0, 0),
+(36, 58, 'p', '2022-09-23 04:42:58', '$2y$10$oxugfpYyxmQDb431bSQ6lO2LnacFEPodwzS1S9odJF47.MvSAO0KC', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -157,7 +161,7 @@ CREATE TABLE `regisgroup_t` (
   `id_user` int(11) NOT NULL,
   `id_groups` int(11) NOT NULL,
   `fecha` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `regisgroup_t`
@@ -167,7 +171,9 @@ INSERT INTO `regisgroup_t` (`id_regis`, `id_user`, `id_groups`, `fecha`) VALUES
 (8, 58, 30, '2022-09-11 03:28:31'),
 (9, 58, 31, '2022-09-11 03:28:35'),
 (10, 59, 32, '2022-09-11 03:40:47'),
-(11, 59, 33, '2022-09-11 03:41:09');
+(11, 59, 33, '2022-09-11 03:41:09'),
+(12, 57, 34, '2022-09-23 01:24:51'),
+(14, 58, 36, '2022-09-23 04:42:58');
 
 --
 -- Índices para tablas volcadas
@@ -260,13 +266,13 @@ ALTER TABLE `files_t`
 -- AUTO_INCREMENT de la tabla `groups_t`
 --
 ALTER TABLE `groups_t`
-  MODIFY `id_groups` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_groups` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `regisgroup_t`
 --
 ALTER TABLE `regisgroup_t`
-  MODIFY `id_regis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_regis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
