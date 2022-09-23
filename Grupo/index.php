@@ -3,8 +3,8 @@
   session_start();
   if(isset($_SESSION['user_id'])){
   $user_id=$_SESSION['user_id'];
-  $groupname=$_POST['groupname'];
-  if(isset($groupname)){
+  if(isset($_POST['groupname'])){
+    $groupname=$_POST['groupname'];
     require '../class/group.php';
     $grcreated=new group($user_id, $groupname);
     $result=$grcreated->newgroup();
@@ -12,6 +12,9 @@
       echo $result;
     }
   }
+  require_once '../class/group.php';
+  $groups_list=group::getgroups($user_id);
+  echo $groups_list;
   }
   else{
     header('Location: ../');
@@ -24,6 +27,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
+    <script src="js/index.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
 	<link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
     <title>COTEUS | Grupo</title>

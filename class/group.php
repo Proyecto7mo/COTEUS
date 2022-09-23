@@ -26,5 +26,23 @@
           
             return $result;
         }
+
+        public static function getgroups($user_id){
+            require_once "../datos/datos.php";
+            $groups_list=datos::get_groups($user_id);
+            $res=group::to_String($groups_list);
+
+            return $res;
+        }
+
+        public static function to_String($groups_list){
+            $res="";
+            foreach($groups_list as $key) {
+            //while($key=$groups_list){
+                $res="<p>"."Nombre de grupo: ".$key->name."</p>";
+            }
+            //}
+            return $res;
+        }
     }
 ?>

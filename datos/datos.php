@@ -133,4 +133,24 @@ class datos{
 
     return $result;
   }
+
+  public static function get_groups($user_id){
+    require '../database/database.php'; // para obtener la variable conexion
+    $result;
+
+    $query="SELECT groups_t.name FROM groups_t INNER JOIN regisgroup_t ON groups_t.id_groups=regisgroup_t.id_groups INNER JOIN employees_t ON employees_t.id_user=regisgroup_t.id_user WHERE employees_t.id_user=:id_user";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':id_user', $user_id);
+    $stmt->execute();
+    $resp=$stmt->fetchAll(PDO::FETCH_OBJ);
+    /*if($stmt->execute())
+    {
+      $result = 1;
+    }
+    else{
+      $result = -1;
+    }*/
+
+    return $resp;
+  }
 }
