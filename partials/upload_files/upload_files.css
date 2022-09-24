@@ -78,3 +78,6 @@
   font-size: 20px;
   cursor: pointer;
 }
+.dragleave_active{
+  background-color: #83aeff;
+}
