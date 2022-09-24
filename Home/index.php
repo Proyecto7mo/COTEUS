@@ -12,6 +12,7 @@
     }
   }
   
+  require ("C:/xampp/htdocs/COTEUS/partials/upload_files/upload_files.php");
   require("../class/employee.php");
 ?>
 <!DOCTYPE html>
@@ -81,7 +82,7 @@
                 Hola 
                 <?php
                   // echo $_SESSION['user_id'];
-                  require "../datos/datos.php";
+                  require_once "../datos/datos.php";
                   $record = datos::get_employee_id($_SESSION['user_id']);
                   echo $record['name'];
                 ?> !
@@ -102,9 +103,9 @@
 
     <div class="functions">
       <?php
-        include '../partials/upload_files/upload_files.html';
-        include '../partials/task/add_task.html';
-        ?>
+        include 'C:/xampp/htdocs/COTEUS/partials/upload_files/upload_files.html';
+        include 'C:/xampp/htdocs/COTEUS/partials/task/add_task.html';
+      ?>
     </div>
     
     <!-- ARCHIVOS -->
