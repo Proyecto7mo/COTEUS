@@ -32,7 +32,7 @@ CREATE TABLE `calculator_t` (
   `id_calculator` int(2) NOT NULL,
   `name_function` varchar(50) NOT NULL,
   `formula_function` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ CREATE TABLE `chores_t` (
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
   `predecessor` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `employees_t` (
   `cuil` int(11) NOT NULL,
   `id_groups` int(2) NOT NULL,
   `id_calculator` int(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `employees_t`
@@ -98,7 +98,7 @@ CREATE TABLE `enterprise_t` (
   `name` varchar(30) NOT NULL,
   `cuit` int(11) NOT NULL,
   `id_employee` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `enterprise_t`
@@ -120,7 +120,7 @@ CREATE TABLE `files_t` (
   `owner` varchar(20) NOT NULL,
   `lastModification` datetime NOT NULL,
   `state` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,7 @@ CREATE TABLE `groups_t` (
   `clave` varchar(256) NOT NULL,
   `id_files` int(2) NOT NULL,
   `id_chores` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `groups_t`
@@ -161,7 +161,7 @@ CREATE TABLE `regisgroup_t` (
   `id_user` int(11) NOT NULL,
   `id_groups` int(11) NOT NULL,
   `fecha` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `regisgroup_t`
