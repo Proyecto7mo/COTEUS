@@ -2,7 +2,7 @@
       class="navbar navbar-expand-lg navbar-light d-flex justify-content-center"
     >
 
-    <link rel="stylesheet" type="text/css" href="../partials/HTML/nav/style.css">
+    <link rel="stylesheet" type="text/css" href="C:/xampp/htdocs/COTEUS/partials/HTML/nav/nav.css">
 
       <div class="container-fluid">
 
