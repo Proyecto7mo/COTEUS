@@ -13,7 +13,7 @@
     $password_input = $_POST['password'];
     $message = "";
     
-    $employee = new employee("n/n", "n/n", $nameuser_input, "nn@nn", $password_input, "00-0000-0000", 0);
+    $employee = new employee("nombne_n_n", "apellido_n_n", $nameuser_input, "email_n_@_n", $password_input, "00-0000-0000", 0);
     $record = $employee->get();
 
     if($record){
