@@ -1,12 +1,12 @@
 <div class="upload-files-container">
-  <form class="upload-files" action="../partials/upload_files/upload_files.php" method="post" enctype="multipart/form-data">
+  <form class="upload-files" action="./" method="post" enctype="multipart/form-data"> <!-- enctype especifica cómo se deben codificar los datos del formulario al enviarlos al servidor -->
     <h2 class="upload-files__title">Arrastra y suelta tus documentos</h2>
     <p class="upload-files__label">
-      Para arrastrar un archivo debe hacerlo desde el Explorador de Archivos o puede
+      Para arrastrar un archivo debe hacerlo desde el Explorador de Archivos o puedes
       <a class="upload-files__link"> hacer clic aquí</a>
     </p>
-    <button class="upload-files__btn-files">Selecciona tus archivos</button>
-    <input class="upload-files__inp-file" type="file" name="file" hidden multiple>
+    <!-- <button class="upload-files__btn-files">Selecciona tus archivos</button> -->
+    <input class="upload-files__inp-file" type="file" name="files[]" multiple>
     
     <div class="upload-files-container__preview"></div>
     
@@ -14,4 +14,4 @@
   </form>
 </div>
   
-<script src="../partials/upload_files/upload_files.js"></script>
+<!-- <script src="https://localhost/COTEUS/partials/upload_files/upload_files.js"></script> -->
