@@ -23,9 +23,8 @@
 
       $record_employee = $employee->get();
       $messeage = "../partials/messeages/userCreated.php";
-      
-      mkdir("../files_users/" . $record_employee['nameuser'], 0777, true);
-      
+      $directory = "../files_users/" . $record_employee['nameuser'];
+      mkdir($directory, 0777, true);
       $_SESSION['user_id'] = $record_employee['id_user'];
       echo $record_employee['id_employee'];
       header("Location: ../Home");
