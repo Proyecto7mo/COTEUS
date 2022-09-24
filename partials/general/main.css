@@ -1,10 +1,6 @@
 @import 'https://localhost/COTEUS/partials/HTML/footer/footer.css';
 @import 'https://localhost/COTEUS/partials/HTML/nav/nav.css';
 
-*{
-  /* paleta de colores */
-}
-
 .functions{
   display: flex;
   flex-direction: column;
