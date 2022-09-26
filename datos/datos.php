@@ -108,8 +108,8 @@ class datos{
     $stmt->bindParam(':id_user',$group->admin);
     $stmt->bindParam(':groupname',$group->groupname);
     $stmt->bindParam(':fecha',$DateCreated);
-    $clave_hashed = password_hash(random_int(0, 9999), PASSWORD_BCRYPT);
-    $stmt->bindParam(':clave',$clave_hashed);
+    $clave = random_int(0, 99999);
+    $stmt->bindParam(':clave',$clave);
     if($stmt->execute())
     {
       $result = 1;
@@ -154,5 +154,30 @@ class datos{
     }*/
 
     return $resp;
+  }
+
+  public static function get_all_groups(){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    $query="SELECT * FROM groups_t";
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    $resp=$stmt->fetchAll(PDO::FETCH_OBJ);
+
+    return $resp;
+  }
+
+  public static function join_group($user_id, $group_id){
+    require '../database/database.php'; // para obtener la variable conexion
+    $result;
+
+    $DateCreated=date('y-m-d h:i:s', time());
+    $query="INSERT INTO regisgroup_t (id_user, id_groups, fecha) VALUES (:id_user, :id_groups, :fecha);";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':id_user', $user_id);
+    $stmt->bindParam(':id_groups', $group_id);
+    $stmt->bindParam(':fecha', $DateCreated);
+    //$stmt = $conexion->prepare($query);
+    $stmt->execute();
   }
 }

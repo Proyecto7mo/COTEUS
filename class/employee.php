@@ -51,6 +51,10 @@ class employee{
     
   }
 
+  public static function joingroup($user_id, $groups_id){
+    datos::join_group($user_id, $groups_id);
+  }
+
   public function to_string(){
     return "<br>" . 
       "Nombre: " . $this->name . "<br>" . 

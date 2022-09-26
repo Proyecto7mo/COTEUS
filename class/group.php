@@ -35,11 +35,22 @@
             return $groups_list;
         }
 
+        public static function getallgroups(){
+            require_once "../datos/datos.php";
+            $allgroup_list=datos::get_all_groups();
+
+            return $allgroup_list;
+        }
+
         public static function to_String($groups_list){
             $res="";
             foreach($groups_list as $key) {
             //while($key=$groups_list){
-                $res=$res."<p>"."Nombre de grupo: ".$key->name."</p>";
+                //password_hash($key->id_groups, PASSWORD_BCRYPT)
+                $res=$res.'<form action="group.php" method="post"><input type="hidden" name="grup" value="'.password_hash($key->id_groups, PASSWORD_BCRYPT).'"><input type="submit" value="'.$key->name.'"></form>';
+                //$res=$res.'<a href='.$key->name.'>'.$key->name.'</a>';
+                //'<form action="./group.php" method="post"><input type="hidden" name="grup" value="'..'"></form>';
+                //$res=$res."<p>"."Nombre de grupo: ".$key->name."</p>";
             }
             //}
             return $res;

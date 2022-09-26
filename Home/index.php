@@ -12,7 +12,7 @@
     }
   }
   
-  require ("C:/xampp/htdocs/COTEUS/partials/upload_files/upload_files.php");
+  require ("../partials/upload_files/upload_files.php");
   require("../class/employee.php");
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
       crossorigin="anonymous"
     />
 
-    <?php include "C:/xampp/htdocs/COTEUS/partials/linkCSS.php"; ?>
+    <?php include "../partials/linkCSS.php"; ?>
     <link rel="stylesheet" href="../partials/upload_files/upload_files.css">
 
     <!-- bootstrap -->
@@ -103,8 +103,8 @@
 
     <div class="functions">
       <?php
-        include 'C:/xampp/htdocs/COTEUS/partials/upload_files/upload_files.html';
-        include 'C:/xampp/htdocs/COTEUS/partials/task/add_task.html';
+        include '../partials/upload_files/upload_files.html';
+        include '../partials/task/add_task.html';
       ?>
     </div>
     

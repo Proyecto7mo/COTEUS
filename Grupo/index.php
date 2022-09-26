@@ -1,5 +1,5 @@
 <?php
-
+  //echo $_SERVER['HTTP_HOST'];
   session_start();
   if(isset($_SESSION['user_id'])){
   $user_id=$_SESSION['user_id'];
