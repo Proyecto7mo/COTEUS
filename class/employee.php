@@ -64,4 +64,24 @@ class employee{
       "Password: " . $this->password . "<br>" .
       "Cuil: " . $this->cuil . "<br>";
   }
+
+  public static function view_files($employee_path){
+    $lista = null;
+    $directory = "C:/xampp/htdocs/COTEUS/files_users/" . $employee_path;
+    
+    $directory_handler = opendir($directory);
+  
+    while($item = readdir($directory_handler)){
+      if($item != "." && $item != ".."){
+        if(is_dir($directory . $item)){
+          $lista .= "<li>Carpeta <a href='ficheros/$item' target='_blank'>$item</a></li>";
+        }
+        else{
+          $lista .= "<li>Archivo <a href='ficheros/$item' target='_blank'>$item</a></li>";
+        }
+      }
+    }
+
+    return $lista;
+  }
 }
