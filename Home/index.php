@@ -11,8 +11,15 @@
       echo "<script> alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.'); window.location.href = 'http://localhost/COTEUS/Login'; </script>";
     }
   }
+  if(isset($_SESSION['url'])){
+    //header($_SESSION['url']);
+    $locate='Location: http://localhost'.$_SESSION['url'];
+    header($locate);
+    unset($_SESSION['url']);
+    //echo "<script>window.location.href = '$_SESSION[url]';</script>";
+  }
   
-  require ("C:/xampp/htdocs/COTEUS/partials/upload_files/upload_files.php");
+  require ("../partials/upload_files/upload_files.php");
   require("../class/employee.php");
 ?>
 <!DOCTYPE html>
@@ -40,7 +47,7 @@
       crossorigin="anonymous"
     />
 
-    <?php include "C:/xampp/htdocs/COTEUS/partials/linkCSS.php"; ?>
+    <?php include "../partials/linkCSS.php"; ?>
     <link rel="stylesheet" href="../partials/upload_files/upload_files.css">
 
     <!-- bootstrap -->
@@ -103,8 +110,8 @@
 
     <div class="functions">
       <?php
-        include 'C:/xampp/htdocs/COTEUS/partials/upload_files/upload_files.html';
-        include 'C:/xampp/htdocs/COTEUS/partials/task/add_task.html';
+        include '../partials/upload_files/upload_files.html';
+        include '../partials/task/add_task.html';
       ?>
     </div>
     
