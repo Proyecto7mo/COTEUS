@@ -95,7 +95,7 @@
                 ?> !
               </h5>
               <p class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing.
+                <?= $record['nameuser'] ?>
               </p>
               <p class="card-text">
                 <small class="text-muted">Lorem, ipsum dolor.</small>
@@ -120,18 +120,7 @@
       <div class="col">
         <div class="card h-100">
           <div class="card-img-top icon-card">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-files"
-              width="100"
-              height="100"
-              viewBox="0 0 24 24"
-              stroke-width="0.5"
-              stroke="#000000"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M15 3v4a1 1 0 0 0 1 1h4" />
               <path
@@ -155,6 +144,7 @@
             <small class="text-muted">Last updated 3 mins ago</small>
           </div>
         </div>
+        <?= employee::view_files($record['nameuser']); ?>
       </div>
     </div>
 
