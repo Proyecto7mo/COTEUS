@@ -11,6 +11,13 @@
       echo "<script> alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.'); window.location.href = 'http://localhost/COTEUS/Login'; </script>";
     }
   }
+  if(isset($_SESSION['url'])){
+    //header($_SESSION['url']);
+    $locate='Location: http://localhost'.$_SESSION['url'];
+    header($locate);
+    unset($_SESSION['url']);
+    //echo "<script>window.location.href = '$_SESSION[url]';</script>";
+  }
   
   require ("../partials/upload_files/upload_files.php");
   require("../class/employee.php");

@@ -11,7 +11,8 @@
     }
     else
     {
-
+        $_SESSION['url']=$_SERVER["REQUEST_URI"];
+        header('Location: ../Login');
     }
     function JoinGroup(){
         require_once '../class/group.php';
@@ -43,6 +44,8 @@
                 }
             }
 
-            //http://localhost/coteus/link/?gr=y&cl=u
+            echo "No se encontro tal grupo";
+
+            //http://localhost/coteus/link/?grcl=dg
     }
 ?>
