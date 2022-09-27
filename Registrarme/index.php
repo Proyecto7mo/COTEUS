@@ -75,6 +75,7 @@
         
         <!--Capcha-->
         <label >Aqui va el captcha</label>
+        <img src="https://localhost/COTEUS/Registrarme/resources/captcha.php" alt="" style="border-radius: 15px;">
         
       </div>
       <div class="Columns">
