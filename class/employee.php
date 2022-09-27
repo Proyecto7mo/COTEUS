@@ -65,19 +65,19 @@ class employee{
       "Cuil: " . $this->cuil . "<br>";
   }
 
-  public static function view_files($employee_path){
+  public static function view_files($employee_folder){
     $lista = null;
-    $directory = "C:/xampp/htdocs/COTEUS/files_users/" . $employee_path;
+    $directory = "C:/xampp/htdocs/COTEUS/files_users/" . $employee_folder;
     
     $directory_handler = opendir($directory);
-  
+   
     while($item = readdir($directory_handler)){
       if($item != "." && $item != ".."){
         if(is_dir($directory . $item)){
-          $lista .= "<li>Carpeta <a href='ficheros/$item' target='_blank'>$item</a></li>";
+          $lista .= "<li>Carpeta <a href='https://localhost/COTEUS/files_users/$employee_folder/$item' target='_blank'>$item</a></li>";
         }
         else{
-          $lista .= "<li>Archivo <a href='ficheros/$item' target='_blank'>$item</a></li>";
+          $lista .= "<li>Archivo <a href='https://localhost/COTEUS/files_users/$employee_folder/$item' target='_blank'>$item</a></li>";
         }
       }
     }
