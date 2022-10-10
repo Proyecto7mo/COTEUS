@@ -65,6 +65,10 @@ else{
       crossorigin="anonymous"
     ></script>
 
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Roboto">		
+		<link rel="stylesheet" type="text/css" href="styles/gantt.css">
+		<script type="text/javascript" src="js/gantt.js"></script>
+
     <!-- bootstrap -->
   </head>
   <body>
@@ -304,6 +308,18 @@ else{
         </div>
       </div>
     </div>
+
+    <div id="gantt"></div>
+    <script type="text/javascript">
+			const obj = new Gantt([
+				['Action 1', '2022/05/12', '2022/05/12', '#4287f5', 80],
+				['Action 2', '2022/05/12', '2022/05/14', '#c1409b', 10],
+				['Action 3', '2022/05/14', '2022/05/17', '#0b9971', 20],
+				['Action 4', '2022/05/18', '2022/05/20', '#d26a52', 55],
+				['Action 5', '2022/05/19', '2022/05/20', '#4287f5', 100],
+				['Action 6', '2022/05/12', '2022/05/20', '#0b9971', 32],
+				]);
+		</script>
 
     <p class="link">Invita a otras personas al grupo con este Link</p>
     <form action="" id="link">
