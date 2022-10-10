@@ -67,7 +67,7 @@ class employee{
 
   public static function view_files($employee_folder){
     $lista = null;
-    $directory = "C:/xampp/htdocs/COTEUS/files_users/" . $employee_folder;
+    $directory = "../files_users/" . $employee_folder;
     
     $directory_handler = opendir($directory);
    

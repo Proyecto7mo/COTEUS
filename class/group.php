@@ -55,5 +55,12 @@
             //}
             return $res;
         }
+
+        public static function getmembersgr($group_id){
+            require_once "../datos/datos.php";
+            $allmembers_list=datos::get_members_gr($group_id);
+
+            return $allmembers_list;
+        }
     }
 ?>

@@ -180,4 +180,16 @@ class datos{
     //$stmt = $conexion->prepare($query);
     $stmt->execute();
   }
+
+  public static function get_members_gr($id_groups){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    $query="SELECT * FROM employees_t e INNER JOIN regisgroup_t r ON e.id_user=r.id_user INNER JOIN groups_t g ON r.id_groups=g.id_groups WHERE g.id_groups=:id_groups";
+    $stmt=$conexion->prepare($query);
+    $stmt->bindParam(':id_groups', $id_groups);
+    $stmt->execute();
+    $resp=$stmt->fetchAll(PDO::FETCH_OBJ);
+
+    return $resp;
+  }
 }
