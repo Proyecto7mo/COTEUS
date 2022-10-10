@@ -13,6 +13,9 @@ if(isset($_SESSION['user_id'])){
     else{
       $idgrup=$_SESSION['gr'];
     }
+    /*echo($_POST['grup']);
+    echo('          ');
+    echo($_SESSION['gr']);*/
     //$_SESSION['gr']=$idgrup;
     require_once '../class/group.php';
     $groups_list=group::getgroups($_SESSION['user_id']);
@@ -22,10 +25,13 @@ if(isset($_SESSION['user_id'])){
         $grcl=$key->id_groups."-".$key->clave;
         $grclh=password_hash($grcl, PASSWORD_BCRYPT);
         $url="http://".$_SERVER['HTTP_HOST']."/coteus/link/?grcl=".$grclh;
-        $_SESSION['gr']=$key->id_groups;
-        //unset($_SESSION['gr']);
+        $idgrup=$key->id_groups;
+        unset($_SESSION['gr']);
       }
     }
+  }
+  else{
+    header('Location: index.php');
   }
 }
 else{
@@ -40,7 +46,8 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nav</title>
-
+    
+    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="./css's/footer.css" />
     <link rel="stylesheet" href="./css's/nav.css" />
 
@@ -77,7 +84,6 @@ else{
       include "../partials/HTML/nav/nav.php";
     ?>
     <label for="link"></label>
-    <input type="url" name="link" id="link" value="<?php echo $url; ?>" onClick="this.select();" readonly>
     </div>
 <!--
     <nav
@@ -122,21 +128,25 @@ else{
     <!-- FIN HEADER -->
 
     <!-- HERO -->
-
     <?php
-    echo $name;
+    //echo $name;
     ?>
-
+    <h1 class="titulo"><?php echo($name);?></h1>
     <div class="row m-5">
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
             <?php
-            $member_list=group::getmembersgr($_SESSION['gr']);
+            $member_list=group::getmembersgr($idgrup);
             foreach ($member_list as $key) {
+              $tipo="Miembro";
+              if($key->tipo=="A"){
+                $tipo="Administrador";
+              }
             ?>
-            <div class="d-flex m-3">
-              <h5 class="card-title p-2 flex-grow-1"><?php echo($key->nameuser); ?></h5>
+            <div class="d-flex m-3" id="mas">
+              <button class="card-title p-2 flex-grow-1" id="user"><h5 class="card-title p-2 flex-grow-1"><?php echo($key->nameuser."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <div id='tip'>".$tipo."</div>");?></h5></button>
+              <!--<h5 class="card-title p-2 flex-grow-1"><?php //echo($key->nameuser); ?></h5>-->
 
               <button class="btn btn-primary" type="button">
                 <svg
@@ -294,6 +304,11 @@ else{
         </div>
       </div>
     </div>
+
+    <p class="link">Invita a otras personas al grupo con este Link</p>
+    <form action="" id="link">
+      <input type="url" name="link" value="<?php echo $url; ?>" onClick="this.select();" readonly>
+    </form>
 
     <!-- HERO -->
 

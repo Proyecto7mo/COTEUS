@@ -1,4 +1,4 @@
-window.onload(Buscar());
+//window.onload(Buscar());
 
 function Buscar(){
     //alert("hola");

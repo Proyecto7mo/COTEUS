@@ -7,8 +7,8 @@ if($_FILES){
       $file_name = $_FILES["files"]["name"][$key];
       $file_tmp_name = $_FILES["files"]["tmp_name"][$key];
       
-      require_once "C:/xampp/htdocs/COTEUS/datos/datos.php";
-      $directorio = "C:/xampp/htdocs/COTEUS/files_users/" . datos::get_employee_id($_SESSION['user_id'])['nameuser'] . "/";
+      require_once "./../datos/datos.php";
+      $directorio = "./../files_users/" . datos::get_employee_id($_SESSION['user_id'])['nameuser'] . "/";
   
       if(!file_exists($directorio)){ // si existe una carpeta/archivo
         // en el caso de que no exista la carpeta, se crea.

@@ -103,7 +103,7 @@ class datos{
 
     $DateCreated=date('y-m-d h:i:s', time());
     $query="INSERT INTO groups_t (admin, name, fecha, clave) VALUES (:id_user, :groupname, :fecha, :clave);
-    INSERT INTO regisgroup_t (id_user, id_groups, fecha) VALUES (:id_user, (SELECT MAX(id_groups) idgroup FROM groups_t WHERE admin=:id_user), :fecha);";
+    INSERT INTO regisgroup_t (id_user, id_groups, fecha, tipo) VALUES (:id_user, (SELECT MAX(id_groups) idgroup FROM groups_t WHERE admin=:id_user), :fecha, 'A');";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_user',$group->admin);
     $stmt->bindParam(':groupname',$group->groupname);
@@ -172,7 +172,7 @@ class datos{
     $result;
 
     $DateCreated=date('y-m-d h:i:s', time());
-    $query="INSERT INTO regisgroup_t (id_user, id_groups, fecha) VALUES (:id_user, :id_groups, :fecha);";
+    $query="INSERT INTO regisgroup_t (id_user, id_groups, fecha, tipo) VALUES (:id_user, :id_groups, :fecha, 'M');";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_user', $user_id);
     $stmt->bindParam(':id_groups', $group_id);
@@ -184,7 +184,7 @@ class datos{
   public static function get_members_gr($id_groups){
     require '../database/database.php'; // para obtener la variable conexion
 
-    $query="SELECT * FROM employees_t e INNER JOIN regisgroup_t r ON e.id_user=r.id_user INNER JOIN groups_t g ON r.id_groups=g.id_groups WHERE g.id_groups=:id_groups";
+    $query="SELECT * FROM employees_t e INNER JOIN regisgroup_t r ON e.id_user=r.id_user INNER JOIN groups_t g ON r.id_groups=g.id_groups WHERE g.id_groups=:id_groups ORDER BY r.tipo";
     $stmt=$conexion->prepare($query);
     $stmt->bindParam(':id_groups', $id_groups);
     $stmt->execute();

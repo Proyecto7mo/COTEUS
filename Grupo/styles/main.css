@@ -1,10 +1,68 @@
 .titulo{
     color: #0c27ac;
     font-family: 'Colonna MT', sans-serif;
-    font-size: 80px;
+    font-size: 50px;
     margin-top: -3%;
+    text-align: center;
+}
+
+#tip :hover{
+    background-color: rgba(143, 208, 255, 0.782);
+}
+
+.card-body{
+    height: 500px;
+    overflow: scroll;
+}
+
+#user :hover{
+    background-color: rgb(233, 233, 233);
+}
+
+#user{
+    text-align: left;
+    outline: none;
+    border: none;
+    margin: 0px;
+    padding: 0%;
+}
+
+#user button{
+    text-align: left;
+    outline: none;
+    border: none;
+    margin: 0px;
+    padding: 0%;
+}
+
+#tip{
+    text-align: center;
+    /*border-width: 10cm;*/
+    border-radius: 50px;
+    width: 4cm;
+    background-color: rgba(143, 208, 255, 0.782);
+}
+
+#tip :hover{
+    background-color: rgba(143, 208, 255, 0.782);
 }
 
 #DGbutton{
 	margin-top: 3%;
+}
+
+#link{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#link input{
+    width: 250px;
+}
+
+.link{
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+    /*margin-left: 650px;*/
 }
