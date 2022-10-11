@@ -192,4 +192,32 @@ class datos{
 
     return $resp;
   }
+
+  public static function new_Task($task){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    $query="INSERT INTO chores_t (id_groups, title, assignment, duracion, startDate, endDate, predecessor) VALUES (:id_grup, :title, :asigned, :duracion, :f_inicio, :f_fin, :predecesora)";
+    $stmt=$conexion->prepare($query);
+    $stmt->bindParam(':id_grup', $task->id_grup);
+    $stmt->bindParam(':title', $task->title);
+    $stmt->bindParam(':asigned', $task->asigned);
+    $stmt->bindParam(':duracion', $task->duracion);
+    $stmt->bindParam(':f_inicio', $task->f_inicio);
+    $stmt->bindParam(':f_fin', $task->f_fin);
+    $stmt->bindParam(':predecesora', $task->predecesora);
+    $stmt->execute();
+  }
+
+  public static function get_Task($id_grup){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    //$query="SELECT * FROM chores_t c INNER JOIN groups_t g ON c.id_groups=g.id_groups WHERE c.id_groups=:id_grup";
+    $query="SELECT DISTINCT(c.id_chores), c.id_chores, c.id_groups, c.title, c.assignment, c.duracion, c.startDate, c.endDate, c.predecessor FROM chores_t c INNER JOIN groups_t g ON c.id_groups=g.id_groups INNER JOIN regisgroup_t r ON g.id_groups=r.id_groups INNER JOIN employees_t e ON r.id_user=e.id_user WHERE c.id_groups=:id_grup";
+    $stmt=$conexion->prepare($query);
+    $stmt->bindParam(':id_grup', $id_grup);
+    $stmt->execute();
+    $resp=$stmt->fetchAll(PDO::FETCH_OBJ);
+
+    return $resp;
+  }
 }

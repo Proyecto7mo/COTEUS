@@ -73,7 +73,7 @@ class Gantt {
   
         html += '<tr>';
         if(daysBefore > 0) for(let j = 0; j < daysBefore; j++) html += '<td></td>';
-        html += '<td class="event-cell" colspan="'+days+'" style="background-color: '+task[3]+';"><span>'+task[4]+'% done</span>'+task[0]+'</td>';
+        html += '<td class="event-cell" colspan="'+days+'" style="background-color: '+task[3]+';"><span>'+task[4]+'</span><span>'+task[4]+'% done</span>'+task[0]+'</td>';
         if(daysAfter > 0) for(let j = 0; j < daysAfter; j++) html += '<td></td>';
         html += '</tr>';
       }

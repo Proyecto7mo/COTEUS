@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2022 a las 07:58:18
+-- Tiempo de generación: 11-10-2022 a las 03:00:32
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -40,7 +40,8 @@ CREATE TABLE `calculator_t` (
 --
 
 CREATE TABLE `chores_t` (
-  `id_chores` int(2) NOT NULL,
+  `id_chores` int(11) NOT NULL,
+  `id_groups` int(2) NOT NULL,
   `title` varchar(80) NOT NULL,
   `assignment` varchar(20) NOT NULL,
   `duracion` datetime NOT NULL,
@@ -48,6 +49,14 @@ CREATE TABLE `chores_t` (
   `endDate` date NOT NULL,
   `predecessor` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `chores_t`
+--
+
+INSERT INTO `chores_t` (`id_chores`, `id_groups`, `title`, `assignment`, `duracion`, `startDate`, `endDate`, `predecessor`) VALUES
+(1, 30, 'y', 'y', '0000-00-00 00:00:00', '2022-10-12', '2022-10-20', 0),
+(2, 30, 'j', 'j', '0000-00-00 00:00:00', '2022-10-18', '2022-10-26', 0);
 
 -- --------------------------------------------------------
 
@@ -135,21 +144,20 @@ CREATE TABLE `groups_t` (
   `name` varchar(20) NOT NULL,
   `fecha` datetime NOT NULL,
   `clave` int(5) NOT NULL,
-  `id_files` int(2) NOT NULL,
-  `id_chores` int(2) NOT NULL
+  `id_files` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `groups_t`
 --
 
-INSERT INTO `groups_t` (`id_groups`, `admin`, `name`, `fecha`, `clave`, `id_files`, `id_chores`) VALUES
-(30, 58, 'COTEUS', '2022-09-11 03:28:31', 5, 0, 0),
-(31, 58, 'b', '2022-09-11 03:28:35', 10, 0, 0),
-(32, 59, 'grupo1', '2022-09-11 03:40:47', 20, 0, 0),
-(33, 59, 'grupo2', '2022-09-11 03:41:09', 6, 0, 0),
-(34, 57, 'jere', '2022-09-23 01:24:51', 9, 0, 0),
-(36, 58, 'p', '2022-09-23 04:42:58', 67, 0, 0);
+INSERT INTO `groups_t` (`id_groups`, `admin`, `name`, `fecha`, `clave`, `id_files`) VALUES
+(30, 58, 'COTEUS', '2022-09-11 03:28:31', 5, 0),
+(31, 58, 'b', '2022-09-11 03:28:35', 10, 0),
+(32, 59, 'grupo1', '2022-09-11 03:40:47', 20, 0),
+(33, 59, 'grupo2', '2022-09-11 03:41:09', 6, 0),
+(34, 57, 'jere', '2022-09-23 01:24:51', 9, 0),
+(36, 58, 'p', '2022-09-23 04:42:58', 67, 0);
 
 -- --------------------------------------------------------
 
@@ -189,7 +197,8 @@ ALTER TABLE `calculator_t`
 -- Indices de la tabla `chores_t`
 --
 ALTER TABLE `chores_t`
-  ADD PRIMARY KEY (`id_chores`);
+  ADD PRIMARY KEY (`id_chores`),
+  ADD KEY `id_groups` (`id_groups`) USING BTREE;
 
 --
 -- Indices de la tabla `employees_t`
@@ -242,7 +251,7 @@ ALTER TABLE `calculator_t`
 -- AUTO_INCREMENT de la tabla `chores_t`
 --
 ALTER TABLE `chores_t`
-  MODIFY `id_chores` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_chores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `employees_t`
@@ -277,6 +286,12 @@ ALTER TABLE `regisgroup_t`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `chores_t`
+--
+ALTER TABLE `chores_t`
+  ADD CONSTRAINT `chores_t_ibfk_1` FOREIGN KEY (`id_groups`) REFERENCES `groups_t` (`id_groups`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `regisgroup_t`

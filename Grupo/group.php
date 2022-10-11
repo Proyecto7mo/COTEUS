@@ -21,6 +21,7 @@ if(isset($_SESSION['user_id'])){
     $groups_list=group::getgroups($_SESSION['user_id']);
     foreach($groups_list as $key){
       if(password_verify($key->id_groups, $idgrup)){
+        //$_SESSION['name']=$key->name;
         $name=$key->name;
         $grcl=$key->id_groups."-".$key->clave;
         $grclh=password_hash($grcl, PASSWORD_BCRYPT);
@@ -50,6 +51,8 @@ else{
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="./css's/footer.css" />
     <link rel="stylesheet" href="./css's/nav.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <!-- bootstrap -->
 
@@ -136,6 +139,52 @@ else{
     //echo $name;
     ?>
     <h1 class="titulo"><?php echo($name);?></h1>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <div class="position-absolute">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Opciones
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a id="aumentar" class="dropdown-item" href="#">Aumentar rango</a>
+          </li>
+          <li>
+            <a id="eliminar" class="dropdown-item" href="#">Eliminar miembro</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
+    ></script>
+    <!--<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+    -->
+    <!-- SWEET ALERT -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript" src="js/index.js"></script>
+
     <div class="row m-5">
       <div class="col-sm-6">
         <div class="card">
@@ -309,17 +358,64 @@ else{
       </div>
     </div>
 
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuTask" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+        <div class="card card-body">
+          <form method="POST" id="subTask" onsubmit="return agregarTask();">
+            <div class="form-group">
+              <input type="text" name="title" id="title" class="form-control" placeholder="Title" autofocus require>
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="asigned" id="asigned" class="form-control" placeholder="Persona designada" autofocus require>
+            </div>
+
+            <div class="form-group">
+              <textarea name="duracion" id="duracion" rows="2" class="form-control" placeholder="duracion"></textarea>
+            </div>
+
+            <div class="form-group">
+              <input type="date" name="f_inicio" id="f_inicio" class="form-control" placeholder="Fecha incio" autofocus require>
+            </div>
+
+            <div class="form-group">
+              <input type="date" name="f_fin" id="f_fin" class="form-control" placeholder="Fecha incio" autofocus require>
+            </div>
+
+            <div class="form-group">
+              <input type="text" name="predecesora" id="predecesora" class="form-control" placeholder="Predecesora" autofocus require>
+            </div>
+
+            <input type="hidden" name="grup" id="grup" value="<?php echo($idgrup); ?>">
+
+            <input type="hidden" name="val" id="val" value="Guardar">
+
+            <input type="submit" name="save_task" id="save_task" class="btn btn-success btn-block" value="Guardar">
+          </form>
+        </div>
+        </li>
+        <!--<li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+      </ul>
+    </div>
+
     <div id="gantt"></div>
-    <script type="text/javascript">
-			const obj = new Gantt([
-				['Action 1', '2022/05/12', '2022/05/12', '#4287f5', 80],
-				['Action 2', '2022/05/12', '2022/05/14', '#c1409b', 10],
-				['Action 3', '2022/05/14', '2022/05/17', '#0b9971', 20],
-				['Action 4', '2022/05/18', '2022/05/20', '#d26a52', 55],
-				['Action 5', '2022/05/19', '2022/05/20', '#4287f5', 100],
-				['Action 6', '2022/05/12', '2022/05/20', '#0b9971', 32],
-				]);
-		</script>
+    <div class="create-task">
+      <script type="text/javascript">
+        /*const obj = new Gantt([
+          ['Action 1', '2022/05/12', '2022/05/12', '#4287f5', "i"],
+          ['Action 2', '2022/05/12', '2022/05/14', '#c1409b', "i"],
+          ['Action 3', '2022/05/14', '2022/05/17', '#0b9971', "i"],
+          ['Action 4', '2022/05/18', '2022/05/20', '#d26a52', "i"],
+          ['Action 5', '2022/05/19', '2022/05/20', '#4287f5', "i"],
+          ['Action 6', '2022/05/12', '2022/05/20', '#0b9971', "j"],
+          ]);*/
+      </script>
+    </div>
 
     <p class="link">Invita a otras personas al grupo con este Link</p>
     <form action="" id="link">
@@ -380,7 +476,7 @@ else{
               </p>
               <p class="contact-info">example@coteus.com</p>
               <div class="mt-5">
-                <!-- <ul class="list-inline">
+                 <ul class="list-inline">
                                 <li class="list-inline-item"><a href="#"><i class="fab facebook footer-social-icon fa-facebook-f"></i></i></a></li>
                                 <li class="list-inline-item"><a href="#"><i class="fab twitter footer-social-icon fa-twitter"></i></i></a></li>
                                 <li class="list-inline-item"><a href="#"><i class="fab google footer-social-icon fa-google"></i></i></a></li>
@@ -400,7 +496,7 @@ else{
 
     <!-- Footer -->
 
-    <script
+    <!--<script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
       crossorigin="anonymous"
@@ -409,6 +505,6 @@ else{
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
       integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
       crossorigin="anonymous"
-    ></script>
+    ></script>-->
   </body>
 </html>
