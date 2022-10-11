@@ -13,6 +13,7 @@ if(isset($_SESSION['user_id'])){
     else{
       $idgrup=$_SESSION['gr'];
     }
+
     /*echo($_POST['grup']);
     echo('          ');
     echo($_SESSION['gr']);*/
@@ -27,9 +28,32 @@ if(isset($_SESSION['user_id'])){
         $grclh=password_hash($grcl, PASSWORD_BCRYPT);
         $url="http://".$_SERVER['HTTP_HOST']."/coteus/link/?grcl=".$grclh;
         $idgrup=$key->id_groups;
-        unset($_SESSION['gr']);
+        //unset($_SESSION['gr']);
       }
     }
+
+    if(isset($_POST['val'])){
+      $val=$_POST['val'];
+      $iduser=$_POST['iduser'];
+      require_once '../class/group.php';
+      switch ($val) {
+        case 'AumentarM':
+          //echo($val."-----".$iduser."----".$idgrup);
+          group::modifyrank("A", $iduser, $idgrup);
+          break;
+        case 'EliminarM':
+          group::deletemember($iduser, $idgrup);
+          break;
+        case 'BajarM':
+          group::modifyrank("M", $iduser, $idgrup);
+          break;
+        default:
+          # code...
+          break;
+      }
+      header('Location: ./group.php');
+    }
+
   }
   else{
     header('Location: index.php');
@@ -140,57 +164,29 @@ else{
     ?>
     <h1 class="titulo"><?php echo($name);?></h1>
 
-    <link
+    <!--<link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
-    />
+    />-->
 
-    <div class="position-absolute">
-      <div class="dropdown">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Opciones
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-            <a id="aumentar" class="dropdown-item" href="#">Aumentar rango</a>
-          </li>
-          <li>
-            <a id="eliminar" class="dropdown-item" href="#">Eliminar miembro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-      crossorigin="anonymous"
-    ></script>
-    <!--<script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-      crossorigin="anonymous"
-    ></script>
-    -->
-    <!-- SWEET ALERT -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script type="text/javascript" src="js/index.js"></script>
+    
 
     <div class="row m-5">
       <div class="col-sm-6">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body" id="cb">
             <?php
             $member_list=group::getmembersgr($idgrup);
+            $useractip="M";
+            foreach($member_list as $key){
+              if($_SESSION['user_id']==$key->id_user){
+                if($key->tipo=="A"){
+                  $useractip="A";
+                }
+              }
+            }
             foreach ($member_list as $key) {
               $tipo="Miembro";
               if($key->tipo=="A"){
@@ -201,7 +197,7 @@ else{
               <button class="card-title p-2 flex-grow-1" id="user"><h5 class="card-title p-2 flex-grow-1"><?php echo($key->nameuser."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <div id='tip'>".$tipo."</div>");?></h5></button>
               <!--<h5 class="card-title p-2 flex-grow-1"><?php //echo($key->nameuser); ?></h5>-->
 
-              <button class="btn btn-primary" type="button">
+              <!--<button class="btn btn-primary" type="button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-dots"
@@ -219,11 +215,78 @@ else{
                   <circle cx="12" cy="12" r="1" />
                   <circle cx="19" cy="12" r="1" />
                 </svg>
-              </button>
+              </button>-->
+
+              
+                <?php
+                if($useractip=="A"){
+                  echo('<button
+                  class="btn btn-primary"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Opciones
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <form id="Aumentar" action="group.php" method="POST" onsubmit="state();">
+                      <input type="hidden" name="val" value="AumentarM">
+                      <input type="hidden" name="iduser" value="'.$key->id_user.'">
+                      <input class="dropdown-item" type="submit" value="Aumentar rango">
+                    </form>
+                    <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alert()">Aumentar rango</a>-->
+                  </li>
+                  <li>
+                    <form id="Bajar" action="group.php" method="POST" onsubmit="state();">
+                      <input type="hidden" name="val" value="BajarM">
+                      <input type="hidden" name="iduser" value="'.$key->id_user.'">
+                      <input class="dropdown-item" type="submit" value="Bajar rango">
+                    </form>
+                    <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alert()">Aumentar rango</a>-->
+                  </li>
+                  <li>
+                    <form id="Eliminar" action="group.php" method="POST" onsubmit="state();">
+                      <input type="hidden" name="val" value="EliminarM">
+                      <input type="hidden" name="iduser" value="'.$key->id_user.'">
+                      <input class="dropdown-item" type="submit" value="Eliminar miembro">
+                    </form>
+                    <!--<a id="eliminar" class="dropdown-item" href="#" onclick="alert()">Eliminar miembro</a>-->
+                  </li>
+                </ul>');
+                }
+                ?>
+
+              <!--<div class="position-absolute">
+                <div class="dropdown">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Opciones
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                      <a id="aumentar" class="dropdown-item" href="#" onclick="alert()">Aumentar rango</a>
+                    </li>
+                    <li>
+                      <a id="eliminar" class="dropdown-item" href="#" onclick="alert()">Eliminar miembro</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>-->
+
+              
+
             </div>
             <?php
             }
             ?>
+            
 <!--
             <div class="d-flex m-3">
               <h5 class="card-title p-2 flex-grow-1">Integrante: Tobias</h5>
@@ -302,7 +365,7 @@ else{
 
       <div class="col-sm-6">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body" id="cb">
             <div class="d-flex">
               <h5 class="card-title p-2 flex-grow-1">Archivos</h5>
 
@@ -360,34 +423,40 @@ else{
 
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuTask" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown button
+        Agregar nueva tarea
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
         <div class="card card-body">
           <form method="POST" id="subTask" onsubmit="return agregarTask();">
             <div class="form-group">
-              <input type="text" name="title" id="title" class="form-control" placeholder="Title" autofocus require>
+              <input type="text" name="title" id="title" class="form-control" placeholder="Title" autofocus required>
             </div>
 
             <div class="form-group">
-              <input type="text" name="asigned" id="asigned" class="form-control" placeholder="Persona designada" autofocus require>
+              <input type="text" name="asigned" id="asigned" class="form-control" placeholder="Persona designada" autofocus required>
             </div>
 
-            <div class="form-group">
+            <!--<div class="form-group">
               <textarea name="duracion" id="duracion" rows="2" class="form-control" placeholder="duracion"></textarea>
+            </div>-->
+
+            <form action="../Gantt" method="post">
+              <input type="hidden" name="idtask" value="">
+              <input type="hidden" name="val" value="Eliminar">
+              <input type="submit" value="Eliminar">
+            </form>
+
+            <div class="form-group">
+              <input type="date" name="f_inicio" id="f_inicio" class="form-control" placeholder="Fecha incio" autofocus required>
             </div>
 
             <div class="form-group">
-              <input type="date" name="f_inicio" id="f_inicio" class="form-control" placeholder="Fecha incio" autofocus require>
+              <input type="date" name="f_fin" id="f_fin" class="form-control" placeholder="Fecha incio" autofocus required>
             </div>
 
             <div class="form-group">
-              <input type="date" name="f_fin" id="f_fin" class="form-control" placeholder="Fecha incio" autofocus require>
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="predecesora" id="predecesora" class="form-control" placeholder="Predecesora" autofocus require>
+              <input type="text" name="predecesora" id="predecesora" class="form-control" placeholder="Predecesora" autofocus required>
             </div>
 
             <input type="hidden" name="grup" id="grup" value="<?php echo($idgrup); ?>">
@@ -417,9 +486,26 @@ else{
       </script>
     </div>
 
-    <p class="link">Invita a otras personas al grupo con este Link</p>
+    <script
+                src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+                integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+                crossorigin="anonymous"
+              ></script>
+              <!--<script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+                integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+                crossorigin="anonymous"
+              ></script>
+              -->
+              <!-- SWEET ALERT -->
+              <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+              <script type="text/javascript" src="js/index.js"></script>
+
+    <br>
+    <p style="font-size: 25px;" class="link">Invita a otras personas al grupo con el siguiente Link</p>
     <form action="" id="link">
-      <input type="url" name="link" value="<?php echo $url; ?>" onClick="this.select();" readonly>
+      <input style="font-size: 20px;" type="url" name="link" value="<?php echo $url; ?>" onClick="this.select();" readonly>
     </form>
 
     <!-- HERO -->

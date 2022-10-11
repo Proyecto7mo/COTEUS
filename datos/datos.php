@@ -102,11 +102,12 @@ class datos{
     $result=0;
 
     $DateCreated=date('y-m-d h:i:s', time());
-    $query="INSERT INTO groups_t (admin, name, fecha, clave) VALUES (:id_user, :groupname, :fecha, :clave);
+    $query="INSERT INTO groups_t (admin, name, descripcion, fecha, clave) VALUES (:id_user, :groupname, :groupdesc, :fecha, :clave);
     INSERT INTO regisgroup_t (id_user, id_groups, fecha, tipo) VALUES (:id_user, (SELECT MAX(id_groups) idgroup FROM groups_t WHERE admin=:id_user), :fecha, 'A');";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_user',$group->admin);
     $stmt->bindParam(':groupname',$group->groupname);
+    $stmt->bindParam(':groupdesc',$group->groupdesc);
     $stmt->bindParam(':fecha',$DateCreated);
     $clave = random_int(0, 99999);
     $stmt->bindParam(':clave',$clave);
@@ -140,7 +141,7 @@ class datos{
     require '../database/database.php'; // para obtener la variable conexion
     $result;
 
-    $query="SELECT groups_t.id_groups, groups_t.admin, groups_t.name, groups_t.fecha, groups_t.clave FROM groups_t INNER JOIN regisgroup_t ON groups_t.id_groups=regisgroup_t.id_groups INNER JOIN employees_t ON employees_t.id_user=regisgroup_t.id_user WHERE employees_t.id_user=:id_user";
+    $query="SELECT groups_t.id_groups, groups_t.admin, groups_t.name, groups_t.descripcion, groups_t.fecha, groups_t.clave FROM groups_t INNER JOIN regisgroup_t ON groups_t.id_groups=regisgroup_t.id_groups INNER JOIN employees_t ON employees_t.id_user=regisgroup_t.id_user WHERE employees_t.id_user=:id_user";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_user', $user_id);
     $stmt->execute();
@@ -196,12 +197,11 @@ class datos{
   public static function new_Task($task){
     require '../database/database.php'; // para obtener la variable conexion
 
-    $query="INSERT INTO chores_t (id_groups, title, assignment, duracion, startDate, endDate, predecessor) VALUES (:id_grup, :title, :asigned, :duracion, :f_inicio, :f_fin, :predecesora)";
+    $query="INSERT INTO chores_t (id_groups, title, assignment, startDate, endDate, predecessor) VALUES (:id_grup, :title, :asigned, :f_inicio, :f_fin, :predecesora)";
     $stmt=$conexion->prepare($query);
     $stmt->bindParam(':id_grup', $task->id_grup);
     $stmt->bindParam(':title', $task->title);
     $stmt->bindParam(':asigned', $task->asigned);
-    $stmt->bindParam(':duracion', $task->duracion);
     $stmt->bindParam(':f_inicio', $task->f_inicio);
     $stmt->bindParam(':f_fin', $task->f_fin);
     $stmt->bindParam(':predecesora', $task->predecesora);
@@ -212,12 +212,34 @@ class datos{
     require '../database/database.php'; // para obtener la variable conexion
 
     //$query="SELECT * FROM chores_t c INNER JOIN groups_t g ON c.id_groups=g.id_groups WHERE c.id_groups=:id_grup";
-    $query="SELECT DISTINCT(c.id_chores), c.id_chores, c.id_groups, c.title, c.assignment, c.duracion, c.startDate, c.endDate, c.predecessor FROM chores_t c INNER JOIN groups_t g ON c.id_groups=g.id_groups INNER JOIN regisgroup_t r ON g.id_groups=r.id_groups INNER JOIN employees_t e ON r.id_user=e.id_user WHERE c.id_groups=:id_grup";
+    $query="SELECT DISTINCT(c.id_chores), c.id_chores, c.id_groups, c.title, c.assignment, c.startDate, c.endDate, c.predecessor FROM chores_t c INNER JOIN groups_t g ON c.id_groups=g.id_groups INNER JOIN regisgroup_t r ON g.id_groups=r.id_groups INNER JOIN employees_t e ON r.id_user=e.id_user WHERE c.id_groups=:id_grup";
     $stmt=$conexion->prepare($query);
     $stmt->bindParam(':id_grup', $id_grup);
     $stmt->execute();
     $resp=$stmt->fetchAll(PDO::FETCH_OBJ);
 
     return $resp;
+  }
+
+  public static function modify_rank($tipo, $id_user, $id_groups){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    $query="UPDATE regisgroup_t SET tipo=:tipo WHERE id_user=:id_user AND id_groups=:id_groups";
+    $stmt=$conexion->prepare($query);
+    $stmt->bindParam(':tipo', $tipo);
+    $stmt->bindParam(':id_user', $id_user);
+    $stmt->bindParam(':id_groups', $id_groups);
+    $stmt->execute();
+
+  }
+
+  public static function delete_member($id_user, $id_groups){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    $query="DELETE FROM regisgroup_t WHERE id_user=:id_user AND id_groups=:id_groups";
+    $stmt=$conexion->prepare($query);
+    $stmt->bindParam(':id_user', $id_user);
+    $stmt->bindParam(':id_groups', $id_groups);
+    $stmt->execute();
   }
 }

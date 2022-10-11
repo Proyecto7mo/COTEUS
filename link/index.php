@@ -27,6 +27,7 @@
                     $grh=password_hash($gr, PASSWORD_BCRYPT);
                     $_SESSION['gr']=$grh;
                     header("Location: ../Grupo/group.php");
+                    return 0;
                     echo "vamos capo";
                 }
             }

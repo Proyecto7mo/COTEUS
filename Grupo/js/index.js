@@ -1,4 +1,40 @@
-window.onload(setTimeout(Buscar,700));
+//window.onload(setTimeout(Buscar,700));
+
+//const aumentar = document.getElementById("aumentar");
+//const eliminar = document.getElementById("eliminar");
+//document.getElementsByClassName
+
+const alert = () => {
+    return false;
+  Swal.fire({
+    title: "Estas seguroo?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "SI",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      //$("#Aumentar").submit();
+    }
+  });
+};
+
+//aumentar.onclick = alert;
+//eliminar.onclick = alert;
+window.onload(setTimeout(Buscar,90));
+//alert("djg");
+
+function state(){
+    /*$('#Eliminar').on('submit', function() {
+
+        alert();
+    
+        return true;
+    });*/
+    alert();
+}
 
 function Buscar(){
     let grup=document.getElementById("grup").value;
@@ -24,28 +60,6 @@ function Buscar(){
         }
     });
 }
-
-
-const aumentar = document.getElementById("aumentar");
-const eliminar = document.getElementById("eliminar");
-
-const alert = () => {
-  Swal.fire({
-    title: "Estas seguroo?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "SI",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire("Deleted!", "Your file has been deleted.", "success");
-    }
-  });
-};
-
-aumentar.onclick = alert;
-eliminar.onclick = alert;
 
 /*function Buscar(){
     document.querySelector('#dropdownMenuTask').click();

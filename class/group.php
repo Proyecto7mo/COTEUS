@@ -3,10 +3,12 @@
 
         public $admin;
         public $groupname;
+        public $groupdesc;
 
-        public function __construct($admin=0, $groupname="ng"){
+        public function __construct($admin=0, $groupname="ng", $groupdesc="Sin Descripción"){
             $this->admin=$admin;
             $this->groupname=$groupname;
+            $this->groupdesc=$groupdesc;
         }
 
         public function get(){
@@ -61,6 +63,38 @@
             $allmembers_list=datos::get_members_gr($group_id);
 
             return $allmembers_list;
+        }
+
+        public static function getURL($userid, $idgrup){
+            require_once "../datos/datos.php";
+            $url="1";
+
+            $groups_list=group::getgroups($userid);
+            foreach($groups_list as $key){
+            if($key->id_groups==$idgrup){
+            //$_SESSION['name']=$key->name;
+            $name=$key->name;
+            $grcl=$key->id_groups."-".$key->clave;
+            $grclh=password_hash($grcl, PASSWORD_BCRYPT);
+            $url="http://".$_SERVER['HTTP_HOST']."/coteus/link/?grcl=".$grclh;
+            $idgrup=$key->id_groups;
+            //unset($_SESSION['gr']);
+            return $url;
+            }
+            }
+            
+        }
+
+        public static function modifyrank($tipo, $id_user, $id_groups){
+            require_once "../datos/datos.php";
+
+            datos::modify_rank($tipo, $id_user, $id_groups);
+        }
+
+        public static function deletemember($id_user, $id_groups){
+            require_once "../datos/datos.php";
+
+            datos::delete_member($id_user, $id_groups);
         }
     }
 ?>
