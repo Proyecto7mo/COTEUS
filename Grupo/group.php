@@ -114,7 +114,7 @@ else{
     <?php
       include "../partials/HTML/nav/nav.php";
     ?>
-    <label for="link"></label>
+    <!--<label for="link"></label>-->
     </div>
 <!--
     <nav
@@ -441,11 +441,11 @@ else{
               <textarea name="duracion" id="duracion" rows="2" class="form-control" placeholder="duracion"></textarea>
             </div>-->
 
-            <form action="../Gantt" method="post">
+            <!--<form action="../Gantt" method="post">
               <input type="hidden" name="idtask" value="">
               <input type="hidden" name="val" value="Eliminar">
               <input type="submit" value="Eliminar">
-            </form>
+            </form>-->
 
             <div class="form-group">
               <input type="date" name="f_inicio" id="f_inicio" class="form-control" placeholder="Fecha incio" autofocus required>

@@ -27,9 +27,9 @@
             <li class="nav-item">
               <a class="nav-link" href="../Grupo/" id="navtext">GRUPO</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a class="nav-link" href="../Gantt/" id="navtext">GANTT</a>
-            </li>
+            </li>-->
             <li class="nav-item">
               <a class="nav-link" href="../Cuenta/" id="navtext">CUENTA</a>
             </li>

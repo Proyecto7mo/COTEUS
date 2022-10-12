@@ -23,7 +23,7 @@ const alert = () => {
 
 //aumentar.onclick = alert;
 //eliminar.onclick = alert;
-window.onload(setTimeout(Buscar,90));
+window.onload(setTimeout(Buscar,01));
 //alert("djg");
 
 function state(){
@@ -44,7 +44,7 @@ function Buscar(){
         "val" : val
     };
     $.ajax({
-        url:"./../Gantt/index.php",
+        url:"./../class/Gantt.php",
         type:"post",
         data:parametros,
         success:function(res){
@@ -67,7 +67,7 @@ function Buscar(){
 
 function agregarTask(){
     $.ajax({
-        url:"./../Gantt/index.php",
+        url:"./../class/Gantt.php",
         type:"post",
         data:$("#subTask").serialize(),
         success:function(res){

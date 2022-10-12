@@ -30,6 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	  <link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
+    <link rel="stylesheet" href="styles/main.css">
 
     <!-- font awesome -->
     <script
@@ -112,7 +113,7 @@
     <div class="functions">
       <?php
         include '../partials/upload_files/upload_files.html';
-        include '../partials/task/add_task.html';
+        //include '../partials/task/add_task.html';
       ?>
     </div>
     
@@ -125,7 +126,7 @@
         while($item = readdir($directory_handler)){
           if($item != "." && $item != ".."){
       ?>
-      <div class="col">
+      <div class="col" id="cf">
         <div class="card h-100">
           <div class="card-img-top icon-card">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
@@ -143,14 +144,12 @@
           <div class="card-body">
             <h5 class="card-title"><?php if(is_dir($directory . $item)){ echo ("<li>Carpeta <a href='https://localhost/COTEUS/files_users/$employee_folder/$item' target='_blank'>$item</a></li>");}else{ echo("<li>Archivo <a href='https://localhost/COTEUS/files_users/$employee_folder/$item' target='_blank'>$item</a></li>");} ?></h5>
             <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+
             </p>
           </div>
-          <div class="card-footer">
+          <!--<div class="card-footer">
             <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
+          </div>-->
         </div>
         <?php//employee::view_files($record['nameuser']); ?>
       </div>
