@@ -70,6 +70,8 @@ class employee{
     $directory = "../files_users/" . $employee_folder;
     
     $directory_handler = opendir($directory);
+
+    return $directory_handler;
    
     while($item = readdir($directory_handler)){
       if($item != "." && $item != ".."){
@@ -82,6 +84,7 @@ class employee{
       }
     }
 
-    return $lista;
+    //return $lista;
+    
   }
 }

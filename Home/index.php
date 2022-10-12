@@ -3,13 +3,14 @@
   session_start();
   
   if (!isset($_SESSION['user_id'])) {
-    require "../datos/datos.php";
+    //require "../datos/datos.php";
     
-    $employee = datos::get_employee_id($_SESSION['user_id']);
+    //$employee = datos::get_employee_id($_SESSION['user_id']);
 
-    if(!$employee->username){
+    /*if(!$employee->username){
       echo "<script> alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.'); window.location.href = 'http://localhost/COTEUS/Login'; </script>";
-    }
+    }*/
+    echo "<script> /*alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.');*/ window.location.href = 'http://localhost/COTEUS/Login'; </script>";
   }
   if(isset($_SESSION['url'])){
     //header($_SESSION['url']);
@@ -117,6 +118,13 @@
     
     <!-- ARCHIVOS -->
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
+      <?php
+        $directory_handler=employee::view_files($record['nameuser']);
+        $employee_folder=$record['nameuser'];
+        $directory = "../files_users/" . $employee_folder;
+        while($item = readdir($directory_handler)){
+          if($item != "." && $item != ".."){
+      ?>
       <div class="col">
         <div class="card h-100">
           <div class="card-img-top icon-card">
@@ -133,7 +141,7 @@
           </div>
 
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title"><?php if(is_dir($directory . $item)){ echo ("<li>Carpeta <a href='https://localhost/COTEUS/files_users/$employee_folder/$item' target='_blank'>$item</a></li>");}else{ echo("<li>Archivo <a href='https://localhost/COTEUS/files_users/$employee_folder/$item' target='_blank'>$item</a></li>");} ?></h5>
             <p class="card-text">
               This is a wider card with supporting text below as a natural
               lead-in to additional content. This content is a little bit
@@ -144,8 +152,12 @@
             <small class="text-muted">Last updated 3 mins ago</small>
           </div>
         </div>
-        <?= employee::view_files($record['nameuser']); ?>
+        <?php//employee::view_files($record['nameuser']); ?>
       </div>
+      <?php
+          }
+        }
+      ?>
     </div>
 
     <!-- ARCHIVOS -->
