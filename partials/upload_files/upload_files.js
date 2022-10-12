@@ -11,7 +11,7 @@ link.addEventListener("click", () => {
   button.click();
 });
 button.addEventListener("click", () => {
-  input.click();
+  //input.click();
 });
 
 // cada vez que cambia el valor el input, se guardan los archivos

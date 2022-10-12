@@ -25,6 +25,8 @@ if($_FILES){
       }
   
       closedir($opened_directory);
+
+      header('Location: http://localhost/coteus/Home/');
     }
   }
 }
