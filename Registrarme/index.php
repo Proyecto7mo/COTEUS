@@ -73,10 +73,11 @@
         <label for="Mail">Ingrese Email</label>
         <input type='email' name='email' placeholder='Email' require>
         
-        <!--Capcha-->
-        <label >Aqui va el captcha</label>
+        <div class="captcha">
+        <label >Repite el codigo</label>
         <img src="https://localhost/COTEUS/Registrarme/resources/captcha.php" alt="" style="border-radius: 15px;">
-        
+        </div>
+        <input type="text" name="captcha" id="captcha">
       </div>
       <div class="Columns">
         <label for="Last-Name">Apellido</label>

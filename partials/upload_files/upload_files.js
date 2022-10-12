@@ -1,4 +1,3 @@
-
 // obteniendo datos de elementos HTML.
 const upload_files = document.querySelector(".upload-files"); // form
 const title = upload_files.querySelector(".upload-files__title");
@@ -43,6 +42,8 @@ upload_files.addEventListener("dragleave", (e) => {
 upload_files.addEventListener("drop", (e) => {
   e.preventDefault();
   files = e.dataTransfer.files;
+  input.files = files;
+  // input.files = e.dataTransfer.files;
   ShowFiles(files);
   RemoverClaseActive();
 });
