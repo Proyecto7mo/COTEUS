@@ -134,7 +134,7 @@
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
         <div class="card card-body">
-          <form method="POST" id="subTask" action="./">
+          <form method="POST" id="subTask" action="./" submit="document.getElementById('subTask').reset();">
             <div class="form-group">
               <input type="text" name="groupname" id="groupname" class="form-control" placeholder="Titulo del grupo" autofocus required>
             </div><br>
