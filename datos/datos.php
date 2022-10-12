@@ -221,6 +221,16 @@ class datos{
     return $resp;
   }
 
+  public static function delete_task($id_chores){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    $query="DELETE FROM chores_t WHERE id_chores=:id_chores";
+    $stmt=$conexion->prepare($query);
+    $stmt->bindParam(':id_chores', $id_chores);
+    $stmt->execute();
+    
+  }
+
   public static function modify_rank($tipo, $id_user, $id_groups){
     require '../database/database.php'; // para obtener la variable conexion
 

@@ -15,6 +15,14 @@ if($val=="Guardar"){
   $tasks=Gantt::to_string($tasks);
   echo($tasks);
 }
+elseif ($val=="Eliminar") {
+  $idtask=$_POST['idtask'];
+  //$id_grup=$_POST['grup'];
+
+  Gantt::deleteTask($idtask);
+  
+  header('Location: http://localhost/coteus/Grupo/group.php');
+}
 else{
   $id_grup=$_POST["grup"];
   $tasks=Gantt::getTask($id_grup);
@@ -52,6 +60,12 @@ class Gantt{
     $resp=datos::get_Task($id_grup);
 
     return $resp;
+  }
+
+  public static function deleteTask($id_chores){
+    require_once '../datos/datos.php';
+
+    datos::delete_task($id_chores);
   }
 
   public static function to_string($tasks){

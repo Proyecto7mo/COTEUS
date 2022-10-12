@@ -443,6 +443,7 @@ else{
 
             <!--<form action="../Gantt" method="post">
               <input type="hidden" name="idtask" value="">
+              <input type="hidden" name="grup" value="<?php //echo($idgrup); ?>">
               <input type="hidden" name="val" value="Eliminar">
               <input type="submit" value="Eliminar">
             </form>-->

@@ -23,7 +23,7 @@ const alert = () => {
 
 //aumentar.onclick = alert;
 //eliminar.onclick = alert;
-window.onload(setTimeout(Buscar,01));
+window.onload=setTimeout(Buscar,01);
 //alert("djg");
 
 function state(){
@@ -76,6 +76,7 @@ function agregarTask(){
             //let g=document.getElementById("create-task");
             $('div.create-task').html(res);
             console.log(res);
+            document.getElementById("subTask").reset()
             //alert(res);
         },
         error:function(xhr, status){
