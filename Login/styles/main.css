@@ -1,0 +1,103 @@
+body {
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: all;
+  background-color: #0c27ac;
+  background-image: url(../../img/carpetas.svg);
+}
+
+.login-box {
+  width: 300px;
+  height: 450px;
+  background: #f5f7fb;
+  border-radius: 20px;
+  margin-top: 5%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 5%;
+  position: relative;
+  padding: 70px 30px;
+}
+
+.logo {
+  position: relative;
+  width: 170px;
+  margin-top: -15%;
+  margin-left: 20%;
+}
+
+.title{
+  position: relative;
+  color: #0c27ac;
+  font-family: 'Colonna MT', sans-serif;
+  font-size: 40px;
+  margin-top: 5%;
+  margin-left: 7%;
+}
+
+form{
+  position: absolute;
+  margin-top: -5%;
+}
+
+label{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.txtspace{
+  margin-bottom: 7%;
+  height: 40px;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid black;
+  background: transparent;
+  outline: none;
+  color: black;
+  font-size: 16px;
+}
+
+.alert{
+  position: absolute;
+  margin-top: -7%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 80%;
+  color: red;
+  display: none;
+}
+
+.buttons
+{
+    margin-top: 5%;
+    margin-left: 22%;
+    border-color: #0c27ac;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    background-color: #0c27ac;
+    color: #3272ff;
+    font-size: 120%;
+    position: absolute;
+}
+
+ .buttons:hover {
+    border-color: #3272ff;
+    background-color: #3272ff;
+    color: white;
+    cursor: pointer;
+  }
+
+.altern{
+  margin-top: 80%;
+  margin-left: -2%;
+}
+
+a {
+  position: absolute;
+  margin-top: 22%;;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  color: black;
+}
+
