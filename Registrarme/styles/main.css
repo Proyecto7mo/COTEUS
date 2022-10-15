@@ -97,6 +97,7 @@ input[type="submit"]
 
 #incaptcha{
     position: absolute;
+
     margin-top: 17%;
     margin-left: -21%;
 }
@@ -105,6 +106,7 @@ input[type="submit"]
     position: absolute;
     margin-left: 9%;
     margin-top: 70%;
+    text-decoration: none;
 }
 
 #Registerbutton{
