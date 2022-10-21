@@ -1,7 +1,7 @@
 <div class="container">
   <link rel="stylesheet" type="text/css" href="../partials/HTML/seeker/seeker.css">
         <button class="filterbutton">
-          <img class="FiltroIcon"src="../img/seeker/Filtro_Icon.svg">
+          <img class="FiltroIcon" src="../img/seeker/Filtro_Icon.svg">
         </button>
         <form class="d-flex">
         <input

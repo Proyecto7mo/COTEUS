@@ -18,7 +18,7 @@
 .Register-box
 {
     width: 900px;
-    height: 600px;
+    height: 670px;
     background: #f5f7fb;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -95,20 +95,35 @@ input[type="submit"]
     float: left;
 }
 
+#incaptcha{
+    position: absolute;
+
+    margin-top: 17%;
+    margin-left: -21%;
+}
+
 #Textquestion{
     position: absolute;
-    margin-left: 5%;
-    margin-top: 60%;
+    margin-left: 9%;
+    margin-top: 70%;
+    text-decoration: none;
 }
 
 #Registerbutton{
     position: absolute;
-    margin-top: 55%;
-    margin-left: 42%;
+    margin-top: 40%;
+    margin-left: -57%;
 }
 
 #backbutton{
     position: absolute;
-    margin-top: 55%;
+    margin-top: 63%;
     margin-left: 75%;
+}
+
+#captcha{
+    position: absolute;
+    margin-top: 11.5%;
+    margin-left: -11%;
+     border-radius: 15px;
 }

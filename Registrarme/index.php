@@ -6,35 +6,32 @@
     header('Location: ../Home');
   }
 
-  require '../datos/datos.php'; 
-  require '../database/database.php'; // para obtener la variable conexion
-
   $messeage = '';
 
   if(ValidarCampos()){
-    
+    require '../class/employee.php';
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $nameuser = $_POST['nameuser'];
     $password = $_POST['password'];
     $email = $_POST['email'];
     $telephono = $_POST['telephono'];
-    
-    $query = "INSERT INTO users_t (name, surname, nameuser, password, email, telephono) VALUES (:name, :surname, :nameuser, :password, :email, :telephono)";
-    $stmt = $conexion->prepare($query);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':surname', $surname);
-    $stmt->bindParam(':nameuser', $nameuser);
+    $cuil = 0;
 
-    // hasheando la password
-    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
-    // insertando en la base de datos la password hasheada
-    $stmt->bindParam(':password', $password_hashed);
-    
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':telephono', $telephono);
+    $employee = new employee($name, $surname, $nameuser, $email, $password, $telephono, $cuil);
+    if($employee->signup() > 0){
 
-    $stmt->execute();
+      $record_employee = $employee->get();
+      $messeage = "../partials/messeages/userCreated.php";
+      $directory = "../files_users/" . $record_employee['nameuser'];
+      mkdir($directory, 0777, true);
+      $_SESSION['user_id'] = $record_employee['id_user'];
+      echo $record_employee['id_employee'];
+      header("Location: ../Home");
+      
+    }else{
+      $messeage = "../partials/messeages/userNotCreated.php";
+    }
   }
 
   function ValidarCampos(){
@@ -43,7 +40,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,48 +56,12 @@
 </head>
 
 <body class="body">
-  
+   
+<center>
 <div class="Register-box">
 
-  <div class="titulo">
-    <p>Registro</p>  
-  </div>
-
-  <img src="../img/COTEUS_Emblema_Azul.svg" class="logo" alt="Emblema COTEUS">
-  
-  <form action='index.php' method="post">
-    <div class="Columns">
-      <label for="Name">Nombre</label>
-      <input type='text' name='name' placeholder='Nombre' require>
-      <label for="Mail">Ingrese Email</label>
-      <input type='email' name='email' placeholder='Email' require>
-      
-      <!--Capcha-->
-      <label >Aqui va el captcha</label>
-      
-    </div>
-    <div class="Columns">
-      <label for="Last-Name">Apellido</label>
-      <input type='text' name='surname' placeholder='Apellido' require>
-      <label for="Username">Nombre de Usuario</label>
-      <input type='text' name='nameuser' placeholder='Usuario' require>
-      <label for="number">Teléfono</label>
-      <input type='number' name='telephono' require>
-    </div>
-    <div class="Columns">
-      <label for="Birth">Fecha de Nacimiento</label>
-      <input type="date" style="color: rgb(53, 50, 50);">
-      <label for="Password">Contraseña</label>
-      <input type='password' name='password' require>
-      <label for="confirm_password">Confirmar Contraseña</label>
-      <input type='password' name='confirm_password' require>
-    </div> 
-  </form>
-  
-  <a href="../Login" style="color: black;" id="Textquestion">¿Ya tienes una cuenta?</a>
-  <input type="submit" value="Crear cuenta" id="Registerbutton">
-  <input onclick="window.location.href = '../index.php'"  type="submit" value="Volver" id="backbutton">
-
+<div class="titulo">
+<p>Registro</p>  
 </div>
 
     <img src="../img/COTEUS_Emblema_Azul.svg" class="logo" alt="Emblema COTEUS">
@@ -108,19 +69,22 @@
     <form action='index.php' method="post">
       <div class="Columns">
         <label for="Name">Nombre</label>
-        <input type='text' name='name' placeholder='Nombre' require>
-        <label for="Mail">Ingrese Email</label>
-        <input type='email' name='email' placeholder='Email' require>
+        <input type='text' name='name' require>
+        <label for="Mail">Email</label>
+        <input type='email' name='email' require>
+        <label for="Mail">CUIL</label>
+        <input type='number' name='cuil' require>
         
         <!--Capcha-->
-        <label >Aqui va el captcha</label>
+        <img src="https://localhost/COTEUS/Registrarme/resources/captcha.php" id="captcha">
+        <input type="text" id="incaptcha" name='captcha' require>
         
       </div>
       <div class="Columns">
         <label for="Last-Name">Apellido</label>
-        <input type='text' name='surname' placeholder='Apellido' require>
+        <input type='text' name='surname' require>
         <label for="Username">Nombre de Usuario</label>
-        <input type='text' name='nameuser' placeholder='Usuario' require>
+        <input type='text' name='nameuser' require>
         <label for="number">Teléfono</label>
         <input type='number' name='telephono' require>
       </div>
@@ -141,7 +105,7 @@
 </center>
 
   <?php
-    // require '../partials/HTML/footer/footer.php';
+    require '../partials/HTML/footer/footer.php';
   ?>
 </body>
 </html>

@@ -1,0 +1,29 @@
+.nav-item{
+     border: solid 1px #2BF1F2;
+     border-radius: 20px;
+     margin-left: 2%;
+ }
+
+ .nav-item:hover{
+	border-radius: 20px;
+	background-color: #0C27AC;
+ }
+.nav-item{
+	background-color: white;
+}
+
+#navtext:hover{
+	color: white;
+}
+
+/*--------------------          Barra de herramientas          --------------------*/
+
+.toolICON{
+	height: 50px;
+	margin-right: 10px;
+		}
+
+.toolICON:hover{
+	cursor: pointer;
+	filter: invert(25%) sepia(96%) saturate(4000%) hue-rotate(190deg) brightness(97%) contrast(107%);
+	    }

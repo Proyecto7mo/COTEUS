@@ -1,69 +1,58 @@
 <?php
 
-require "../datos/datos.php";
-
 class employee{
 
-  private $name;
-  private $surname;
-  private $email;
-  private $nameemployee;
-  private $password;
-  private $cuil;
+  public $name;
+  public $surname;
+  public $email;
+  public $username;
+  public $password;
+  public $telephono;
+  public $cuil;
 
-  public function __construct($name = "n/n", $surname = "n/n", $email = "nn@nn.com", $nameemployee = "n/n", $password = "n/n", $cuil = "00-00000000-00"){
+  public function __construct($name = "n/n", $surname = "n/n", $username = "n/n", $email = "nn@nn.com", $password = "n/n", $telephono="00-0000-0000", $cuil = 0){
     $this->name = $name;
-    $this->email = $email;
     $this->surname = $surname;
-    $this->nameemployee = $nameemployee;
+    $this->username = $username;
+    $this->email = $email;
     $this->password = $password;
+    $this->telephono=$telephono;
     $this->cuil = $cuil;
   }
   
-  public static function get($employee){
-    
-    $record_employee = datos::get_employee($employee->email);
-    return (count($record_employee) > 0) ? $record_employee : null;
-  }
-
-  public function signup(){
-    
-  }
-
-  public function login(){
+  public function get(){
+    require_once "../datos/datos.php";
+    $employee = datos::get_employee($this);
     
     $result = null;
-    echo "<br> de \$employee->login = " .  $this->to_string();
-    
-    echo "|INI --> ACA ANDA from login" . "<br>";
-      $record = datos::get_employee($this);
-    echo "|END --> ACA ANDA from login" . "<br>";
 
-    if(count($record) > 0){
-      //if ((password_verify($this->password, $record['password'])) && ($this->email == $record['email'])) {
-      if (($this->password == $record['password']) && ($this->email == $record['email'])) {
-        $result = $record['email'];
-      }
+    if($employee) {
+      $result = $employee;
     }
-    
-    $message = isset($result) ? '../partials/messages/EmployeeRegistred.html' : '../partials/messages/EmployeeNotRegistred.html';
 
     return $result;
   }
 
-  public static function registred($employee_email){
+  public function signup(){
     
     require "../datos/datos.php";
-    $records = datos::get_employee($employee_email);
+    $result = 0;
 
-    if(count($records) > 0) echo "REGISTRADO";
-    else echo "NO REGISITRADO";
+    if(datos::insert_employee($this) > 0){
+      $result = 1;
+    }else{
+      $result = -1;
+    }
 
-    return count($records) > 0;
+    return $result;
   }
 
   public function uploadfile(){
     
+  }
+
+  public static function joingroup($user_id, $groups_id){
+    datos::join_group($user_id, $groups_id);
   }
 
   public function to_string(){
@@ -71,8 +60,31 @@ class employee{
       "Nombre: " . $this->name . "<br>" . 
       "Apellido: " . $this->surname . "<br>" . 
       "Email: " . $this->email . "<br>" . 
-      "NameEmployee: " . $this->nameemployee . "<br>" .
+      "NameEmployee: " . $this->username . "<br>" .
       "Password: " . $this->password . "<br>" .
       "Cuil: " . $this->cuil . "<br>";
+  }
+
+  public static function view_files($employee_folder){
+    $lista = null;
+    $directory = "../files_users/" . $employee_folder;
+    
+    $directory_handler = opendir($directory);
+
+    return $directory_handler;
+   
+    while($item = readdir($directory_handler)){
+      if($item != "." && $item != ".."){
+        if(is_dir($directory . $item)){
+          $lista .= "<li>Carpeta <a href='https://localhost/COTEUS/files_users/$employee_folder/$item' target='_blank'>$item</a></li>";
+        }
+        else{
+          $lista .= "<li>Archivo <a href='https://localhost/COTEUS/files_users/$employee_folder/$item' target='_blank'>$item</a></li>";
+        }
+      }
+    }
+
+    //return $lista;
+    
   }
 }

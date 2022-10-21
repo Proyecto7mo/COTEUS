@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-3">
           <div class="">
-            <h6 class="footer-heading text-uppercase text-white">Información</h6>
+            <h6 class="text-uppercase text-white">Información</h6>
             <ul class="list-unstyled footer-link mt-4">
               <li><a href="">Páginas</a></li>
               <li><a href="">Nuestro equipo</a></li>
@@ -14,7 +14,7 @@
 
         <div class="col-lg-3">
           <div class="">
-            <h6 class="footer-heading text-uppercase text-white">Nosotros</h6>
+            <h6 class="text-uppercase text-white">Nosotros</h6>
             <ul class="list-unstyled footer-link mt-4">
               <li><a href="">¿Quiénes somos?</a></li>
               <li><a href="">¿Qué hacemos?</a></li>
@@ -24,7 +24,7 @@
 
         <div class="col-lg-2">
           <div class="">
-            <h6 class="footer-heading text-uppercase text-white">Ayuda</h6>
+            <h6 class="text-uppercase text-white">Ayuda</h6>
             <ul class="list-unstyled footer-link mt-4">
               <li><a href="">Registro</a></li>
               <li><a href="">Inicio de sesión</a></li>
@@ -35,7 +35,7 @@
 
         <div class="col-lg-4">
           <div class="">
-            <h6 class="footer-heading text-uppercase text-white">Contacto</h6>
+            <h6 class="text-uppercase text-white">Contacto</h6>
             <p class="contact-info mt-4"></p>
             <p class="contact-info">coteus45@gmail.com</p>
             <div class="mt-5">

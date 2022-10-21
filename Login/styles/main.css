@@ -1,87 +1,103 @@
 body {
-  margin: 0;
-  padding: 0;
-  background: url(../img/typing.webp) no-repeat center top;
-  background-size: cover;
-  font-family: sans-serif;
-  height: 100vh;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: all;
+  background-color: #0c27ac;
+  background-image: url(../../img/carpetas.svg);
 }
-::placeholder {color: rgb(53, 50, 50);}
+
 .login-box {
-  width: 320px;
-  height: 420px;
-  background: #009EFA;
-  color: rgb(0, 0, 0);
+  width: 300px;
+  height: 450px;
+  background: #f5f7fb;
   border-radius: 20px;
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  box-sizing: border-box;
+  margin-top: 5%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 5%;
+  position: relative;
   padding: 70px 30px;
 }
 
-.login-box .avatar {
-  width: 155px;
-  height: 115px;
-  border-radius: 50%;
+.logo {
+  position: relative;
+  width: 170px;
+  margin-top: -15%;
+  margin-left: 20%;
+}
+
+.title{
+  position: relative;
+  color: #0c27ac;
+  font-family: 'Colonna MT', sans-serif;
+  font-size: 40px;
+  margin-top: 5%;
+  margin-left: 7%;
+}
+
+form{
   position: absolute;
-  top: -50px;
-  left: calc(43% - 50px);
+  margin-top: -5%;
 }
 
-.login-box h1 {
-  margin: 0;
-  padding: 0 0 20px;
-  text-align: center;
-  font-size: 22px;
+label{
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.login-box label {
-  margin: 0;
-  padding: 0;
-  font-weight: bold;
-  display: block;
-}
-
-.login-box input {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.login-box input[type="text"], .login-box input[type="password"] {
+.txtspace{
+  margin-bottom: 7%;
+  height: 40px;
+  width: 300px;
   border: none;
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid black;
   background: transparent;
   outline: none;
-  height: 40px;
-  color: rgb(0, 0, 0);
+  color: black;
   font-size: 16px;
 }
 
-.login-box input[type="submit"] {
-  border: none;
-  outline: none;
-  height: 40px;
-  background-image: linear-gradient(to right ,#0683cc, rgb(23, 86, 202));
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-  border-radius: 20px;
+.alert{
+  position: absolute;
+  margin-top: -7%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 80%;
+  color: red;
+  display: none;
 }
 
-.login-box input[type="submit"]:hover {
-  cursor: pointer;
-  background: #0653c7;
-  /*color: #000;*/
+.buttons
+{
+    margin-top: 5%;
+    margin-left: 22%;
+    border-color: #0c27ac;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    background-color: #0c27ac;
+    color: #3272ff;
+    font-size: 120%;
+    position: absolute;
 }
 
-.login-box a {
+ .buttons:hover {
+    border-color: #3272ff;
+    background-color: #3272ff;
+    color: white;
+    cursor: pointer;
+  }
+
+.altern{
+  margin-top: 80%;
+  margin-left: -2%;
+}
+
+a {
+  position: absolute;
+  margin-top: 22%;;
   text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   line-height: 20px;
-  color: rgb(0, 0, 0);
+  color: black;
 }
 
-.login-box a:hover {
-  color: rgb(0, 0, 0);
-}

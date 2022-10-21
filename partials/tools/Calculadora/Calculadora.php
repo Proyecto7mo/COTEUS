@@ -1,15 +1,17 @@
-<div class="object">  
+  <div class="object">  
   
-  <link rel="stylesheet" type="text/css" href="Calculadora.css">
-  <div class="hd"></div>
-  <div class="display">
-    <div class="Result">
-      <div id="ResulAnt"></div>
-      <div id="ResultAct"></div>
+  <!-- Calculadora -->
+  
+    <link rel="stylesheet" type="text/css" href="Calculadora.css">
+    <div class="hd"></div>
+    <div class="display">
+        <div class="Result">
+        <div id="ResulAnt"></div>
+        <div id="ResultAct"></div>
     </div>
-  </div>
-  <div class="bd">
-    <button class="Esp"   id="but1" name="Save" onclick="SendData()"> <span class="BEText">Guardar</span> </button>
+    </div>
+    <div class="bd">
+    <button class="Esp"   id="but1" name="Save" onclick="SendData()"><span class="BEText">Guardar</span></button>
     <button class="Cient" id="but3" name="Operador"><span>Rad</span></button>
     <button class="Cient" id="but4" name="Operador"><span>Deg</span></button>
     <button class="Cient" id="but5" name="Operador"><span>x!</span></button>
@@ -62,28 +64,31 @@
     <button class="Basic" id="but48" name="numero"><span>0</span></button>
     <button class="Basic" id="but49" name="Operador"><span>=</span></button>
     <button class="Basic" id="but50" name="Operador" value="sumar"><span>+</span></button>
-  </div>
+    </div>
 
-  <!-- head buttons -->
-  
-  <div class="close"><p class="xclic">X</p></div>
-  
-  <button class="explainforms" id="bform" onclick="FLiForms()"><p class="fclic">Fórmulas</p></button>
-  
-  <!-- Lista de fórmulas desplegable -->
+    <!-- head buttons -->
+    
+    <div class="close"><p class="xclic">X</p></div>
+    <button class="explainforms" id="bform" onclick="FLiForms()"><p class="fclic">F&oacute;rmulas</p></button>
+    
+    <!-- Lista de fórmulas desplegable -->
 
-  <div class="listforms">
+    <div class="listforms">
+    
     <div class="lfbody">
-      <div class="formulas">
+
+    <div class="formulas">
         <div class="FormName"></div>
         <div class="FormBody"></div>
-      </div>
-      <button class="AgForms" id="bAgForms" onclick="AgregarForm()"><p class="AgFormsText">+</p></button>
     </div>
-  </div>
 
-  <script src="Display.js"></script>
-  <script src="Calculos.js"></script>
-  <script src="Calculadora.js"></script>
+    <button class="AgForms" id="bAgForms" onclick="AgregarForm()"><p class="AgFormsText">+</p></button>
 
-</div>
+    </div>
+
+    </div>
+
+    <script src="Display.js"></script>
+    <script src="Calculos.js"></script>
+    <script src="Calculadora.js"></script>
+    </div>
