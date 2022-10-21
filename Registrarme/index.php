@@ -6,18 +6,35 @@
     header('Location: ../Home');
   }
 
-  require '../datos/datos.php';
+  require '../datos/datos.php'; 
+  require '../database/database.php'; // para obtener la variable conexion
 
   $messeage = '';
 
-  if(ValidarCampos()){  
-    $consulta = insertar_empleado($_POST['name'], $_POST['surname'], $_POST['nameuser'], $_POST['password'], $_POST['email'], $_POST['telephono']);
+  if(ValidarCampos()){
+    
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $nameuser = $_POST['nameuser'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $telephono = $_POST['telephono'];
+    
+    $query = "INSERT INTO users_t (name, surname, nameuser, password, email, telephono) VALUES (:name, :surname, :nameuser, :password, :email, :telephono)";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':surname', $surname);
+    $stmt->bindParam(':nameuser', $nameuser);
 
-    if ($consulta) {
-      $message = require '../partials/messeages/userCreated.php';
-    } else {
-      $message = require '../partials/messeages/userNotCreated.php';
-    }
+    // hasheando la password
+    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+    // insertando en la base de datos la password hasheada
+    $stmt->bindParam(':password', $password_hashed);
+    
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':telephono', $telephono);
+
+    $stmt->execute();
   }
 
   function ValidarCampos(){
@@ -86,9 +103,45 @@
 
 </div>
 
-<?php
-  require '../partials/HTML/footer/footer.php';
-?>
+    <img src="../img/COTEUS_Emblema_Azul.svg" class="logo" alt="Emblema COTEUS">
+    
+    <form action='index.php' method="post">
+      <div class="Columns">
+        <label for="Name">Nombre</label>
+        <input type='text' name='name' placeholder='Nombre' require>
+        <label for="Mail">Ingrese Email</label>
+        <input type='email' name='email' placeholder='Email' require>
+        
+        <!--Capcha-->
+        <label >Aqui va el captcha</label>
+        
+      </div>
+      <div class="Columns">
+        <label for="Last-Name">Apellido</label>
+        <input type='text' name='surname' placeholder='Apellido' require>
+        <label for="Username">Nombre de Usuario</label>
+        <input type='text' name='nameuser' placeholder='Usuario' require>
+        <label for="number">Teléfono</label>
+        <input type='number' name='telephono' require>
+      </div>
+      <div class="Columns">
+        <label for="Birth">Fecha de Nacimiento</label>
+        <input type="date" style="color: rgb(53, 50, 50);">
+        <label for="Password">Contraseña</label>
+        <input type='password' name='password' require>
+        <label for="confirm_password">Confirmar Contraseña</label>
+        <input type='password' name='confirm_password' require>
+      </div> 
+      <input type="submit" value="Crear cuenta" id="Registerbutton">
+    </form>
+    <a href="../Login" style="color: black;" id="Textquestion">¿Ya tienes una cuenta?</a>
+    <input onclick="window.location.href = '../index.php'"  type="submit" value="Volver" id="backbutton">
 
+  </div>
+</center>
+
+  <?php
+    // require '../partials/HTML/footer/footer.php';
+  ?>
 </body>
 </html>
