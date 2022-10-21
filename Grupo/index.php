@@ -1,3 +1,60 @@
+<?php
+  require '../class/groups.php';
+  $groupname=$_POST['groupname'];
+  $admin=$_POST['adminname'];
+  if(isset($groupname)){
+  $grcreated=new groups($groupname, $admin);
+  //$grcreated->newgroup();
+  //require("../database/database.php");
+  /*$query="select * from groups_t where name = 'B'";
+  $stmt=$conexion->prepare($query);
+  $stmt->execute();
+  $reg=$stmt->fetch(PDO::FETCH_ASSOC);*/
+
+  /*if(is_null($reg['id_groups']))
+  {
+    echo "nada";
+  }*/
+
+  $server = 'localhost';
+  $username = 'root';
+  $password = '123456789';
+  $database = 'pruebagrupo';
+
+  //require '../database/database.php';
+  
+  try{
+    $conexion = new PDO("mysql: host = $server; dbname = $database;", $username, $password);
+  }catch(PDOException $e){
+    echo "FALLE";
+    die('Conexion a Base de Datos Fallida ' . $e->getMessage());
+  }
+
+  $query="INSERT INTO groups_t (id_groups, name, admin) VALUES (93, 'z', 'z')";
+  $stmt=$conexion->prepare($query);
+  if(!$stmt)
+  {
+    echo "NO SE PREPARO";
+  }
+  /*$groupname="aa";
+  $admin="bb";
+  $id=32;
+  $idfi=22;
+  $idch=45;
+  $stmt->bindParam(':id', $id);*/
+  //$stmt->bindParam(':names', $groupname);
+  //$stmt->bindParam(':admins', $admin);
+  /*$stmt->bindParam(':idfi', $idfi);
+  $stmt->bindParam(':idch', $idch);*/
+  $stmt->execute();
+  if($stmt->execute()){
+    echo "ejecute consulta";
+  }
+  else{
+    echo "FALLEEE EN EL EXECUTE()";
+  }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +113,19 @@
   </div>
 
   <!-- titulo -->
+
+  <!-- PRUEBA DE GRUPOS -->
+  <div class="group-list">
+    <form action="./" method="post">
+      <label for="groupname"></label>
+      <input type="text" name="groupname" id="groupname">
+      <br>
+      <label for="adminname"></label>
+      <input type="text" name="adminname" id="adminname">
+      <input type="submit" value="Crear Grupo">
+    </form>
+  </div>
+  <!-- PRUEBA DE GRUPOS -->
 
   <div class="functions">
     <?php

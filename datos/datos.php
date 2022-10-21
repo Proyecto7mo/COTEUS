@@ -1,51 +1,74 @@
 <?php
-
-  function obtener_empleado($user_id){
-
-    require("../database/database.php");
-
-    $records = $conexion->prepare('SELECT * FROM users_t WHERE id_user = :id_user');
-    $records->bindParam(':id_user', $user_id);
-    $records->execute();
-
-    $results = $records->fetch(PDO::FETCH_ASSOC);
-
-    return $results;    
-  }
-
-  function insertar_empleado($name, $surname, $nameuser, $email, $telephono, $name_enterprise){
+  
+  //require '../database/database.php';
+  
+  class datos{
     
-    require("../database/database.php");
+    public static function get_employee($employee_id){
 
-    $query = "INSERT INTO users_t (name, surname, nameuser, password, email, telephono) VALUES (:name, :surname, :nameuser, :password, :email, :telephono)";
-    $stmt = $conexion->prepare($query);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':surname', $surname);
-    $stmt->bindParam(':nameuser', $nameuser);
+      require("../database/database.php");
+  
+      $records = $conexion->prepare('SELECT * FROM employees_t WHERE id_employee = :id_employee');
+      $records->bindParam(':id_employee', $employee_id);
+      $records->execute();
+  
+      $results = $records->fetch(PDO::FETCH_ASSOC);
+  
+      return $results;
+    }
+  
+    public static function insert_employee($employee){
+      
+      require("../database/database.php");
+  
+      $query = "INSERT INTO employees_t (name, surname, nameuser, password, email, telephono) VALUES (:name, :surname, :nameuser, :password, :email, :telephono)";
+      $stmt = $conexion->prepare($query);
+      $stmt->bindParam(':name', $employee->name);
+      $stmt->bindParam(':surname', $employee->surname);
+      $stmt->bindParam(':nameemployee', $employee->nameuser);
+      $stmt->bindParam(':email', $employee->email);
+      $stmt->bindParam(':telephono', $employee->telephono);
+  
+      // hasheando la password
+      $password_hashed = password_hash($employee->password, PASSWORD_BCRYPT);
+      // insertando en la base de datos la password hasheada
+      $stmt->bindParam(':password', $password_hashed);
+  
+      return $stmt->execute();
+    }
+  
+    public static function insert_file($file)
+    {
+      require("../database/database.php");
+      
+      $query = "INSERT INTO files_t (name, path, owner, lastModification, state) VALUES (:name, :path, :owner, :lastModification, :state)";
+      $stmt = $conexion->prepare($query);
+      $stmt->bindParam(':name', $file->name);
+      $stmt->bindParam(':path', $file->path);
+      $stmt->bindParam(':owner', $file->owner);
+      $stmt->bindParam(':lastModification', $file->last_modification);
+      $stmt->bindParam(':state', $file->state);
+      
+      return $stmt->execute();
+    }
 
-    // hasheando la password
-    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
-    // insertando en la base de datos la password hasheada
-    $stmt->bindParam(':password', $password_hashed);
-    
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':telephono', $telephono);
+    public static function insert_group(){
 
-    return $stmt->execute();
-  }
-
-  function insertar_archivo($file_path, $file_name, $employee_name, $last_modification, $state)
-  {
-    require("../database/database.php");
-    
-    $query = "INSERT INTO files_t (name, path, owner, lastModification, state) VALUES (:name, :path, :owner, :lastModification, :state)";
-    $stmt = $conexion->prepare($query);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':path', $path);
-    $stmt->bindParam(':owner', $owner);
-    $stmt->bindParam(':lastModification', $last_modification);
-    $stmt->bindParam(':state', $state);
-    
-    return $stmt->execute();
+      require("../database/database.php");
+      $query="INSERT INTO groups_t (id_groups, name, admin, id_files, id_chores) VALUES (:id, :name, :admin, :idfi, :idch)";
+      $stmt=$conexion->prepare($query);
+      $groupname="aa";
+      $admin="bb";
+      $id=32;
+      $idfi=22;
+      $idch=45;
+      $stmt->bindParam(':id', $id);
+      $stmt->bindParam(':name', $groupname);
+      $stmt->bindParam(':admin', $admin);
+      $stmt->bindParam(':idfi', $idfi);
+      $stmt->bindParam(':idch', $idch);
+      echo "estoy en insertgroupv2";
+      return $stmt->execute();
+    }
   }
 ?>
