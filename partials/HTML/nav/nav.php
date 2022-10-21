@@ -1,7 +1,7 @@
 <nav
       class="navbar navbar-expand-lg navbar-light d-flex justify-content-center">
 
-    <link rel="stylesheet" type="text/css" href="../partials/HTML/nav/style.css">
+    <link rel="stylesheet" type="text/css" href="C:/xampp/htdocs/COTEUS/partials/HTML/nav/nav.css">
 
       <div class="container-fluid">
 
@@ -25,6 +25,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../Grupo/" id="navtext">GRUPO</a>
+            </li>
+            <!--<li class="nav-item">
+              <a class="nav-link" href="../Gantt/" id="navtext">GANTT</a>
+            </li>-->
+            <li class="nav-item">
+              <a class="nav-link" href="../Cuenta/" id="navtext">CUENTA</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../partials/logout.php" id="navtext">SALIR</a>
@@ -139,4 +145,4 @@
         
 	</div>
   
-</nav>
+    </nav>

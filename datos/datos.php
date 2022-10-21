@@ -76,9 +76,12 @@ class datos{
   } */
 
 /*   public static function employee_registered($employee){
+
     // indica si esta registrado <<el nameuser>> del empleado.
+
     require "../database/database.php"; // para obtener la variable de conexion
     $registered = false;
+
     $stmt = $conexion->prepare('SELECT id_user, nameuser, password FROM employees_t WHERE nameuser = :nameuser');
     $stmt->bindParam(':nameuser', $employee->email);
     $stmt->execute();

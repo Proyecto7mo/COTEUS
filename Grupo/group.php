@@ -70,10 +70,11 @@ else{
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COTEUS | Grupo</title>
-   	<link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
+    <title>Nav</title>
     
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="./css's/footer.css" />
+    <link rel="stylesheet" href="./css's/nav.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -98,6 +99,9 @@ else{
     <!-- bootstrap -->
   </head>
   <body>
+    <header class="d-flex justify-content-center">
+      <img src="./assets/Coteus Logo Blanco.png" alt="" />
+    </header>
 
     <div class="header">
         <?php
@@ -110,13 +114,66 @@ else{
     <?php
       include "../partials/HTML/nav/nav.php";
     ?>
-    <label for="link"></label>
+    <!--<label for="link"></label>-->
     </div>
+<!--
+    <nav
+      class="navbar navbar-expand-lg navbar-light d-flex justify-content-center"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand me-5 p-4" href="#">COTEUS</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-outline-info rounded-pill shadow-sm mb bg-body rounded"
+                aria-current="page"
+                href="#"
+                >INICIO</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/grupos.html">GRUPOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./pages/cuenta.html">CUENTA</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+-->
     <!-- FIN HEADER -->
 
+    <!-- HERO -->
+    <?php
+    //echo $name;
+    ?>
     <h1 class="titulo"><?php echo($name);?></h1>
 
-    <div class="row m-5" class="cuadros">
+    <!--<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />-->
+
+    
+
+    <div class="row m-5">
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body" id="cb">
@@ -138,6 +195,28 @@ else{
             ?>
             <div class="d-flex m-3" id="mas">
               <button class="card-title p-2 flex-grow-1" id="user"><h5 class="card-title p-2 flex-grow-1"><?php echo($key->nameuser."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <div id='tip'>".$tipo."</div>");?></h5></button>
+              <!--<h5 class="card-title p-2 flex-grow-1"><?php //echo($key->nameuser); ?></h5>-->
+
+              <!--<button class="btn btn-primary" type="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-dots"
+                  width="30"
+                  height=""
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#ffffff"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <circle cx="5" cy="12" r="1" />
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                </svg>
+              </button>-->
+
               
                 <?php
                 if($useractip=="A"){
@@ -155,7 +234,7 @@ else{
                     <form id="Aumentar" action="group.php" method="POST" onsubmit="state();">
                       <input type="hidden" name="val" value="AumentarM">
                       <input type="hidden" name="iduser" value="'.$key->id_user.'">
-                      <input class="dropdown-item" type="submit" value="Subir rango">
+                      <input class="dropdown-item" type="submit" value="Aumentar rango">
                     </form>
                     <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alert()">Aumentar rango</a>-->
                   </li>
@@ -179,11 +258,107 @@ else{
                 }
                 ?>
 
+              <!--<div class="position-absolute">
+                <div class="dropdown">
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Opciones
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li>
+                      <a id="aumentar" class="dropdown-item" href="#" onclick="alert()">Aumentar rango</a>
+                    </li>
+                    <li>
+                      <a id="eliminar" class="dropdown-item" href="#" onclick="alert()">Eliminar miembro</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>-->
+
+              
+
             </div>
             <?php
             }
             ?>
-    
+            
+<!--
+            <div class="d-flex m-3">
+              <h5 class="card-title p-2 flex-grow-1">Integrante: Tobias</h5>
+
+              <button class="btn btn-primary" type="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-dots"
+                  width="30"
+                  height=""
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#ffffff"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <circle cx="5" cy="12" r="1" />
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="d-flex m-3">
+              <h5 class="card-title p-2 flex-grow-1">Integrante: Jeremias</h5>
+
+              <button class="btn btn-primary" type="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-dots"
+                  width="30"
+                  height=""
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#ffffff"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <circle cx="5" cy="12" r="1" />
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                </svg>
+              </button>
+            </div>
+            <div class="d-flex m-3">
+              <h5 class="card-title p-2 flex-grow-1">Integrante: Cristian</h5>
+
+              <button class="btn btn-primary" type="button">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-dots"
+                  width="30"
+                  height=""
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#ffffff"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <circle cx="5" cy="12" r="1" />
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="19" cy="12" r="1" />
+                </svg>
+              </button>
+            </div>
+          -->
           </div>
         </div>
       </div>
@@ -224,16 +399,18 @@ else{
                   </svg>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Subir</a></li>
-                  <li><a class="dropdown-item" href="#">Eliminar</a></li>
-                  <li><a class="dropdown-item" href="#">Descargar</a>
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <p class="card-text">Archivos del integrante</p>
+            <p class="card-text">Archivos del integrante...</p>
 
+            
             <div class="m-4">.</div>
             <div class="m-4">.</div>
             <div class="m-4">.</div>
@@ -251,7 +428,7 @@ else{
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
         <div class="card card-body">
-          <form method="POST" id="subTask" action="./" submit="document.getElementById('subTask').reset();">
+          <form method="POST" id="subTask" onsubmit="return agregarTask();">
             <div class="form-group">
               <input type="text" name="title" id="title" class="form-control" placeholder="Title" autofocus required>
             </div>
@@ -264,11 +441,12 @@ else{
               <textarea name="duracion" id="duracion" rows="2" class="form-control" placeholder="duracion"></textarea>
             </div>-->
 
-            <form action="../class/gant.php" method="post">
+            <!--<form action="../Gantt" method="post">
               <input type="hidden" name="idtask" value="">
+              <input type="hidden" name="grup" value="<?php //echo($idgrup); ?>">
               <input type="hidden" name="val" value="Eliminar">
               <input type="submit" value="Eliminar">
-            </form>
+            </form>-->
 
             <div class="form-group">
               <input type="date" name="f_inicio" id="f_inicio" class="form-control" placeholder="Fecha incio" autofocus required>
@@ -314,6 +492,13 @@ else{
                 integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
                 crossorigin="anonymous"
               ></script>
+              <!--<script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+                integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+                crossorigin="anonymous"
+              ></script>
+              -->
+              <!-- SWEET ALERT -->
               <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
               <script type="text/javascript" src="js/index.js"></script>
@@ -331,6 +516,82 @@ else{
     <?php
       require ("../partials/HTML/footer/footer.php");
     ?>
-    
+    <!--
+    <footer class="section bg-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="">
+              <h6 class="footer-heading text-uppercase text-white">
+                Informacion
+              </h6>
+              <ul class="list-unstyled footer-link mt-4">
+                <li><a href="">Pages</a></li>
+                <li><a href="">Nuestro equipo </a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <div class="">
+              <h6 class="footer-heading text-uppercase text-white">Nosotros</h6>
+              <ul class="list-unstyled footer-link mt-4">
+                <li><a href="">Quienes somos </a></li>
+                <li><a href="">Que hacemos</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-2">
+            <div class="">
+              <h6 class="footer-heading text-uppercase text-white">Ayuda</h6>
+              <ul class="list-unstyled footer-link mt-4">
+                <li><a href="">Sign Up </a></li>
+                <li><a href="">Login</a></li>
+                <li><a href="">Politica y privacidad</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="">
+              <h6 class="footer-heading text-uppercase text-white">
+                Contactate con nosotros
+              </h6>
+              <p class="contact-info mt-4">
+                Contactate con nosotros a travaes de el siguente mail
+              </p>
+              <p class="contact-info">example@coteus.com</p>
+              <div class="mt-5">
+                 <ul class="list-inline">
+                                <li class="list-inline-item"><a href="#"><i class="fab facebook footer-social-icon fa-facebook-f"></i></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab twitter footer-social-icon fa-twitter"></i></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab google footer-social-icon fa-google"></i></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fab apple footer-social-icon fa-apple"></i></i></a></li>
+                            </ul> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <p class="footer-alt mb-0 f-14">2022 © Coteus, All Rights Reserved</p>
+      </div>
+    </footer>
+    -->
+
+    <!-- Footer -->
+
+    <!--<script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>-->
   </body>
 </html>

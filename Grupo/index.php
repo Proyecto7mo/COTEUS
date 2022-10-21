@@ -137,12 +137,12 @@
           <form method="POST" id="subTask" action="./" submit="document.getElementById('subTask').reset();">
             <div class="form-group">
               <input type="text" name="groupname" id="groupname" class="form-control" placeholder="Titulo del grupo" autofocus required>
-            </div>
-            <br>
+            </div><br>
+
             <div class="form-group">
               <textarea name="groupdesc" id="groupdesc" rows="4" class="form-control" placeholder="Descripcion del grupo"></textarea>
-            </div>
-            <br>
+            </div><br>
+
             <input type="submit" class="btn btn-success btn-block" value="Crear Grupo!!!">
           </form>
         </div>

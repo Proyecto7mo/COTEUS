@@ -23,9 +23,10 @@
 </head>
 
 <body class="body">
+
 	<center>
-	<div class="section">
-		<div class="content">
+	<div class="sectionr">
+		<div class="contentr">
 		<img src="img/COTEUS_Logo_Azul.svg" class="Clogo">
 		<div class="text_recuad">
 			<p id="firstext">

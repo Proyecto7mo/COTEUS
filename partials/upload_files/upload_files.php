@@ -19,13 +19,13 @@ if($_FILES){
       $path = $directorio . $file_name;
   
       if(move_uploaded_file($file_tmp_name, $path)){
-        echo "EL archivo $file_name se ha subido correctamente. <br>";
+        echo "se subio el archivo $file_name correctamente. <br>";
       }else{
-        echo "Ha occurrido un error. No se ha podido subir el archivo correctamente.";
+        echo "ocurrio un error, no se subio el archivo.";
       }
   
       closedir($opened_directory);
-      
+
       header('Location: http://localhost/coteus/Home/');
     }
   }
