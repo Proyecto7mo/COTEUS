@@ -1,1 +1,0 @@
-/* Validar los datos ingresados */

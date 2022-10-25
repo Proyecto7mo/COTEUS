@@ -1,128 +1,139 @@
 .body{
-    background-repeat: repeat;
-    background-attachment: fixed;
-    background-size: all;
-    background-color: #0c27ac;
-    background-image: url(../../img/carpetas.svg);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: all;
+  background-color: #0c27ac;
+  background-image: url(../../img/carpetas.svg);
 }
 
 .titulo{
-    position: absolute;
-    color: #0c27ac;
-    font-family: 'Colonna MT', sans-serif;
-    font-size: 80px;
-    margin-left: 3%;
-    margin-top: -3%;
+  position: absolute;
+  color: #0c27ac;
+  font-family: 'Colonna MT', sans-serif;
+  font-size: 80px;
+  margin-left: 3%;
+  margin-top: -3%;
 }
 
 .Register-box
 {
-    width: 900px;
-    height: 670px;
-    background: #f5f7fb;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    align-content: center;
-    border-radius: 20px;
-    display: grid;
-    background-color: #f5f7fb;
-    position: relative;
-    font-family: arial;
+  width: 900px;
+  height: 680px;
+  background: #f5f7fb;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  align-content: center;
+  border-radius: 20px;
+  display: grid;
+  background-color: #f5f7fb;
+  position: relative;
+  font-family: arial;
 }
 
 form{
-    position: relative;
+  position: relative;
 }
 
-label
-{
-    font-size: 20px;
-    font-weight: bold;
-    display: block;
-}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+-webkit-appearance: none;
 }
 
 input[type="text"], .Register-box input[type="password"], .Register-box input[type="email"], .Register-box input[type="date"], .Register-box input[type="number"], .Register-box input[type="confirm_password"]
 {
-    width: 200px;
-    height: 30px;
-    border: none;
-    background: transparent;
-    outline: none;
-    border-bottom: 1px solid rgb(0, 0, 0);
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    font-size: 15px;
+  width: 200px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  outline: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  font-size: 15px;
 }
 
-input[type="submit"]{
-    margin-top: 10%;
-    border-color: #0c27ac;
-    border-radius: 20px;
-    width: 150px;
-    height: 40px;
-    background-color: #0c27ac;
-    color: #3272ff;
-    font-size: 120%;
-    position: absolute;
+input[type="submit"]
+{
+  margin-top: 10%;
+  border-color: #0c27ac;
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  background-color: #0c27ac;
+  color: #3272ff;
+  font-size: 120%;
+  position: absolute;
 }
 
- input[type="submit"]:hover {
-    border-color: #3272ff;
-    background-color: #3272ff;
-    color: white;
-    cursor: pointer;
-  }
+input[type="submit"]:hover {
+  border-color: #3272ff;
+  background-color: #3272ff;
+  color: white;
+  cursor: pointer;
+}
 
 .logo {
-    width: 170px;
-    height: 130px;
-    border-radius: 50%;
-    position: absolute;
-    top: 30px;
-    left: calc(47% - 50px);
-  }
+  width: 170px;
+  height: 130px;
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  left: calc(47% - 50px);
+}
 
 .Columns
 {
-    margin-top: 30px;
-    width: 33.333333333333333%;
-    float: left;
+  margin-top: 30px;
+  width: 33.333333333333333%;
+  float: left;
 }
 
-#incaptcha{
-    position: absolute;
 
-    margin-top: 17%;
-    margin-left: -21%;
+.logon_label{
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+margin-top: 10%;
 }
 
 #Textquestion{
-    position: absolute;
-    margin-left: 9%;
-    margin-top: 70%;
-    text-decoration: none;
+  position: absolute;
+  margin-left: 9%;
+  margin-top: 71.5%;
+  text-decoration: none;
 }
 
 #Registerbutton{
-    position: absolute;
-    margin-top: 40%;
-    margin-left: -57%;
+  position: absolute;
+  margin-top: 48.5%;
+  margin-left: -57%;
 }
 
 #backbutton{
-    position: absolute;
-    margin-top: 63%;
-    margin-left: 75%;
+  position: absolute;
+  margin-top: 65%;
+  margin-left: 75%;
 }
 
 #captcha{
-    position: absolute;
-    margin-top: 11.5%;
-    margin-left: -11%;
-     border-radius: 15px;
+  position: absolute;
+  margin-top: 11.5%;
+  margin-left: -11%;
+   border-radius: 15px;
+}
+
+#incaptcha{
+  position: absolute;
+  margin-top: 14%;
+  margin-left: -21%;
+}
+
+.alerts{
+position: absolute;
+margin-top: -0.5%;
+margin-left: 4%;
+color: red;
+font-size: 80%;
+font-weight: bold;
+display: none;
 }
