@@ -31,8 +31,6 @@
 }
 
 form{
-    top: 10%;
-    /*margin-top: px;*/
     position: relative;
 }
 
@@ -61,9 +59,8 @@ input[type="text"], .Register-box input[type="password"], .Register-box input[ty
     font-size: 15px;
 }
 
-input[type="submit"],[type="button"]
-{
-    /*margin-top: 10%;*/
+input[type="submit"]{
+    margin-top: 10%;
     border-color: #0c27ac;
     border-radius: 20px;
     width: 150px;
@@ -71,7 +68,7 @@ input[type="submit"],[type="button"]
     background-color: #0c27ac;
     color: #3272ff;
     font-size: 120%;
-    /*position: absolute;*/
+    position: absolute;
 }
 
  input[type="submit"]:hover {
@@ -113,23 +110,19 @@ input[type="submit"],[type="button"]
 
 #Registerbutton{
     position: absolute;
-    top: 110%;
-    right: 10%;
-    /*margin-top: 20%;*/
-    /*margin-left: 42%;*/
+    margin-top: 40%;
+    margin-left: -57%;
 }
 
 #backbutton{
     position: absolute;
-    /*margin-top: 20%;*/
-    margin-right: 1%;
-    top: 110%;
-    right: 40%;
+    margin-top: 63%;
+    margin-left: 75%;
 }
 
-#backbutton:hover {
-    border-color: #3272ff;
-    background-color: #3272ff;
-    color: white;
-    cursor: pointer;
-  }
+#captcha{
+    position: absolute;
+    margin-top: 11.5%;
+    margin-left: -11%;
+     border-radius: 15px;
+}

@@ -58,11 +58,11 @@
 <body class="body">
    
 <center>
-  <div class="Register-box">
+<div class="Register-box">
 
-  <div class="titulo">
-    <p>Registro</p>  
-  </div>
+<div class="titulo">
+<p>Registro</p>  
+</div>
 
     <img src="../img/COTEUS_Emblema_Azul.svg" class="logo" alt="Emblema COTEUS">
     
@@ -75,11 +75,10 @@
         <label for="Mail">CUIL</label>
         <input type='number' name='cuil' require>
         
-        <div class="captcha">
-        <label >Repite el codigo</label>
-        <img src="https://localhost/COTEUS/Registrarme/resources/captcha.php" alt="" style="border-radius: 15px;">
-        </div>
-        <input type="text" name="captcha" id="captcha">
+        <!--Capcha-->
+        <img src="https://localhost/COTEUS/Registrarme/resources/captcha.php" id="captcha">
+        <input type="text" id="incaptcha" name='captcha' require>
+        
       </div>
       <div class="Columns">
         <label for="Last-Name">Apellido</label>
@@ -88,7 +87,6 @@
         <input type='text' name='nameuser' require>
         <label for="number">Teléfono</label>
         <input type='number' name='telephono' require>
-        <input onclick="window.location.href = '../index.php'"  type="button" value="Volver" id="backbutton">
       </div>
       <div class="Columns">
         <label for="Birth">Fecha de Nacimiento</label>
@@ -97,19 +95,17 @@
         <input type='password' name='password' require>
         <label for="confirm_password">Confirmar Contraseña</label>
         <input type='password' name='confirm_password' require>
-        <input type="submit" value="Crear cuenta" id="Registerbutton">
       </div> 
-      
+      <input type="submit" value="Crear cuenta" id="Registerbutton">
     </form>
     <a href="../Login" style="color: black;" id="Textquestion">¿Ya tienes una cuenta?</a>
-    <!--<input onclick="window.location.href = '../index.php'"  type="submit" value="Volver" id="backbutton">-->
+    <input onclick="window.location.href = '../index.php'"  type="submit" value="Volver" id="backbutton">
 
-  
+  </div>
 </center>
 
   <?php
-    //echo include $messeage;
-    require ("../partials/HTML/footer/footer.php");
+    require '../partials/HTML/footer/footer.php';
   ?>
 </body>
 </html>

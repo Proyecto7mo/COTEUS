@@ -6,7 +6,7 @@
 	background-color: #0c27ac;
 }
 
-.sectionr{
+.section{
 	width: 550px;
 	height: 550px;
 	margin-top: 2%;
@@ -17,7 +17,7 @@
 	position: relative;
 }
 
-.contentr{
+.content{
 	position: absolute;
 }
 
