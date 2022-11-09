@@ -9,49 +9,23 @@
   require "../class/employee.php";
   
   if($_POST){
-    $nameuser_input = $_POST['nameuser'];
+    $email_input = $_POST['email'];
     $password_input = $_POST['password'];
     $message = "";
     
-    $employee = new employee("nombne_n_n", "apellido_n_n", $nameuser_input, "email_n_@_n", $password_input, "00-0000-0000", 0);
-    $record = $employee->get();
+    $employee_record = employee::login($email_input, $password_input);
 
-    if($record){
-      // si el registro existe quiere decir que solo el nameuser_input esta registrado porque se obtiene el
-      // registro a traves del nameuser_input, pero falta verificar la contraseña
-
-      if(password_verify($employee->password, $record['password'])){
-        $_SESSION['user_id'] = $record['id_user'];
-        $message = '../partials/messeages/userLoged.php';
-        header("Location: ../Home");
-      }else{
-        $message = '../partials/messeages/userNotLoged.php';
-      }
+    if($employee_record){
+      
+      $_SESSION['user_id'] = $employee_record['id_employee'];
+      $message = '../partials/messages/userLoged.php';
+      header("Location: ../Home");
     }
     else{
-      $message = '../partials/messeages/userNotLoged.php';
+      $message = '../partials/messages/userNotLoged.php';
     }
   }
 
-  /* require '../database/database.php';
-  $message = '';
-
-  if (!empty($_POST['nameuser']) && !empty($_POST['password'])) {
-  $records = $conexion->prepare('SELECT id_user, nameuser, password FROM employees_t WHERE nameuser = :nameuser');
-  $records->bindParam(':nameuser', $_POST['nameuser']);
-  
-  $records->execute();
-  
-  $results = $records->fetch(PDO::FETCH_ASSOC);
-
-  if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
-    $_SESSION['user_id'] = $results['id_user'];
-    $message = '../partials/messeages/userLoged';
-    header("Location: ../Home");
-  } else {
-    $message = '../partials/messeages/userNotLoged';
-  }
-  } */
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +42,7 @@
   <body>
 
     <p>
-    <?php if($_POST) echo include $message ?>
+      <?php if($_POST) include $message ?>
     </p>
     
     <div class="login-box">
@@ -76,8 +50,8 @@
       <h1>Inicio de sesión</h1>
       <form action="index.php" method="post" autocomplete="off">
         <!-- USERNAME INPUT -->
-        <label for="Username">Usuario</label>
-        <input type="text" placeholder="Ingrese Usuario" name="nameuser">
+        <label for="Username">Email</label>
+        <input type="text" placeholder="Ingrese Usuario" name="email">
         <!-- PASSWORD INPUT -->
         <label for="Password">Contraseña</label>
         <input type="password" placeholder="Ingrese Contraseña" name="password">

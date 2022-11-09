@@ -3,14 +3,14 @@
   session_start();
   
   if (!isset($_SESSION['user_id'])) {
-    //require "../datos/datos.php";
+    require "../datos/datos.php";
     
-    //$employee = datos::get_employee_id($_SESSION['user_id']);
+    $employee = datos::get_employee('id_employee', $_SESSION['user_id']);
 
-    /*if(!$employee->username){
+    if(!$employee->username){
       echo "<script> alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.'); window.location.href = 'http://localhost/COTEUS/Login'; </script>";
-    }*/
-    echo "<script> /*alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.');*/ window.location.href = 'http://localhost/COTEUS/Login'; </script>";
+    }
+    echo "<script> alert('Parece que no iniciaste sesion. Te vamos a redireccionar al Login.'); window.location.href = 'http://localhost/COTEUS/Login'; </script>";
   }
   if(isset($_SESSION['url'])){
     //header($_SESSION['url']);
@@ -90,12 +90,12 @@
                 <?php
                   // echo $_SESSION['user_id'];
                   require_once "../datos/datos.php";
-                  $record = datos::get_employee_id($_SESSION['user_id']);
+                  $record = datos::get_employee('id_employee', $_SESSION['user_id']);
                   echo $record['name'];
                 ?> !
               </h5>
               <p class="card-text">
-                <?= $record['nameuser'] ?>
+                <?= $record['username'] ?>
               </p>
               <p class="card-text">
                 <small class="text-muted">Lorem, ipsum dolor.</small>
@@ -118,8 +118,8 @@
     <!-- ARCHIVOS -->
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
       <?php
-        $directory_handler=employee::view_files($record['nameuser']);
-        $employee_folder=$record['nameuser'];
+        $directory_handler = employee::view_files($record['username']);
+        $employee_folder = $record['username'];
         $directory = "../files_users/" . $employee_folder;
         while($item = readdir($directory_handler)){
           if($item != "." && $item != ".."){
@@ -149,7 +149,7 @@
             <small class="text-muted">Last updated 3 mins ago</small>
           </div>-->
         </div>
-        <?php//employee::view_files($record['nameuser']); ?>
+        <?php //employee::view_files($record['username']); ?>
       </div>
       <?php
           }

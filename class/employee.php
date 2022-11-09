@@ -2,6 +2,7 @@
 
 class employee{
 
+  public $id_employee;
   public $name;
   public $surname;
   public $email;
@@ -20,16 +21,13 @@ class employee{
     $this->cuil = $cuil;
   }
   
-  public function get(){
+  public function get($value, $key = 'id_employee'){
     require_once "../datos/datos.php";
-    $employee = datos::get_employee($this);
     
-    $result = null;
-
-    if($employee) {
-      $result = $employee;
-    }
-
+    $employee = datos::get_employee($key, $value);
+    
+    $result = ($employee) ? $employee : null;
+    
     return $result;
   }
 
@@ -38,13 +36,22 @@ class employee{
     require "../datos/datos.php";
     $result = 0;
 
-    if(datos::insert_employee($this) > 0){
-      $result = 1;
-    }else{
-      $result = -1;
-    }
-
+    $result = (datos::insert_employee($this) > 0) ? 1 : -1;
+    
     return $result;
+  }
+
+  public static function login($email, $password){
+    require_once "../datos/datos.php";
+    
+    $employee_record = datos::get_employee('email', $email); // devuelve false si no lo encuentra
+
+    if($employee_record && password_verify($password, $employee_record['password'])){
+      return $employee_record;
+    }
+    
+    return false;
+
   }
 
   public function uploadfile(){
