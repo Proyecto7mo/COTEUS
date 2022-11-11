@@ -5,6 +5,7 @@ class datos{
   public static function get_employee($key, $value){
 
     // devuelve false si no se obtiene el empleado.
+    // sino, devuelve el registro.
     require("../database/database.php");
 
     $stmt = $conexion->prepare("SELECT * FROM `employees_t` WHERE `$key` = '$value'");
@@ -20,78 +21,97 @@ class datos{
     require '../database/database.php'; // para obtener la variable conexion
     $result = 0;
 
-    $query = "INSERT INTO employees_t (name, surname, nameuser, password, email, telephono, cuil) VALUES (:name, :surname, :nameuser, :password, :email, :telephono, :cuil)";
+    $query = "
+      INSERT INTO employees_t
+        (`name`, `surname`, `username`, `password`, `email`, `telephone`, `cuil`) VALUES
+        (:name,  :surname,  :username,  :password,  :email,  :telephone,  :cuil)
+    ";
+    // hasheando la password
+    $password_hashed = password_hash($employee->password, PASSWORD_BCRYPT);
+    
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':name', $employee->name);
     $stmt->bindParam(':surname', $employee->surname);
-    $stmt->bindParam(':nameuser', $employee->username);
+    $stmt->bindParam(':username', $employee->username);
+    $stmt->bindParam(':password', $password_hashed);
     $stmt->bindParam(':email', $employee->email);
-    $stmt->bindParam(':telephono', $employee->telephono);
+    $stmt->bindParam(':telephone', $employee->telephono);
     $stmt->bindParam(':cuil', $employee->cuil);
 
-    // hasheando la password
-    $password_hashed = password_hash($employee->password, PASSWORD_BCRYPT);
-    // insertando en la base de datos la password hasheada
-    $stmt->bindParam(':password', $password_hashed);
-
-    if($stmt->execute())
-    {
-      $result = 1;
-    }
-    else{
-      $result = -1;
-    }
-
+    $result = ($stmt->execute()) ? 1 : -1;
+    
     return $result;
   }
 
-  public static function get_file($file){
-
-  }
-  public static function insert_file($file, $employee)
-  {
-    require("../database/database.php");
+  public static function get_groups_of_file($file){
+    require "../database/database.php";
     
     $query = "
-      INSERT INTO `files_t`
-      ( name) VALUES
-      (:name);
-
-      INSERT INTO `files_encapsulation_t`
-        ( id_file,  id_employee) VALUES
-        (:id_file, :id_employee);
-    ";
+      SELECT
+        `groups_t`.`name` AS 'group_name'
+      FROM `files_encapsulation_t`
+        INNER JOIN `files_t`
+          ON `files_encapsulation_t`.`id_file` = `files_t`.`id_file`
+        INNER JOIN `groups_t`
+          ON `files_encapsulation_t`.`id_group` = `groups_t`.`id_group`
+      WHERE `files_t`.`id_file` = $file->id_file AND `files_encapsulation_t`.`id_employee` IS NOT NULL;
+      ";
     
     $stmt = $conexion->prepare($query);
-    $stmt->bindParam(':name', $file->name);
-    
-    $stmt->bindParam(':id_file', $file->id_file);
-    $stmt->bindParam(':id_file', $employee->id_employee);
-
-    $result = $stmt->execute();
-
-    return isset($result) ? true : false;
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-/*   public static function employee_registered($employee){
-
-    // indica si esta registrado <<el nameuser>> del empleado.
-
-    require "../database/database.php"; // para obtener la variable de conexion
-    $registered = false;
-
-    $stmt = $conexion->prepare('SELECT id_employee, nameuser, password FROM employees_t WHERE nameuser = :nameuser');
-    $stmt->bindParam(':nameuser', $employee->email);
-    $stmt->execute();
+  public static function get_files_employee($employee){
+    require "../database/database.php";
     
-    $records = $stmt->fetch(PDO::FETCH_ASSOC);
-    if($records > 0){
-      $registered = true;
-    }else{
-      $registered = false;
-    }
-    return $registered;
-  } */
+    $query = "
+      SELECT
+        `files_t`.`id_file`,
+        `files_t`.`name`,
+        `files_t`.`last_modification`
+      FROM `files_encapsulation_t`
+        INNER JOIN `files_t`
+          ON `files_encapsulation_t`.`id_file` = `files_t`.`id_file`
+        INNER JOIN `employees_t`
+          ON `files_encapsulation_t`.`id_employee` = `employees_t`.`id_employee`
+        WHERE `employees_t`.`id_employee` = $employee->id_employee
+        GROUP BY `files_t`.`name`;
+      ";
+    
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function get_file_uploaded(){
+    require_once "../database/database.php";
+    $query = "SELECT MAX(files_t.id_file) AS id_file FROM files_t;";
+    
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    $id_file_recent = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $id_file_recent['id_file'];
+  }
+
+  public static function insert_file($employee, $file)
+  {
+    require "../database/database.php";
+    
+    $query = "
+    INSERT INTO files_t (`name`) VALUES (:name);
+    INSERT INTO files_encapsulation_t
+      (`id_employee`, `id_file`) VALUES
+      (:id_employee, (SELECT MAX(id_file) id_file FROM files_t WHERE name = :name));
+    ";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':name', $file);
+    $stmt->bindParam(':id_employee', $employee->id_employee);
+    
+    return $stmt->execute();
+  }
+
 
   public static function insert_group($group){
     require '../database/database.php'; // para obtener la variable conexion
