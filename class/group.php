@@ -11,9 +11,9 @@
       $this->groupdesc = $groupdesc;
     }
 
-    public function get(){
-      require "../datos/datos.php";
-
+    public static function get($id_group){
+      //require "../datos/datos.php";
+      return datos::get_group($id_group);
     }
 
     public function newgroup(){

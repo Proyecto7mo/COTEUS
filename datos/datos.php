@@ -14,8 +14,6 @@ class datos{
 
     return $record;
   }
-
-
   public static function insert_employee($employee){
     
     require '../database/database.php'; // para obtener la variable conexion
@@ -42,7 +40,132 @@ class datos{
     
     return $result;
   }
+  
+  public static function public_file_in_group($employee, $id_file, $id_group){
+    
+    // verificar si el archivo ya se esta compartiendo con otro grupo.
+    // caso verdadero: insertar otro registro del mismo archivo 
+    //    y empleado pero con el nuevo grupo
+    // case falso: actualizar el registro de la encapsulacion del
+    //    archivo. cambiar el campo id_grupo de NULL al grupo nuevo.
+    
+    require "../database/database.php";
 
+    /*
+      SELECT
+        *
+      FROM `files_encapsulation_t`
+      WHERE
+        `files_encapsulation_t`.`id_file` = '1' AND
+        `files_encapsulation_t`.`id_employee` = '98' AND
+        `files_encapsulation_t`.`id_group` IS NULL;
+    */
+    $query = "
+      SELECT
+        *
+      FROM `files_encapsulation_t`
+      WHERE
+        `files_encapsulation_t`.`id_file` = '$id_file' AND
+        `files_encapsulation_t`.`id_employee` = '$employee->id_employee' AND
+        `files_encapsulation_t`.`id_group` IS NULL;
+    ";
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    $exists_file_shared = count($stmt->fetchAll(PDO::FETCH_ASSOC)) > 0;
+
+    if(!$exists_file_shared){
+
+      $query = "
+        INSERT INTO `files_encapsulation_t`
+        (`id_file`, `id_employee`, `id_group`) VALUES
+        ($id_file, $employee->id_employee, $id_group)
+      ";
+
+      $stmt = $conexion->prepare($query);
+      return $stmt->execute();
+    }
+    else{
+      // actualizar el archivo privado a publico
+      $query = "
+        UPDATE `files_encapsulation_t`
+        SET
+          `id_group` = '$id_group'
+        WHERE
+          `id_file` = $id_file AND
+          `id_employee` = '$employee->id_employee' AND
+          `id_group` IS NULL
+      ";
+      $stmt = $conexion->prepare($query);
+      return $stmt->execute();
+      /* $sql = "
+        SELECT
+          files_t.name,
+          employees_t.name,
+          groups_t.name
+        FROM files_encapsulation_t
+          RIGHT JOIN files_t
+            ON files_encapsulation_t.id_file = files_t.id_file
+          LEFT JOIN employees_t
+            ON files_encapsulation_t.id_employee = employees_t.id_employee
+          LEFT JOIN groups_t
+            ON files_encapsulation_t.id_group = groups_t.id_group
+      "; */
+    }
+  }
+  public static function get_file_groups($file){
+    require "../database/database.php";
+    
+    $query = "
+      SELECT
+        `groups_t`.`name` AS 'group_name'
+      FROM `files_encapsulation_t`
+        INNER JOIN `files_t`
+          ON `files_encapsulation_t`.`id_file` = `files_t`.`id_file`
+        INNER JOIN `groups_t`
+          ON `files_encapsulation_t`.`id_group` = `groups_t`.`id_group`
+      WHERE `files_t`.`id_file` = $file->id_file AND `files_encapsulation_t`.`id_employee` IS NOT NULL;
+      ";
+    
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function employee_has_file($employee, $id_file){
+    
+    require "../database/database.php";
+
+    $query = "
+      SELECT
+        `files_t`.`id_file`
+      FROM `files_encapsulation_t`
+        INNER JOIN `files_t`
+          ON `files_encapsulation_t`.`id_file` = `files_t`.`id_file`
+        INNER JOIN `employees_t`
+          ON `files_encapsulation_t`.`id_employee` = `employees_t`.`id_employee`
+      WHERE
+        `files_encapsulation_t`.`id_employee` = $employee->id_employee AND
+        `files_encapsulation_t`.`id_file` = $id_file
+    ";
+    
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    
+    return $stmt->fetchAll(PDO::FETCH_ASSOC) > 0; 
+  }
+
+  public static function get_file($id_file){
+    require "../database/database.php";
+    
+    $query = "
+      SELECT * FROM `files_t`
+      WHERE `files_t`.`id_file` = $id_file
+    ";
+    
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
   public static function get_groups_of_file($file){
     require "../database/database.php";
     
@@ -60,6 +183,91 @@ class datos{
     $stmt = $conexion->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+  public static function get_groups_of_file_without_sharing($employee, $file){
+    // los archivos comparten grupos en los que esta el empleado.
+    // cada archivo puede ser compartido por varios grupos, este metodo obtiene
+    // aquellos grupos a los que no tiene el archivo compartiendo.
+
+    // obtener todos los grupos que estan compartidos con el archivo. guardarlos en un arreglo de las id.
+    // obtener todos los grupos que esten compartidos o no con el archivo. guardarlos en un arreglo de las id.
+    // obtener en base a los dos arreglos la diferencia. desde todos los grupos en referencia a los que
+    // se comparten el archivo
+
+    require "../database/database.php";
+    
+    $employee_groups = datos::get_groups($employee->id_employee); // records objects
+    $groups_ids_array = [];
+    foreach ($employee_groups as $employee_group) {
+      $groups_ids_array[] = $employee_group->id_group;
+    }
+    
+    $query = "
+      SELECT
+        `groups_t`.`id_group`
+      FROM `files_encapsulation_t`
+        INNER JOIN `files_t`
+          ON `files_encapsulation_t`.`id_file` = `files_t`.`id_file`
+        INNER JOIN `groups_t`
+          ON `files_encapsulation_t`.`id_group` = `groups_t`.`id_group`
+      WHERE
+        `files_t`.`id_file` = $file->id_file AND
+        `files_encapsulation_t`.`id_group` IS NOT NULL;
+    ";
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    $groups_sharing_records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $shared_groups_ids_array = [];
+    foreach ($groups_sharing_records as $group_sharing_record) {
+      $shared_groups_ids_array[] = $group_sharing_record['id_group'];
+    }
+
+    $ids_de_grupos_no_compartiendo = [];
+    
+    if(count($shared_groups_ids_array) > 0){
+      foreach ($groups_ids_array as $id) {
+        if (!in_array($id, $shared_groups_ids_array)) {
+          $ids_de_grupos_no_compartiendo[] = $id;
+        }
+      }
+    } else $ids_de_grupos_no_compartiendo = $groups_ids_array;
+    
+    $query = "
+      SELECT
+        *
+      FROM `groups_t`
+      WHERE
+    ";
+
+    if(count($ids_de_grupos_no_compartiendo) > 0){
+      foreach ($ids_de_grupos_no_compartiendo as $key => $id) {
+        if($key != 0){ // no es la primera ves
+          $query .= " OR ";
+        }
+        $query .= "`groups_t`.`id_group` = $id";
+      }
+    } else $query .= "0";
+
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // var_dump($records);
+    // echo "groups_ids_array: " . datos::to_string_array($groups_ids_array);
+    // echo "shared_groups_ids_array: " . datos::to_string_array($shared_groups_ids_array);
+    // echo "ids_de_grupos_no_compartiendo: " . datos::to_string_array($ids_de_grupos_no_compartiendo);
+    
+    return $records;
+  }
+
+  public static function to_string_array($array){
+    $result = "<br>";
+
+    foreach ($array as $key => $value) {
+      $result .= "[" . $key . "]" . ": " . $value . "<br>";
+    }
+
+    return $result;
   }
 
   public static function get_files_employee($employee){
@@ -83,7 +291,6 @@ class datos{
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
-
   public static function get_file_uploaded(){
     require_once "../database/database.php";
     $query = "SELECT MAX(files_t.id_file) AS id_file FROM files_t;";
@@ -94,9 +301,7 @@ class datos{
     
     return $id_file_recent['id_file'];
   }
-
-  public static function insert_file($employee, $file)
-  {
+  public static function insert_file($employee, $file){
     require "../database/database.php";
     
     $query = "
@@ -111,8 +316,6 @@ class datos{
     
     return $stmt->execute();
   }
-
-
   public static function insert_group($group){
     require '../database/database.php'; // para obtener la variable conexion
     $result = 0;
@@ -143,53 +346,49 @@ class datos{
     else{
       $result = -1;
     }
-    /*$conexion=null;
-    require '../database/database.php'; // para obtener la variable conexion
-    $query2="SELECT MAX(id_group) idgroup FROM groups_t WHERE admin=:admin";
-    $stmt2->$conexion->prepare($query2);
-    $stmt2->bindParam(':admin', $group->admin);
-    $stmt2->execute();
-    $idgroup=$stmt2->fetch();
-    $stmt->execute();
-    $stmt2->execute();
-    require '../database/database.php'; // para obtener la variable conexion
-    $query3="INSERT INTO members_t (id_employee, id_group, fecha) VALUES (:id_employee, (SELECT MAX(id_group) idgroup FROM groups_t WHERE admin=:admin), :fecha)";
-    $stmt3->$conexion->prepare($query3);
-    $stmt3->bindParam(':id_employee', $group->admin);
-    $stmt3->bindParam(':id_group', $idgroup[0]);
-    $stmt3->execute();*/
 
     return $result;
   }
-
+  public static function get_group($value, $key = "id_group"){
+    require "../database/database.php";
+    
+    $query = "
+      SELECT * FROM `groups_t`
+      WHERE `groups_t`.`$key` = '$value';
+    ";
+    
+    $stmt = $conexion->prepare($query);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
   public static function get_groups($user_id){
     require '../database/database.php'; // para obtener la variable conexion
     $result;
 
     $query="
-    SELECT
-      groups_t.id_group,
-      groups_t.id_admin,
-      groups_t.name,
-      groups_t.description,
-      groups_t.date_created,
-      groups_t.key
-    FROM groups_t
-      INNER JOIN members_t
-        ON groups_t.id_group = members_t.id_group
-      INNER JOIN employees_t
-        ON employees_t.id_employee = members_t.id_employee
-    WHERE employees_t.id_employee=:id_employee
+      SELECT
+        `groups_t`.`id_group`,
+        `groups_t`.`id_admin`,
+        `groups_t`.`name`,
+        `groups_t`.`description`,
+        `groups_t`.`date_created`,
+        `groups_t`.`key`
+      FROM `groups_t`
+        INNER JOIN `members_t`
+          ON `groups_t`.`id_group` = `members_t`.`id_group`
+        INNER JOIN `employees_t`
+          ON `employees_t`.`id_employee` = `members_t`.`id_employee`
+      WHERE `employees_t`.`id_employee` = :id_employee
+      ORDER BY `groups_t`.`id_group` DESC
     ";
 
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_employee', $user_id);
     $stmt->execute();
-    $resp=$stmt->fetchAll(PDO::FETCH_OBJ);
+    $resp = $stmt->fetchAll(PDO::FETCH_OBJ);
 
     return $resp;
   }
-
   public static function get_all_groups(){
     require '../database/database.php'; // para obtener la variable conexion
 
@@ -200,7 +399,6 @@ class datos{
 
     return $resp;
   }
-
   public static function join_group($user_id, $group_id){
     require '../database/database.php'; // para obtener la variable conexion
     $result;
@@ -214,7 +412,6 @@ class datos{
     $stmt->bindParam(':id_group', $group_id);
     $stmt->execute();
   }
-
   public static function get_members_gr($id_group){
     require '../database/database.php'; // para obtener la variable conexion
 

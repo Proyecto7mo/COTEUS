@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2022 a las 23:21:52
+-- Tiempo de generación: 15-11-2022 a las 02:44:46
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -100,7 +100,9 @@ INSERT INTO `employees_t` (`id_employee`, `name`, `surname`, `username`, `passwo
 (80, 'Carlos', 'Acuña', 'carlos0101', '$2y$10$RDFVbrCNerfNMs02QlOp..0eXxkPNeDYLBL/LiR54GmomZTUNedhu', 'carlos@gmail.com', 11326565, 2, NULL),
 (81, 'paez', 'paez', 'paez0101', '$2y$10$TbFT.YJJv5Vul74zVA99buLvD6ZXzNCvZp29XVKw5tvBN1gwuwrSu', 'paez@gmail.com', 1231321, 1, NULL),
 (87, 'admin', 'admin', 'Jesús', '$2y$10$3fdK6iuvMDsXN3Oo1y3Ikup9Pc7SLJ6HXVUcG2tnu/o3Uy0WXV.bq', 'admin@mail.com', 1234567, 20, NULL),
-(93, 'y', 'y', 'Tobias', '$2y$10$salv1mZo8O4azNi3AbiVU.UNireaYXdR8Was4PooAHEL/q9Ao4ccS', 'y@y', 6, 0, NULL);
+(93, 'y', 'y', 'Tobias', '$2y$10$salv1mZo8O4azNi3AbiVU.UNireaYXdR8Was4PooAHEL/q9Ao4ccS', 'y@y', 6, 0, NULL),
+(97, 'ramiro', 'chara', 'ramiro0101', '$2y$10$kj1MVN1TvSKqFIovns/KU.dSKChpDVdnq4hfFiT9gdZW.gBT46e36', 'ramiro@ramiro.com', 113266764, 321, NULL),
+(98, 'a', NULL, 'a', '$2y$10$7uDKNpji3lbuANA48.W/D.WQTIrP0iQyFhEDv1NFMWNPp3VmlP6Vm', 'a@a', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,7 @@ INSERT INTO `employees_t` (`id_employee`, `name`, `surname`, `username`, `passwo
 
 CREATE TABLE `files_encapsulation_t` (
   `id_file` int(11) NOT NULL,
-  `id_employee` int(11) DEFAULT NULL,
+  `id_employee` int(11) NOT NULL,
   `id_group` int(11) DEFAULT NULL
 ) ;
 
@@ -119,10 +121,11 @@ CREATE TABLE `files_encapsulation_t` (
 --
 
 INSERT INTO `files_encapsulation_t` (`id_file`, `id_employee`, `id_group`) VALUES
-(2, NULL, 31),
-(1, 87, 31),
-(1, 87, 50),
-(7, 87, NULL);
+(1, 98, 55),
+(1, 98, 56),
+(2, 98, NULL),
+(3, 98, NULL),
+(4, 98, NULL);
 
 -- --------------------------------------------------------
 
@@ -133,17 +136,18 @@ INSERT INTO `files_encapsulation_t` (`id_file`, `id_employee`, `id_group`) VALUE
 CREATE TABLE `files_t` (
   `id_file` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
-  `lastmodification` datetime NOT NULL DEFAULT current_timestamp()
+  `last_modification` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `files_t`
 --
 
-INSERT INTO `files_t` (`id_file`, `name`, `lastmodification`) VALUES
-(1, '1.txt', '2022-10-21 21:03:03'),
-(2, '2.txt', '2022-10-21 21:03:36'),
-(7, '3.txt', '2022-11-04 18:41:38');
+INSERT INTO `files_t` (`id_file`, `name`, `last_modification`) VALUES
+(1, '01_example.txt', '2022-11-14 22:35:06'),
+(2, '02_example.txt', '2022-11-14 22:35:51'),
+(3, '03_example.txt', '2022-11-14 22:35:51'),
+(4, '04_example.txt', '2022-11-14 22:35:51');
 
 -- --------------------------------------------------------
 
@@ -172,7 +176,14 @@ INSERT INTO `groups_t` (`id_group`, `name`, `description`, `date_created`, `key`
 (36, 'p', '', '2022-09-23 04:42:58', 67, 58),
 (38, 'Grupo Lorem', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut a', '2022-10-11 04:01:18', 65579, 93),
 (42, 'Grupo de ejemplo', 'Este es un grupo de ejemplo', '2022-10-11 04:08:34', 5402, 93),
-(50, 'COTEUS', 'coteu es una genialidad!', '2022-10-21 08:53:37', 48578, 57);
+(50, 'COTEUS', 'coteu es una genialidad!', '2022-10-21 08:53:37', 48578, 57),
+(52, 'bb', 'aa', '2022-11-05 20:15:39', 91334, 56),
+(53, '<b>GG</b>', 'lkmlkm', '2022-11-05 21:25:06', 62768, 56),
+(54, 'qwe', 'ewq', '2022-11-05 21:25:31', 54683, 56),
+(55, 'grupo', 'descripcion', '2022-11-10 21:52:55', 15632, 98),
+(56, 'dbdgb', 'dfgb', '2022-11-12 15:20:22', 63614, 98),
+(57, 'qqq', 'www', '2022-11-12 21:55:17', 80553, 98),
+(58, 'hh', 'jjjj', '2022-11-14 20:50:58', 79844, 98);
 
 -- --------------------------------------------------------
 
@@ -182,7 +193,7 @@ INSERT INTO `groups_t` (`id_group`, `name`, `description`, `date_created`, `key`
 
 CREATE TABLE `members_t` (
   `id_employee` int(11) NOT NULL,
-  `id_groups` int(11) NOT NULL,
+  `id_group` int(11) NOT NULL,
   `rol` char(1) NOT NULL,
   `date_joined` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -191,10 +202,20 @@ CREATE TABLE `members_t` (
 -- Volcado de datos para la tabla `members_t`
 --
 
-INSERT INTO `members_t` (`id_employee`, `id_groups`, `rol`, `date_joined`) VALUES
+INSERT INTO `members_t` (`id_employee`, `id_group`, `rol`, `date_joined`) VALUES
+(56, 53, 'A', '2022-11-05 21:25:06'),
+(56, 54, 'A', '2022-11-05 21:25:31'),
 (57, 50, 'A', '2022-10-21 08:53:37'),
+(57, 54, 'M', '2022-11-09 16:26:30'),
+(60, 54, 'M', '2022-11-09 16:26:57'),
+(80, 53, 'M', '2022-11-05 21:31:46'),
 (93, 38, 'A', '2022-10-11 04:01:18'),
-(93, 42, 'A', '2022-10-11 04:08:34');
+(93, 42, 'A', '2022-10-11 04:08:34'),
+(97, 54, 'M', '2022-11-09 16:37:16'),
+(98, 55, 'A', '2022-11-10 21:52:55'),
+(98, 56, 'A', '2022-11-12 15:20:22'),
+(98, 57, 'A', '2022-11-12 21:55:17'),
+(98, 58, 'A', '2022-11-14 20:50:58');
 
 --
 -- Índices para tablas volcadas
@@ -229,15 +250,16 @@ ALTER TABLE `employees_t`
 -- Indices de la tabla `files_encapsulation_t`
 --
 ALTER TABLE `files_encapsulation_t`
-  ADD KEY `id_file` (`id_file`),
-  ADD KEY `id_employee` (`id_employee`),
-  ADD KEY `id_group` (`id_group`);
+  ADD UNIQUE KEY `encapsulation` (`id_file`,`id_employee`,`id_group`) USING BTREE,
+  ADD KEY `rl_files_encapsulation_employees` (`id_employee`),
+  ADD KEY `rl_files_encapsulation_groups` (`id_group`);
 
 --
 -- Indices de la tabla `files_t`
 --
 ALTER TABLE `files_t`
-  ADD PRIMARY KEY (`id_file`);
+  ADD PRIMARY KEY (`id_file`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indices de la tabla `groups_t`
@@ -250,9 +272,9 @@ ALTER TABLE `groups_t`
 -- Indices de la tabla `members_t`
 --
 ALTER TABLE `members_t`
-  ADD PRIMARY KEY (`id_employee`,`id_groups`) USING BTREE,
+  ADD PRIMARY KEY (`id_employee`,`id_group`) USING BTREE,
   ADD KEY `id_employee` (`id_employee`),
-  ADD KEY `id_group` (`id_groups`) USING BTREE;
+  ADD KEY `id_group` (`id_group`) USING BTREE;
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -268,25 +290,25 @@ ALTER TABLE `calculators_t`
 -- AUTO_INCREMENT de la tabla `chores_t`
 --
 ALTER TABLE `chores_t`
-  MODIFY `id_choresl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id_choresl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de la tabla `employees_t`
 --
 ALTER TABLE `employees_t`
-  MODIFY `id_employee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id_employee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT de la tabla `files_t`
 --
 ALTER TABLE `files_t`
-  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `groups_t`
 --
 ALTER TABLE `groups_t`
-  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- Restricciones para tablas volcadas
@@ -309,9 +331,9 @@ ALTER TABLE `employees_t`
 -- Filtros para la tabla `files_encapsulation_t`
 --
 ALTER TABLE `files_encapsulation_t`
-  ADD CONSTRAINT `files_encapsulation_t_ibfk_1` FOREIGN KEY (`id_file`) REFERENCES `files_t` (`id_file`),
-  ADD CONSTRAINT `files_encapsulation_t_ibfk_2` FOREIGN KEY (`id_employee`) REFERENCES `employees_t` (`id_employee`),
-  ADD CONSTRAINT `files_encapsulation_t_ibfk_3` FOREIGN KEY (`id_group`) REFERENCES `groups_t` (`id_group`);
+  ADD CONSTRAINT `rl_files_encapsulation_employees` FOREIGN KEY (`id_employee`) REFERENCES `employees_t` (`id_employee`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rl_files_encapsulation_files` FOREIGN KEY (`id_file`) REFERENCES `files_t` (`id_file`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rl_files_encapsulation_groups` FOREIGN KEY (`id_group`) REFERENCES `groups_t` (`id_group`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `groups_t`
@@ -324,7 +346,7 @@ ALTER TABLE `groups_t`
 --
 ALTER TABLE `members_t`
   ADD CONSTRAINT `rl_members_employees` FOREIGN KEY (`id_employee`) REFERENCES `employees_t` (`id_employee`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `rl_members_groups` FOREIGN KEY (`id_groups`) REFERENCES `groups_t` (`id_group`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rl_members_groups` FOREIGN KEY (`id_group`) REFERENCES `groups_t` (`id_group`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
