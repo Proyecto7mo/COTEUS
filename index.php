@@ -18,7 +18,6 @@
 	<title>COTEUS</title>
 	
 	<link rel="stylesheet"  type="text/css"  href="styles/main.css">
-	<link rel="stylesheet" href="partials/general/main.css">
 
 	<link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -56,8 +55,11 @@
 		</div>
 	</div>
 	</center>
+
+	<link rel="stylesheet" href="partials/HTML/footer/footer.css">
   <?php
     require("partials/HTML/footer/footer.php");
   ?>
+
 </body>
 </html>
