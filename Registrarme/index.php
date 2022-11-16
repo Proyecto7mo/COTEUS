@@ -54,6 +54,14 @@
   <?php
     require("../partials/linkCSS.php");
   ?>
+
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
 </head>
 
 <body class="body">
@@ -84,7 +92,7 @@
         
         <!--Capcha-->
         <img src="https://localhost/COTEUS/Registrarme/resources/captcha.php" id="captcha">
-        <input type="text" id="incaptcha" name='captcha' require>
+        <input type="text" class="slot" id="incaptcha" name='captcha' require>
         
       </div>
       
@@ -119,11 +127,11 @@
         <input type="checkbox" id="password_view" onclick="HideShow()"/><span>Mostrar contraseña</span>
       </div>
 
-      <input type="submit" value="Crear cuenta" id="Registerbutton">
+      <input type="submit" class="actbutton" id="Registerbutton" value="Crear cuenta">
     </form>
     
     <a href="../Login" style="color: black;" id="Textquestion">¿Ya tienes una cuenta?</a>
-    <input onclick="window.location.href = '../index.php'"  type="submit" value="Volver" id="backbutton">
+    <input onclick="window.location.href = '../index.php'"  type="submit" class="actbutton" id="backbutton" value="Volver">
 
   </div>
 </center>

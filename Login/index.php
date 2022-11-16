@@ -24,7 +24,8 @@
         $_SESSION['user_id'] = $record['id_user'];
         $message = '../partials/messeages/userLoged.php';
         header("Location: ../Home");
-      }else{
+      }
+      else{
         $message = '../partials/messeages/userNotLoged.php';
       }
     }
@@ -45,6 +46,16 @@
         <?php
           require '../partials/linkCSS.php'
         ?>
+
+      <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+      />
+
+      <link rel="stylesheet" href="styles/main.css">
+
     </head>
     <body>
 
@@ -57,28 +68,29 @@
 
             <form action="index.php" method="post" autocomplete="off" id="form">
               <!-- USERNAME INPUT -->
-              <label for="Username">Usuario</label>
-              <input class="txtspace" type="text" name="nameuser" id="Iname">
-              <p class="alert">Usuario y/o contraseña incorrectos</p>
-              <!-- PASSWORD INPUT -->
-              <label for="Password">Contraseña</label>
-              <input class="txtspace" type="password" name="password" id="Ipsw">
-              <p class="alert">Usuario y/o contraseña incorrectos</p>
-                <br>
-                <br>
-                    <input type="checkbox" id="password_view" onclick="HideShow()"/>
-                    <span id="checktext">Mostrar contraseña</span>
-              <div>
-                <input type="submit" class="buttons" value="Iniciar sesión" id="submit"></input>
-              </div>
+                <!-- USERNAME INPUT -->
+                <label for="Username" class="textform">Usuario</label>
+                <input class="txtspace" type="text" name="nameuser" id="Iname">
+                <p class="alert">Usuario y/o contraseña incorrectos</p>
+                <!-- PASSWORD INPUT -->
+                <label for="Password" class="textform">Contraseña</label>
+                <input class="txtspace" type="password" name="password" id="Ipsw">
+                <p class="alert">Usuario y/o contraseña incorrectos</p>
+                  <br>
+                  <br>
+                      <input type="checkbox" id="password_view" onclick="HideShow()"/>
+                      <span id="checktext">Mostrar contraseña</span>
+                <div>
+                  <input type="submit" class="buttons" id="submit" value="Iniciar sesión"></input>
+                </div>
             </form>
-            <div class="altern">
-              <br>
-              <br>
-              <button onclick="window.location.href='../'" class="buttons">Volver</button>
-              <a href="#">¿No recuerdas tu contraseña?</a>
-              <br>
-              <a href="../Registrarme/">¿No tienes una cuenta?</a>
+              <div class="altern">
+                    <br>
+                    <br>
+                    <button onclick="window.location.href='../'" class="buttons">Volver</button>
+                    <a class="links" href="#">¿No recuerdas tu contraseña?</a>
+                    <br>
+                    <a class="links" href="../Registrarme/">¿No tienes una cuenta?</a>
               </div>
           </div>
 
