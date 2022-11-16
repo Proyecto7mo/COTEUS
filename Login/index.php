@@ -9,28 +9,20 @@
   require "../class/employee.php";
   
   if($_POST){
-    $nameuser_input = $_POST['nameuser'];
+    $email_input = $_POST['email'];
     $password_input = $_POST['password'];
     $message = "";
     
-    $employee = new employee("nombne_n_n", "apellido_n_n", $nameuser_input, "email_n_@_n", $password_input, "00-0000-0000", 0);
-    $record = $employee->get();
+    $employee_record = employee::login($email_input, $password_input);
 
-    if($record){
-      // si el registro existe quiere decir que solo el nameuser_input esta registrado porque se obtiene el
-      // registro a traves del nameuser_input, pero falta verificar la contraseña
+    if($employee_record){
 
-      if(password_verify($employee->password, $record['password'])){
-        $_SESSION['user_id'] = $record['id_user'];
-        $message = '../partials/messeages/userLoged.php';
-        header("Location: ../Home");
-      }
-      else{
-        $message = '../partials/messeages/userNotLoged.php';
-      }
+      $_SESSION['user_id'] = $employee_record['id_employee'];
+      $message = '../partials/messages/userLoged.php';
+      header("Location: ../Home");
     }
     else{
-      $message = '../partials/messeages/userNotLoged.php';
+      $message = '../partials/messages/userNotLoged.php';
     }
   }
 
@@ -69,8 +61,8 @@
             <form action="index.php" method="post" autocomplete="off" id="form">
               <!-- USERNAME INPUT -->
                 <!-- USERNAME INPUT -->
-                <label for="Username" class="textform">Usuario</label>
-                <input class="txtspace" type="text" name="nameuser" id="Iname">
+                <label for="Username" class="textform">E-mail</label>
+                <input class="txtspace" type="text" name="email" id="Iname">
                 <p class="alert">Usuario y/o contraseña incorrectos</p>
                 <!-- PASSWORD INPUT -->
                 <label for="Password" class="textform">Contraseña</label>

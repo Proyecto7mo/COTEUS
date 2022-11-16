@@ -1,24 +1,32 @@
 <?php
   //echo $_SERVER['HTTP_HOST'];
   session_start();
+  
   if(isset($_SESSION['user_id'])){
-  $user_id=$_SESSION['user_id'];
-  if(isset($_POST['groupname'])){
-    $groupname=$_POST['groupname'];
-    $groupdesc=$_POST['groupdesc'];
-    require '../class/group.php';
-    $grcreated=new group($user_id, $groupname, $groupdesc);
-    $result=$grcreated->newgroup();
-    if($result>0){
-      echo $result;
-    }
-    header('Location: ../Grupo/');
+    $user_id = $_SESSION['user_id'];
+
+    if(isset($_POST['groupname'])){
+      require '../class/group.php';
+      $groupname = $_POST['groupname'];
+      $groupdesc = $_POST['groupdesc'];
+
+      $grcreated = new group($user_id, $groupname, $groupdesc);
+      $result = $grcreated->newgroup();
+
+      if($result > 0){
+        echo $result;
+      }
+      header('Location: ../Grupo/');
   }
   //BUSCAR GRUPOS
-  /*require_once '../class/group.php';
-  $groups_list=group::getgroups($user_id);
-  echo $groups_list;*/
-  //FIN DE BUSCAR GRUPOS
+
+    /*
+    require_once '../class/group.php';
+    $groups_list=group::getgroups($user_id);
+    echo $groups_list;
+    */
+
+    //FIN DE BUSCAR GRUPOS
   }
   else{
     header('Location: ../');
@@ -87,45 +95,13 @@
       <h2 class="titulo">Grupos</h2>
     </div>
 
-    <!-- titulo -->
-
-    <!-- PRUEBA DE GRUPOS -->
-    
-    <!-- PRUEBA DE GRUPOS -->
-
-    <!--<div class="functions">
-      <?php
-        //include '../partials/upload_files/upload_files.html';
-      ?>
-    </div>-->
-
-    <!--<div class="functions" id="DGbutton">
-      <?php
-    //include '../partials/task/add_task.html';
-    ?>
-    </div>-->
-
     <!--BUSCADOR -->
 
-    <?php //require ("../partials/HTML/seeker/seeker.php"); 
-    //BUSCAR GRUPOS
-    require_once '../class/group.php';
-    $groups_list=group::getgroups($user_id);
-    $res=group::to_String($groups_list);
-    //echo $res;
-    //FIN DE BUSCAR GRUPOS
-    ?>
+    <?php
+      require_once '../class/group.php';
 
-    <!--<div class="new-group">
-      <form action="./" method="post">
-        <label for="groupname">Nombre del grupo</label>
-        <input type="text" name="groupname" id="groupname" required>
-        <br>
-        <label for="groupdesc">Descripcion</label>
-        <input type="text" name="groupdesc" id="groupdesc">
-        <input type="submit" value="Crear Grupo">
-      </form>
-    </div>-->
+      $groups_list = group::getgroups($user_id);
+    ?>
 
     <div class="dropdown" id="ng">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuTask" data-bs-toggle="dropdown" aria-expanded="false">
@@ -147,55 +123,34 @@
           </form>
         </div>
         </li>
-        <!--<li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>-->
       </ul>
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
-      <?php
-        foreach ($groups_list as $key) {
-          /*$tipo="Miembro";
-          if($key->tipo=="A"){
-            $tipo="Administrador";
-          }*/
-          
-        ?>
-      <a href="<?php require_once '../class/group.php'; $url="yy"; $url=group::getURL($user_id, $key->id_groups); echo($url); ?>">
-      <div class="col" id="cu">
-        <div class="card h-100">
-          <div class="card-img-top icon-card">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M15 3v4a1 1 0 0 0 1 1h4" />
-              <path
-                d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z"
-              />
-              <path
-                d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2"
-              />
-            </svg>
-          </div>
-
-          <div class="card-body">
-            <h5 class="card-title"><?php echo($key->name); ?></h5>
-            <p class="card-text">
-            <?php echo($key->descripcion); ?>
-              <!--This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.-->
-            </p>
-          </div>
-          <!--<div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>-->
-        </div>
-        <?php //employee::view_files($record['nameuser']); ?>
-      </div>
-      </a>
-      <?php
-        }
-      ?>
+      <?phpforeach ($groups_list as $group): ?>
+        <a href="<?php require_once '../class/group.php'; $url="yy"; $url=group::getURL($user_id, $group->id_group); echo($url); ?>">
+          <div class="col" id="cu">
+            <div class="card h-100">
+              <div class="card-img-top icon-card">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+                  <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z"/>
+                  <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+                </svg>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <?= $group->name ?>
+                </h5>
+                <p class="card-text">
+                  <?= $group->description ?>
+                </p>
+              </div>
+            </div>
+            <?php //employee::view_files($record['nameuser']); ?>
+          </a>
+      <?php endforeach; ?>
     </div>
     
     <!--FIN BUSCADOR -->

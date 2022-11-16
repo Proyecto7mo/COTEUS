@@ -70,13 +70,13 @@ function agregarTask(){
         type:"post",
         data:$("#subTask").serialize(),
         success:function(res){
-            //let resp=JSON.parse(res);
-            document.getElementById("gantt").innerHTML;
-            //let g=document.getElementById("create-task");
-            $('div.create-task').html(res);
-            console.log(res);
-            document.getElementById("subTask").reset()
-            //alert(res);
+          //let resp=JSON.parse(res);
+          document.getElementById("gantt").innerHTML;
+          //let g=document.getElementById("create-task");
+          $('div.create-task').html(res);
+          console.log(res);
+          document.getElementById("subTask").reset()
+          //alert(res);
         },
         error:function(xhr, status){
             //alert("Error de conexión");
