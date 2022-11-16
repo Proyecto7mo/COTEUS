@@ -124,7 +124,7 @@
 
       <div class="Columns">
         <label for="Birth" class="logon_label">Fecha de Nacimiento</label>
-        <input type="date" class="slot" name="birthdate" require>
+        <input type="date" class="slot" name="birthdate" id="date" require>
               <p class="alerts" id="birthdate_slot_alert">Campo inválido</p>
 
         <label for="Password" class="logon_label">Contraseña</label>

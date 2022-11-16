@@ -4,6 +4,9 @@ const inputs = document.querySelectorAll('.slot');
 const inputpsw = document.getElementById('psw');
 const confirmpsw = document.getElementById('cfmpsw');
 
+const date = document.querySelector('input[type="date"]');
+toString(date);
+
 const RegularExpressions = {
 	nameuser: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	name: /^[a-zA-ZÀ-ÿ\s]/, // Letras y espacios, pueden llevar acentos.
@@ -11,7 +14,7 @@ const RegularExpressions = {
 	password: /^.{8,12}$/, // 8 a 12 digitos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	telephone: /^\d{7,14}$/, // 7 a 14 numeros.
-	birthdate: /[0-12]+[0-31]+[1900-2010]$/, // Validando fecha completa 
+	birthdate: /[0-12]+[/]+[0-31]+[/]+[1900-2020]$/, // Validando fecha completa 
 	cuil: /^[0-9\_\-]/
 }
 
@@ -51,7 +54,7 @@ const validateForm = (e) => {
 			validateSlot(RegularExpressions.telephone, e.target, 'telephone');
 		break;
 		case "birthdate":
-			validateSlot(RegularExpressions.birthdate, e.target, 'birthdate');
+			validateSlot(RegularExpressions.date, e.target, 'birthdate');
 		break;
 		case "cuil":
 			validateSlot(RegularExpressions.cuil, e.target, 'cuil');
