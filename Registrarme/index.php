@@ -8,25 +8,26 @@
 
   $messeage = '';
 
-  if(ValidarCampos()){
+  if($_POST)
+  if(validate_fields()){
     require '../class/employee.php';
     $name = $_POST['name'];
     $surname = $_POST['surname'];
-    $nameuser = $_POST['nameuser'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
     $telephono = $_POST['telephono'];
-    $cuil = 0;
+    $cuil = $_POST['cuil'];
 
-    $employee = new employee($name, $surname, $nameuser, $email, $password, $telephono, $cuil);
+    $employee = new employee($name, $surname, $username, $email, $password, $telephono, $cuil);
 
     if($employee->signup() > 0){
 
-      $record_employee = $employee->get();
+      $record_employee = $employee->get($employee->email, "email");
       $messeage = "../partials/messeages/userCreated.php";
-      $directory = "../files_users/" . $record_employee['nameuser'];
+      $directory = "../files_users/" . $record_employee['username'];
       mkdir($directory, 0777, true);
-      $_SESSION['user_id'] = $record_employee['id_user'];
+      $_SESSION['user_id'] = $record_employee['id_employe'];
       echo $record_employee['id_employee'];
       header("Location: ../Home");
     }
@@ -34,10 +35,21 @@
       $messeage = "../partials/messeages/userNotCreated.php";
     }
   }
+    else{
+      echo "<script>alert('Campos invalidos')</script>";
+    }
 
-  function ValidarCampos(){
-    return ( (!empty($_POST['name'])) && (!empty($_POST['surname'])) && (!empty($_POST['nameuser'])) && (!empty($_POST['password'])) && (!empty($_POST['confirm_password'])) && (!empty($_POST['email'])) && (!empty($_POST['telephono'])) );
-  }
+    function validate_fields(){
+      return (
+        (isset($_POST['name'])) &&
+        (isset($_POST['surname'])) &&
+        (isset($_POST['username'])) &&
+        (isset($_POST['password'])) &&
+        (isset($_POST['confirm_password'])) &&
+        (isset($_POST['email'])) &&
+        (isset($_POST['telephone'])) &&
+        (isset($_POST['cuil'])) );
+    }
 ?>
 
 <!DOCTYPE html>
@@ -102,8 +114,8 @@
               <p class="alerts" id="surname_slot_alert">Caracteres inválidos para este campo</p>
 
         <label for="Username" class="logon_label">Nombre de Usuario</label>
-        <input type='text' class="slot" name='nameuser' require>
-              <p class="alerts" id="nameuser_slot_alert">Caracteres inválidos para este campo</p>
+        <input type='text' class="slot" name='username' require>
+              <p class="alerts" id="username_slot_alert">Caracteres inválidos para este campo</p>
 
         <label for="Phone" class="logon_label">Teléfono</label>
         <input type='number' class="slot" name='telephone' require>
@@ -136,9 +148,7 @@
   </div>
 </center>
 
-  <?php
-    require '../partials/HTML/footer/footer.php';
-  ?>
+  <?php require '../partials/HTML/footer/footer.php';?>
 
   <script src="js/main.js"></script>
 </body>
