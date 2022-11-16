@@ -20,13 +20,13 @@ class datos{
     require '../database/database.php'; // para obtener la variable conexion
     $result = 0;
 
-    $query = "INSERT INTO employees_t (name, surname, nameuser, password, email, telephono, cuil) VALUES (:name, :surname, :nameuser, :password, :email, :telephono, :cuil)";
+    $query = "INSERT INTO employees_t (name, surname, nameuser, password, email, telephone, cuil) VALUES (:name, :surname, :nameuser, :password, :email, :telephone, :cuil)";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':name', $employee->name);
     $stmt->bindParam(':surname', $employee->surname);
     $stmt->bindParam(':nameuser', $employee->username);
     $stmt->bindParam(':email', $employee->email);
-    $stmt->bindParam(':telephono', $employee->telephono);
+    $stmt->bindParam(':telephone', $employee->telephone);
     $stmt->bindParam(':cuil', $employee->cuil);
 
     // hasheando la password

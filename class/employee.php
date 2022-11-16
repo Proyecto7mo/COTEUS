@@ -11,13 +11,13 @@ class employee{
   public $telephone;
   public $cuil;
 
-  public function __construct($name = "n/n", $surname = "n/n", $username = "n/n", $email = "nn@nn.com", $password = "n/n", $telephono = null, $cuil = null){
+  public function __construct($name = "n/n", $surname = "n/n", $username = "n/n", $email = "nn@nn.com", $password = "n/n", $telephone = null, $cuil = null){
     $this->name = $name;
     $this->surname = $surname;
     $this->username = $username;
     $this->email = $email;
     $this->password = $password;
-    $this->telephone = $telephono;
+    $this->telephone = $telephone;
     $this->cuil = $cuil;
   }
 

@@ -16,10 +16,10 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
-    $telephono = $_POST['telephono'];
+    $telephone = $_POST['telephone'];
     $cuil = $_POST['cuil'];
 
-    $employee = new employee($name, $surname, $username, $email, $password, $telephono, $cuil);
+    $employee = new employee($name, $surname, $username, $email, $password, $telephone, $cuil);
 
     if($employee->signup() > 0){
 

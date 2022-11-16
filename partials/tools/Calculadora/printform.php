@@ -3,9 +3,9 @@
     {
     var s=document.getElementById("Tformulas");
     var option=document.createElement('option');
-    option.id=nombreform;
+    option.id=nameform;
     option.value=val;
-    option.text=nombreform+" "+val;
+    option.text=nameform+" "+val;
     s.appendChild(option);
     }
 </script>
@@ -14,11 +14,11 @@ $conexion=mysqli_connect("localhost", "root", "123456789", "coteus") or die("Pro
 $registros=mysqli_query($conexion, "select name_function, formula_function from calculator_t") or die("Problemas de select".mysqli_error($conexion));
     while ($reg = mysqli_fetch_array($registros))
     {
-        $nombreform=$reg['name_function'];
+        $nameform=$reg['name_function'];
         $formula=$reg['formula_function'];
         echo "<script>";
         echo "var val ='$formula';";
-        echo "var nombreform ='$nombreform';";
+        echo "var nameform ='$nameform';";
         echo 'listform();';
         echo "</script>";
     }
