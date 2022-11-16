@@ -1,2 +1,5 @@
 *.txt
 ejemplo.php
+/database/database.php
+query.sql
+files_users/
