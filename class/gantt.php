@@ -1,37 +1,32 @@
 <?php
-$val = $_POST["val"];
+$val=$_POST["val"];
+if($val=="Guardar"){
+  $title=$_POST["title"];
+  $asigned=$_POST["asigned"];
+  $f_inicio=$_POST["f_inicio"];
+  $f_fin=$_POST["f_fin"];
+  $predecesora=$_POST["predecesora"];
+  $id_grup=$_POST["grup"];
+  //echo($tit);
 
-if($val == "Guardar"){
-  $title = $_POST["title"];
-  $asigned = $_POST["asigned"];
-  $f_inicio = $_POST["f_inicio"];
-  $f_fin = $_POST["f_fin"];
-  $predecesora = $_POST["predecesora"];
-  $id_grup = $_POST["grup"];
-
-  $title = ($title == "") ? null : $title;
-
-  $g = new Gantt($title, $asigned, $f_inicio, $f_fin, $predecesora, $id_grup);
+  $g=new Gantt($title, $asigned, $f_inicio, $f_fin, $predecesora, $id_grup);
   $g->newTask();
-  $tasks = Gantt::getTask($id_grup);
-  $tasks = Gantt::to_string($tasks);
-
-  // enviando respuesta al JavaScript
+  $tasks=Gantt::getTask($id_grup);
+  $tasks=Gantt::to_string($tasks);
   echo($tasks);
 }
-elseif ($val == "Eliminar") {
-  $idtask = $_POST['idtask'];
+elseif ($val=="Eliminar") {
+  $idtask=$_POST['idtask'];
+  //$id_grup=$_POST['grup'];
 
   Gantt::deleteTask($idtask);
   
   header('Location: http://localhost/coteus/Grupo/group.php');
 }
 else{
-  $id_grup = $_POST["grup"];
-  $tasks = Gantt::getTask($id_grup);
-  $tasks = Gantt::to_string($tasks);
-
-  // enviando respuesta al JavaScript
+  $id_grup=$_POST["grup"];
+  $tasks=Gantt::getTask($id_grup);
+  $tasks=Gantt::to_string($tasks);
   echo($tasks);
 }
 
@@ -67,22 +62,22 @@ class Gantt{
     return $resp;
   }
 
-  public static function deleteTask($id_chores1){
+  public static function deleteTask($id_chores){
     require_once '../datos/datos.php';
 
-    datos::delete_task($id_chores1);
+    datos::delete_task($id_chores);
   }
 
   public static function to_string($tasks){
-    $c = 0;
-    $res = "";
+    $c=0;
+    $res="";
     foreach($tasks as $key){
-      if($c == 0){
+      if($c==0){
         $res=$res.'["'.$key->title.'","'.$key->startDate.'","'.$key->endDate.'",'.'"#c1409b"'.',"'.$key->assignment.'","'.$key->id_chores.'"]';
-        $c = $c + 1;
+        $c=$c+1;
       }
       else{
-        $res = $res.',["' . $key->title.'","' . $key->startDate . '","' . $key->endDate . '",' . '"#4287f5"' . ',"' . $key->assignment . '","' . $key->id_chores . '"]';
+        $res=$res.',["'.$key->title.'","'.$key->startDate.'","'.$key->endDate.'",'.'"#4287f5"'.',"'.$key->assignment.'","'.$key->id_chores.'"]';
       }
       //$res=$res.'['.$key->title.','.$key->startDate.','.$key->endDate.','.'#4287f5'.','.$key->assignment.']';
     }
