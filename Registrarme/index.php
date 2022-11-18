@@ -65,55 +65,89 @@
   <?php
     require("../partials/linkCSS.php");
   ?>
+
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
 </head>
 
 <body class="body">
    
 <center>
-  <div class="Register-box">
+<div class="Register-box">
 
-  <div class="titulo">
-    <p>Registro</p>  
-  </div>
+<div class="titulo">
+<p>Registro</p>
+</div>
 
     <img src="../img/COTEUS_Emblema_Azul.svg" class="logo" alt="Emblema COTEUS">
     
-    <form action='index.php' method="post">
-      <div class="Columns">
-        <label for="Name">Nombre</label>
-        <input type='text' name='name' require>
-        <label for="Last-Name">Apellido</label>
-        <input type='text' name='surname' require>
-        <label for="Mail">Email</label>
-        <input type='email' name='email' require>
-      </div>
-      <div class="Columns">  <label for="Mail">CUIL</label>
-        <input type='number' name='cuil' require>
-        <div class="captcha">
-        <label >Repite el codigo</label>
-        <img src="https://localhost/COTEUS/Registrarme/resources/captcha.php" style="border-radius: 15px;">
-        </div>
-        <input type="text" name="captcha" id="captcha">
-        <label for="Username">Nombre de Usuario</label>
-        <input type='text' name='username' require>
-        <label for="number">Teléfono</label>
-        <input type='number' name='telephone' require>
-        <a href="../index.php">
-          <button id="backbuton">Volver</button>
-        </a>
-      </div>
-      <div class="Columns">
-        <label for="Password">Contraseña</label>
-        <input type='password' name='password' require>
-        <label for="confirm_password">Confirmar Contraseña</label>
-        <input type='password' name='confirm_password' require>
-        <input type="submit" value="Crear cuenta" id="Registerbutton">
-      </div> 
+    <form action='index.php' method="post" id="form">
       
+    <div class="Columns">
+        <label for="Name" class="logon_label">Nombre</label>
+        <input type='text' class="slot" name='name' require>
+              <p class="alerts" id="name_slot_alert">Caracteres inválidos para este campo</p>
+
+        <label for="Mail" class="logon_label">Email</label>
+        <input type='email' class="slot" name='email' require>
+              <p class="alerts" id="email_slot_alert">Campo inválido</p>
+
+        <label for="Cuil" class="logon_label">CUIL</label>
+        <input type='number' class="slot" name='cuil' require>
+              <p class="alerts" id="cuil_slot_alert">Caracteres inválidos para este campo</p>
+        
+        <!--Capcha-->
+        <img src="https://localhost/COTEUS/Registrarme/resources/captcha.php" id="captcha">
+        <input type="text" class="slot" id="incaptcha" name='captcha' require>
+        
+      </div>
+      
+      <div class="Columns">
+        <label for="Surname" class="logon_label">Apellido</label>
+        <input type='text' class="slot" name='surname' require>
+              <p class="alerts" id="surname_slot_alert">Caracteres inválidos para este campo</p>
+
+        <label for="Username" class="logon_label">Nombre de Usuario</label>
+        <input type='text' class="slot" name='username' require>
+              <p class="alerts" id="username_slot_alert">Caracteres inválidos para este campo</p>
+
+        <label for="Phone" class="logon_label">Teléfono</label>
+        <input type='number' class="slot" name='telephone' require>
+              <p class="alerts" id="telephone_slot_alert">Campo inválido</p>
+      </div>
+
+      <div class="Columns">
+        <label for="Birth" class="logon_label">Fecha de Nacimiento</label>
+        <input type="date" class="slot" name="birthdate" id="date" require>
+              <p class="alerts" id="birthdate_slot_alert">Campo inválido</p>
+
+        <label for="Password" class="logon_label">Contraseña</label>
+        <input type='password' class="slot" name='password' id="psw" require>
+              <p class="alerts" id="password_slot_alert">Caracteres insuficientes</p>
+
+        <label for="confirm_password" class="logon_label">Confirmar Contraseña</label>
+        <input type='password' class="slot" name="confirm_password" id="cfmpsw" require>
+              <p class="alerts" id="confirm_password_slot_alert">Las constraseñas no coinciden</p>
+          <br>
+          <br>
+        <input type="checkbox" id="password_view" onclick="HideShow()"/><span>Mostrar contraseña</span>
+      </div>
+
+      <input type="submit" class="actbutton" id="Registerbutton" value="Crear cuenta">
     </form>
+    
     <a href="../Login" style="color: black;" id="Textquestion">¿Ya tienes una cuenta?</a>
+    <input onclick="window.location.href = '../index.php'"  type="submit" class="actbutton" id="backbutton" value="Volver">
+
+  </div>
 </center>
 
-  <?php require ("../partials/HTML/footer/footer.php"); ?>
+  <?php require '../partials/HTML/footer/footer.php';?>
+
+  <script src="js/main.js"></script>
 </body>
 </html>

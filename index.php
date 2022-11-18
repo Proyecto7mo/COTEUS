@@ -18,15 +18,20 @@
 	<title>COTEUS</title>
 	
 	<link rel="stylesheet"  type="text/css"  href="styles/main.css">
-	<link rel="stylesheet" href="partials/general/main.css">
 
+	<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+	
 </head>
 
 <body class="body">
-
 	<center>
-	<div class="sectionr">
-		<div class="contentr">
+	<div class="section">
+		<div class="content">
 		<img src="img/COTEUS_Logo_Azul.svg" class="Clogo">
 		<div class="text_recuad">
 			<p id="firstext">
@@ -50,8 +55,11 @@
 		</div>
 	</div>
 	</center>
+
+	<link rel="stylesheet" href="partials/HTML/footer/footer.css">
   <?php
     require("partials/HTML/footer/footer.php");
   ?>
+
 </body>
 </html>

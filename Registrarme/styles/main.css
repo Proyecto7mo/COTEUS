@@ -4,21 +4,12 @@
     background-size: all;
     background-color: #0c27ac;
     background-image: url(../../img/carpetas.svg);
-}
-
-.titulo{
-    position: absolute;
-    color: #0c27ac;
-    font-family: 'Colonna MT', sans-serif;
-    font-size: 80px;
-    margin-left: 3%;
-    margin-top: -3%;
-}
-
-.Register-box
-{
+  }
+  
+  .Register-box
+  {
     width: 900px;
-    height: 670px;
+    height: 680px;
     background: #f5f7fb;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -28,28 +19,27 @@
     background-color: #f5f7fb;
     position: relative;
     font-family: arial;
-}
-
-form{
-    top: 10%;
-    /*margin-top: px;*/
+  }
+  
+  .titulo{
+      position: absolute;
+      color: #0c27ac;
+      font-family: 'Colonna MT', sans-serif;
+      font-size: 80px;
+      margin-left: 5%;
+      margin-top: 4%;
+  }
+  
+  #form{
     position: relative;
-}
-
-label
-{
-    font-size: 20px;
-    font-weight: bold;
-    display: block;
-}
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-
-input[type="text"], .Register-box input[type="password"], .Register-box input[type="email"], .Register-box input[type="date"], .Register-box input[type="number"], .Register-box input[type="confirm_password"]
-{
+  }
+  
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  }
+  
+  .slot{
     width: 200px;
     height: 30px;
     border: none;
@@ -59,11 +49,11 @@ input[type="text"], .Register-box input[type="password"], .Register-box input[ty
     margin-bottom: 15px;
     padding-bottom: 5px;
     font-size: 15px;
-}
-
-input[type="submit"],[type="button"]
-{
-    /*margin-top: 10%;*/
+  }
+  
+  .actbutton
+  {
+    margin-top: 10%;
     border-color: #0c27ac;
     border-radius: 20px;
     width: 150px;
@@ -71,17 +61,17 @@ input[type="submit"],[type="button"]
     background-color: #0c27ac;
     color: #3272ff;
     font-size: 120%;
-    /*position: absolute;*/
-}
-
- input[type="submit"]:hover {
+    position: absolute;
+  }
+  
+  .actbutton:hover {
     border-color: #3272ff;
     background-color: #3272ff;
     color: white;
     cursor: pointer;
   }
-
-.logo {
+  
+  .logo {
     width: 170px;
     height: 130px;
     border-radius: 50%;
@@ -89,47 +79,61 @@ input[type="submit"],[type="button"]
     top: 30px;
     left: calc(47% - 50px);
   }
-
-.Columns
-{
+  
+  .Columns
+  {
     margin-top: 30px;
     width: 33.333333333333333%;
     float: left;
-}
-
-#incaptcha{
-    position: absolute;
-
-    margin-top: 17%;
-    margin-left: -21%;
-}
-
-#Textquestion{
+  }
+  
+  
+  .logon_label{
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+  margin-top: 10%;
+  }
+  
+  #Textquestion{
     position: absolute;
     margin-left: 9%;
-    margin-top: 70%;
+    margin-top: 71.5%;
     text-decoration: none;
-}
-
-#Registerbutton{
-    position: absolute;
-    top: 110%;
-    right: 10%;
-    /*margin-top: 20%;*/
-    /*margin-left: 42%;*/
-}
-
-#backbutton{
-    position: absolute;
-    /*margin-top: 20%;*/
-    margin-right: 1%;
-    top: 110%;
-    right: 40%;
-}
-
-#backbutton:hover {
-    border-color: #3272ff;
-    background-color: #3272ff;
-    color: white;
-    cursor: pointer;
   }
+  
+  #Registerbutton{
+    position: absolute;
+    margin-top: 49.1%;
+    margin-left: -57%;
+  }
+  
+  #backbutton{
+    position: absolute;
+    margin-top: 65%;
+    margin-left: 75%;
+  }
+  
+  #captcha{
+    position: absolute;
+    margin-top: 11.5%;
+    margin-left: -11%;
+     border-radius: 15px;
+  }
+  
+  #incaptcha{
+    position: absolute;
+    margin-top: 14%;
+    margin-left: -21%;
+  }
+  
+  .alerts{
+  position: absolute;
+  margin-top: -0.5%;
+  margin-left: 4%;
+  color: red;
+  font-size: 80%;
+  font-weight: bold;
+  display: none;
+  }
+  

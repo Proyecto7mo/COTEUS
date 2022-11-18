@@ -375,13 +375,13 @@ else{
     <div class="col-sm-6">
     <div class="card">
       <div class="card-body" style="height: 500px;
-    overflow: scroll;" id="filesContain">
+      overflow: scroll;" id="filesContain">
 
       <?php
       
       ?>
-      
-<!--
+    </div>
+      <!--
       <div class="d-flex m-3">
         <h5 class="card-title p-2 flex-grow-1">Integrante: Tobias</h5>
 
