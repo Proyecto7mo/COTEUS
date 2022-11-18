@@ -270,7 +270,7 @@ class datos{
     return $result;
   }
 
-  public static function get_files_employee($employee){
+  public static function get_files_employee($employee, $Search){
     require "../database/database.php";
     
     $query = "
@@ -283,8 +283,7 @@ class datos{
           ON `files_encapsulation_t`.`id_file` = `files_t`.`id_file`
         INNER JOIN `employees_t`
           ON `files_encapsulation_t`.`id_employee` = `employees_t`.`id_employee`
-        WHERE `employees_t`.`id_employee` = $employee->id_employee
-        GROUP BY `files_t`.`name`;
+        WHERE `employees_t`.`id_employee` = $employee->id_employee AND files_t.name LIKE '%$Search%' GROUP BY `files_t`.`name`;
       ";
     
     $stmt = $conexion->prepare($query);
@@ -316,6 +315,30 @@ class datos{
     
     return $stmt->execute();
   }
+
+  public static function get_files_from_user($idGroup){
+    require '../../database/database.php'; // para obtener la variable conexion
+
+    $query="SELECT e.username as nameuser, f.id_file, f.name, f.last_modification FROM files_t f INNER JOIN files_encapsulation_t fe ON f.id_file=fe.id_file INNER JOIN employees_t e ON fe.id_employee=e.id_employee WHERE fe.id_group=:idGroup;";
+
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':idGroup',$idGroup);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function delete_File_From_Group($idFile, $idGroup){
+    require '../../database/database.php'; // para obtener la variable conexion
+
+    $query="UPDATE files_encapsulation_t SET id_group=NULL WHERE id_file=:idFile AND id_group=:idGroup;";
+
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':idFile',$idFile);
+    $stmt->bindParam(':idGroup',$idGroup);
+    $stmt->execute();
+  }
+
   public static function insert_group($group){
     require '../database/database.php'; // para obtener la variable conexion
     $result = 0;

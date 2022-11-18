@@ -76,6 +76,8 @@ else{
   <link rel="stylesheet" href="./css's/footer.css" />
   <link rel="stylesheet" href="./css's/nav.css" />
 
+  <script src="js/index.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
   <!-- bootstrap -->
@@ -190,8 +192,16 @@ else{
       foreach ($member_list as $key) {
         $rol = ($key->rol == "A") ? "Administrador" : (($key->rol == "M") ? "Miembro" : "");
       ?>
+      <form method="post" id="user" onsubmit="return showFiles();">
       <div class="d-flex m-3" id="mas">
-        <button class="card-title p-2 flex-grow-1" id="user"><h5 class="card-title p-2 flex-grow-1"><?php echo($key->username."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <div id='tip'>".$rol."</div>");?></h5></button>
+        
+          <button class="card-title p-2 flex-grow-1" id="userbtn"><h5 class="card-title p-2 flex-grow-1"><?php echo($key->username."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <div id='tip'>".$rol."</div>");?></h5></button>
+          <input type="hidden" name="idUser" value="<?php echo($key->id_employee);?>">
+          <input type="hidden" name="idGroup" value="<?php echo($idgrup);?>">
+          <input type="hidden" name="userRol" value="<?php echo($useractip);?>">
+          <input type="hidden" name="valF" value="MostrarF">
+          <input type="submit" value="">
+        
         <!--<h5 class="card-title p-2 flex-grow-1"><?php //echo($key->username); ?></h5>-->
 
         <!--<button class="btn btn-primary" type="button">
@@ -233,7 +243,7 @@ else{
             <input type="hidden" name="iduser" value="'.$key->id_employee.'">
             <input class="dropdown-item" type="submit" value="Aumentar rango">
           </form>
-          <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alert()">Aumentar rango</a>-->
+          <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alerta()">Aumentar rango</a>-->
           </li>
           <li>
           <form id="Bajar" action="group.php" method="POST" onsubmit="state();">
@@ -241,7 +251,7 @@ else{
             <input type="hidden" name="iduser" value="'.$key->id_employee.'">
             <input class="dropdown-item" type="submit" value="Bajar rango">
           </form>
-          <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alert()">Aumentar rango</a>-->
+          <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alerta()">Aumentar rango</a>-->
           </li>
           <li>
           <form id="Eliminar" action="group.php" method="POST" onsubmit="state();">
@@ -249,7 +259,7 @@ else{
             <input type="hidden" name="iduser" value="'.$key->id_employee.'">
             <input class="dropdown-item" type="submit" value="Eliminar miembro">
           </form>
-          <!--<a id="eliminar" class="dropdown-item" href="#" onclick="alert()">Eliminar miembro</a>-->
+          <!--<a id="eliminar" class="dropdown-item" href="#" onclick="alerta()">Eliminar miembro</a>-->
           </li>
         </ul>');
         }
@@ -280,6 +290,7 @@ else{
         
 
       </div>
+      </form>
       <?php
       }
       ?>
@@ -360,7 +371,93 @@ else{
     </div>
     </div>
 
+    
     <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body" style="height: 500px;
+    overflow: scroll;" id="filesContain">
+
+      <?php
+      
+      ?>
+      
+<!--
+      <div class="d-flex m-3">
+        <h5 class="card-title p-2 flex-grow-1">Integrante: Tobias</h5>
+
+        <button class="btn btn-primary" type="button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-dots"
+          width="30"
+          height=""
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#ffffff"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="5" cy="12" r="1" />
+          <circle cx="12" cy="12" r="1" />
+          <circle cx="19" cy="12" r="1" />
+        </svg>
+        </button>
+      </div>
+
+      <div class="d-flex m-3">
+        <h5 class="card-title p-2 flex-grow-1">Integrante: Jeremias</h5>
+
+        <button class="btn btn-primary" type="button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-dots"
+          width="30"
+          height=""
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#ffffff"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="5" cy="12" r="1" />
+          <circle cx="12" cy="12" r="1" />
+          <circle cx="19" cy="12" r="1" />
+        </svg>
+        </button>
+      </div>
+      <div class="d-flex m-3">
+        <h5 class="card-title p-2 flex-grow-1">Integrante: Cristian</h5>
+
+        <button class="btn btn-primary" type="button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-dots"
+          width="30"
+          height=""
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#ffffff"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="5" cy="12" r="1" />
+          <circle cx="12" cy="12" r="1" />
+          <circle cx="19" cy="12" r="1" />
+        </svg>
+        </button>
+      </div>
+      -->
+      </div>
+    </div>
+    </div>
+
+    <!--<div class="col-sm-6">
     <div class="card">
       <div class="card-body" id="cb">
       <div class="d-flex">
@@ -416,7 +513,7 @@ else{
       </div>
     </div>
     </div>
-  </div>
+  </div>-->
 
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuTask" data-bs-toggle="dropdown" aria-expanded="false">

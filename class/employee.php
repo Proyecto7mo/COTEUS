@@ -118,11 +118,11 @@ class employee{
       "</p>";
   }
   
-  public function get_files(){
+  public function get_files($Search){
     
     require_once "../datos/datos.php";
 
-    $files = datos::get_files_employee($this);
+    $files = datos::get_files_employee($this, $Search);
 
     return $files;
   }
