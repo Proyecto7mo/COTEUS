@@ -201,6 +201,7 @@ else{
           <input type="hidden" name="userRol" value="<?php echo($useractip);?>">
           <input type="hidden" name="valF" value="MostrarF">
           <input type="submit" value="" style="display: none;">
+          </form>
         
         <!--<h5 class="card-title p-2 flex-grow-1"><?php //echo($key->username); ?></h5>-->
 
@@ -226,8 +227,9 @@ else{
 
         
         <?php
+        $opAdmin="";
         if($useractip=="A"){
-          echo('<button
+          $opAdmin.='<button
           class="btn btn-primary"
           type="button"
           id="dropdownMenuButton1"
@@ -236,24 +238,28 @@ else{
         >
           Opciones
         </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>
-          <form id="Aumentar" action="group.php" method="POST" onsubmit="state();">
-            <input type="hidden" name="val" value="AumentarM">
-            <input type="hidden" name="iduser" value="'.$key->id_employee.'">
-            <input class="dropdown-item" type="submit" value="Aumentar rango">
-          </form>
-          <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alerta()">Aumentar rango</a>-->
-          </li>
-          <li>
-          <form id="Bajar" action="group.php" method="POST" onsubmit="state();">
-            <input type="hidden" name="val" value="BajarM">
-            <input type="hidden" name="iduser" value="'.$key->id_employee.'">
-            <input class="dropdown-item" type="submit" value="Bajar rango">
-          </form>
-          <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alerta()">Aumentar rango</a>-->
-          </li>
-          <li>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">';
+          if($rol=="Administrador"){
+            $opAdmin.='<li>
+            <form id="Bajar" action="group.php" method="POST" onsubmit="state();">
+              <input type="hidden" name="val" value="BajarM">
+              <input type="hidden" name="iduser" value="'.$key->id_employee.'">
+              <input class="dropdown-item" type="submit" value="Bajar rango">
+            </form>
+            <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alerta()">Aumentar rango</a>-->
+            </li>';
+          }
+          else{
+            $opAdmin.='<li>
+            <form id="Aumentar" action="group.php" method="POST" onsubmit="state();">
+              <input type="hidden" name="val" value="AumentarM">
+              <input type="hidden" name="iduser" value="'.$key->id_employee.'">
+              <input class="dropdown-item" type="submit" value="Aumentar rango">
+            </form>
+            <!--<a id="aumentar" class="dropdown-item" href="./" onclick="alerta()">Aumentar rango</a>-->
+            </li>';
+          }
+          $opAdmin.='<li>
           <form id="Eliminar" action="group.php" method="POST" onsubmit="state();">
             <input type="hidden" name="val" value="EliminarM">
             <input type="hidden" name="iduser" value="'.$key->id_employee.'">
@@ -261,8 +267,9 @@ else{
           </form>
           <!--<a id="eliminar" class="dropdown-item" href="#" onclick="alerta()">Eliminar miembro</a>-->
           </li>
-        </ul>');
+        </ul>';
         }
+        echo($opAdmin);
         ?>
 
         <!--<div class="position-absolute">
@@ -290,7 +297,6 @@ else{
         
 
       </div>
-      </form>
       <?php
       }
       ?>
