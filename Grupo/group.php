@@ -200,7 +200,7 @@ else{
           <input type="hidden" name="idGroup" value="<?php echo($idgrup);?>">
           <input type="hidden" name="userRol" value="<?php echo($useractip);?>">
           <input type="hidden" name="valF" value="MostrarF">
-          <input type="submit" value="">
+          <input type="submit" value="" style="display: none;">
         
         <!--<h5 class="card-title p-2 flex-grow-1"><?php //echo($key->username); ?></h5>-->
 

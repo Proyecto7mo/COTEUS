@@ -60,12 +60,7 @@ function Buscar(){
     });
 }
 
-/*function Buscar(){
-    document.querySelector('#dropdownMenuTask').click();
-}*/
-
 function agregarTask(){
-  alert("hola");
     $.ajax({
       url:"./../class/Gantt.php",
       type:"post",
