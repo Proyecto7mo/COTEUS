@@ -64,14 +64,15 @@ else{
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nav</title>
-  
+  <title>COTEUS | Grupo</title>
+  <link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="./css's/footer.css" />
   <link rel="stylesheet" href="./css's/nav.css" />
@@ -100,10 +101,8 @@ else{
 
   <!-- bootstrap -->
   </head>
+  
   <body>
-  <header class="d-flex justify-content-center">
-    <img src="./assets/Coteus Logo Blanco.png" alt="" />
-  </header>
 
   <div class="header">
     <?php
