@@ -21,6 +21,26 @@ class employee{
     $this->cuil = $cuil;
   }
 
+  public function public_file($id_file, $id_group){
+    // si el archivo ya se esta compartiendo con otro grupo se debe insertar otro
+    // registro del mismo archivo y del mismo empleado para insertarlo con el nuevo grupo
+
+    require_once "../datos/datos.php";
+    
+    $file_record = datos::public_file_in_group($this, $id_file, $id_group); // bool
+
+    return $file_record;
+  }
+  
+  public function has_file($id_file){
+    
+    require_once "../datos/datos.php";
+    
+    $file_record = datos::employee_has_file($this, $id_file); // bool
+
+    return $file_record;
+  }
+
   public static function record_to_object($employee_record){
     $employee = new employee();
     
@@ -53,7 +73,7 @@ class employee{
 
   public function signup(){
     
-    require "../datos/datos.php";
+    require_once "../datos/datos.php";
     $result = 0;
 
     $result = (datos::insert_employee($this) > 0) ? 1 : -1;
@@ -98,11 +118,11 @@ class employee{
       "</p>";
   }
   
-  public function get_files(){
+  public function get_files($Search){
     
     require_once "../datos/datos.php";
 
-    $files = datos::get_files_employee($this);
+    $files = datos::get_files_employee($this, $Search);
 
     return $files;
   }

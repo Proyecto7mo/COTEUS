@@ -11,45 +11,44 @@
   if($_POST)
   if(validate_fields()){
     require '../class/employee.php';
+    
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
     $email = $_POST['email'];
-    $telephone = $_POST['telephone'];
+    $telephono = $_POST['telephono'];
     $cuil = $_POST['cuil'];
 
-    $employee = new employee($name, $surname, $username, $email, $password, $telephone, $cuil);
-
+    $employee = new employee($name, $surname, $username, $email, $password, $telephono, $cuil);
     if($employee->signup() > 0){
 
       $record_employee = $employee->get($employee->email, "email");
       $messeage = "../partials/messeages/userCreated.php";
       $directory = "../files_users/" . $record_employee['username'];
       mkdir($directory, 0777, true);
-      $_SESSION['user_id'] = $record_employee['id_employe'];
+      $_SESSION['user_id'] = $record_employee['id_employee'];
       echo $record_employee['id_employee'];
       header("Location: ../Home");
-    }
-    else{
+      
+    }else{
       $messeage = "../partials/messeages/userNotCreated.php";
     }
+  } else{
+    echo "<script>alert('Campos invalidos')</script>";
   }
-    else{
-      echo "<script>alert('Campos invalidos')</script>";
-    }
 
-    function validate_fields(){
-      return (
-        (isset($_POST['name'])) &&
-        (isset($_POST['surname'])) &&
-        (isset($_POST['username'])) &&
-        (isset($_POST['password'])) &&
-        (isset($_POST['confirm_password'])) &&
-        (isset($_POST['email'])) &&
-        (isset($_POST['telephone'])) &&
-        (isset($_POST['cuil'])) );
-    }
+  function validate_fields(){
+    return (
+      (isset($_POST['name'])) &&
+      (isset($_POST['surname'])) &&
+      (isset($_POST['username'])) &&
+      (isset($_POST['password'])) &&
+      (isset($_POST['confirm_password'])) &&
+      (isset($_POST['email'])) &&
+      (isset($_POST['telephone'])) &&
+      (isset($_POST['cuil'])) );
+  }
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +72,6 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
 </head>
 
 <body class="body">

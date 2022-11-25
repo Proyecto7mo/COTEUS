@@ -28,7 +28,13 @@
   
   $employee_record = employee::get_by_id($_SESSION['user_id']);
   $employee = employee::record_to_object($employee_record);
-  $file_records = $employee->get_files();
+
+  $Search="";
+  if(isset($_POST['SearchFiles'])){
+    $Search=$_POST['SearchFiles'];
+  }
+
+  $file_records = $employee->get_files($Search);
   
   $files = []; // array of objects of type files
   foreach ($file_records as $key => $file_record) {
@@ -38,7 +44,7 @@
   $folder = "../files_users/$employee->username/";      
   $groups_employee = group::getgroups($employee->id_employee);
   
-  if($_POST){
+  if(isset($_POST['id_group'])&&isset($_POST['submit'])){
     
     $id_group = $_POST['id_group'];
     $id_file = $_POST['submit'];
@@ -50,12 +56,12 @@
       
       $group_record = group::get($id_group);
 
-      $message .= "<script> alert('grupo " . $group_record['name'] . " seleccionado.'); </script> ";
-      $message .= "<script> alert('archivo " . $record_file['name'] . " seleccionado.'); </script> ";
+      //$message .= "<script> alert('grupo " . $group_record['name'] . " seleccionado.'); </script> ";
+      //$message .= "<script> alert('archivo " . $record_file['name'] . " seleccionado.'); </script> ";
 
       $result = $employee->public_file($id_file, $group_record['id_group']);
 
-      $message .= $result ? "<script> alert('Archivo publicado'); </script> " : "<script> alert('Ocurrio un error. Archivo no publicado'); </script> ";
+      //$message .= $result ? "<script> alert('Archivo publicado'); </script> " : "<script> alert('Ocurrio un error. Archivo no publicado'); </script> ";
     }
     else{
       // no hay grupo seleccionado
@@ -76,6 +82,8 @@
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/3a5da5265b.js" crossorigin="anonymous"></script>
     <!-- font awesome -->
+
+    <script src="js/index.js"></script>
 
     <title>COTEUS | Home</title>
 
@@ -124,6 +132,27 @@
 
     <div class="functions">
       <?php include '../partials/upload_files/upload_files.html'; ?>
+    </div>
+
+    <!-- BUSCADOR DE ARCHIVOS -->
+    <div class="container">
+      <link rel="stylesheet" type="text/css" href="../partials/HTML/seeker/seeker.css">
+        <button class="filterbutton">
+          <img class="FiltroIcon" src="../img/seeker/Filtro_Icon.svg">
+        </button>
+      <form class="d-flex" id="SF" method="post" action="index.php">
+        <input
+          name="SearchFiles" 
+          class="form-control rounded-pill shadow rounded"
+          type="search"
+          placeholder="BUSCAR"
+          aria-label="Search"
+          id="seeker"
+        />
+        <button class="searchbutton" type="submit">
+          <img class="LupaIcon" src="../img/seeker/Lupa_Icon.svg">
+        </button>
+      </form>
     </div>
 
     <!-- ARCHIVOS -->

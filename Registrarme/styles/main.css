@@ -1,138 +1,139 @@
 .body{
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-size: all;
-  background-color: #0c27ac;
-  background-image: url(../../img/carpetas.svg);
-}
-
-.Register-box
-{
-  width: 900px;
-  height: 680px;
-  background: #f5f7fb;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  align-content: center;
-  border-radius: 20px;
-  display: grid;
-  background-color: #f5f7fb;
-  position: relative;
-  font-family: arial;
-}
-
-.titulo{
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: all;
+    background-color: #0c27ac;
+    background-image: url(../../img/carpetas.svg);
+  }
+  
+  .Register-box
+  {
+    width: 900px;
+    height: 680px;
+    background: #f5f7fb;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    align-content: center;
+    border-radius: 20px;
+    display: grid;
+    background-color: #f5f7fb;
+    position: relative;
+    font-family: arial;
+  }
+  
+  .titulo{
+      position: absolute;
+      color: #0c27ac;
+      font-family: 'Colonna MT', sans-serif;
+      font-size: 80px;
+      margin-left: 5%;
+      margin-top: 4%;
+  }
+  
+  #form{
+    position: relative;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  }
+  
+  .slot{
+    width: 200px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    outline: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    font-size: 15px;
+  }
+  
+  .actbutton
+  {
+    margin-top: 10%;
+    border-color: #0c27ac;
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    background-color: #0c27ac;
+    color: #3272ff;
+    font-size: 120%;
     position: absolute;
-    color: #0c27ac;
-    font-family: 'Colonna MT', sans-serif;
-    font-size: 80px;
-    margin-left: 5%;
-    margin-top: 4%;
-}
-
-#form{
-  position: relative;
-}
-
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
--webkit-appearance: none;
-}
-
-.slot{
-  width: 200px;
-  height: 30px;
-  border: none;
-  background: transparent;
-  outline: none;
-  border-bottom: 1px solid rgb(0, 0, 0);
-  margin-bottom: 15px;
-  padding-bottom: 5px;
-  font-size: 15px;
-}
-
-.actbutton
-{
+  }
+  
+  .actbutton:hover {
+    border-color: #3272ff;
+    background-color: #3272ff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .logo {
+    width: 170px;
+    height: 130px;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: calc(47% - 50px);
+  }
+  
+  .Columns
+  {
+    margin-top: 30px;
+    width: 33.333333333333333%;
+    float: left;
+  }
+  
+  
+  .logon_label{
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
   margin-top: 10%;
-  border-color: #0c27ac;
-  border-radius: 20px;
-  width: 150px;
-  height: 40px;
-  background-color: #0c27ac;
-  color: #3272ff;
-  font-size: 120%;
+  }
+  
+  #Textquestion{
+    position: absolute;
+    margin-left: 9%;
+    margin-top: 71.5%;
+    text-decoration: none;
+  }
+  
+  #Registerbutton{
+    position: absolute;
+    margin-top: 49.1%;
+    margin-left: -57%;
+  }
+  
+  #backbutton{
+    position: absolute;
+    margin-top: 65%;
+    margin-left: 75%;
+  }
+  
+  #captcha{
+    position: absolute;
+    margin-top: 11.5%;
+    margin-left: -11%;
+     border-radius: 15px;
+  }
+  
+  #incaptcha{
+    position: absolute;
+    margin-top: 14%;
+    margin-left: -21%;
+  }
+  
+  .alerts{
   position: absolute;
-}
-
-.actbutton:hover {
-  border-color: #3272ff;
-  background-color: #3272ff;
-  color: white;
-  cursor: pointer;
-}
-
-.logo {
-  width: 170px;
-  height: 130px;
-  border-radius: 50%;
-  position: absolute;
-  top: 30px;
-  left: calc(47% - 50px);
-}
-
-.Columns
-{
-  margin-top: 30px;
-  width: 33.333333333333333%;
-  float: left;
-}
-
-
-.logon_label{
-  font-size: 20px;
+  margin-top: -0.5%;
+  margin-left: 4%;
+  color: red;
+  font-size: 80%;
   font-weight: bold;
-  display: block;
-margin-top: 10%;
-}
-
-#Textquestion{
-  position: absolute;
-  margin-left: 9%;
-  margin-top: 71.5%;
-  text-decoration: none;
-}
-
-#Registerbutton{
-  position: absolute;
-  margin-top: 49.1%;
-  margin-left: -57%;
-}
-
-#backbutton{
-  position: absolute;
-  margin-top: 65%;
-  margin-left: 75%;
-}
-
-#captcha{
-  position: absolute;
-  margin-top: 11.5%;
-  margin-left: -11%;
-   border-radius: 15px;
-}
-
-#incaptcha{
-  position: absolute;
-  margin-top: 14%;
-  margin-left: -21%;
-}
-
-.alerts{
-position: absolute;
-margin-top: -0.5%;
-margin-left: 4%;
-color: red;
-font-size: 80%;
-font-weight: bold;
-display: none;
-}
+  display: none;
+  }
+  

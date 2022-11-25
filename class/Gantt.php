@@ -20,7 +20,7 @@ elseif ($val=="Eliminar") {
   //$id_grup=$_POST['grup'];
 
   Gantt::deleteTask($idtask);
-  
+
   header('Location: http://localhost/coteus/Grupo/group.php');
 }
 else{
@@ -73,11 +73,11 @@ class Gantt{
     $res="";
     foreach($tasks as $key){
       if($c==0){
-        $res=$res.'["'.$key->title.'","'.$key->startDate.'","'.$key->endDate.'",'.'"#c1409b"'.',"'.$key->assignment.'","'.$key->id_chores.'"]';
+        $res=$res.'["'.$key->title.'","'.$key->startdate.'","'.$key->enddate.'",'.'"#c1409b"'.',"'.$key->assignment.'","'.$key->id_choresl.'"]';
         $c=$c+1;
       }
       else{
-        $res=$res.',["'.$key->title.'","'.$key->startDate.'","'.$key->endDate.'",'.'"#4287f5"'.',"'.$key->assignment.'","'.$key->id_chores.'"]';
+        $res=$res.',["'.$key->title.'","'.$key->startdate.'","'.$key->enddate.'",'.'"#4287f5"'.',"'.$key->assignment.'","'.$key->id_choresl.'"]';
       }
       //$res=$res.'['.$key->title.','.$key->startDate.','.$key->endDate.','.'#4287f5'.','.$key->assignment.']';
     }

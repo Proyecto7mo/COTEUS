@@ -1,10 +1,10 @@
-//window.onload(setTimeout(Buscar,700));
+window.onload(showFiles());
 
 //const aumentar = document.getElementById("aumentar");
 //const eliminar = document.getElementById("eliminar");
 //document.getElementsByClassName
 
-const alert = () => {
+/*const alerta = () => {
     return false;
   Swal.fire({
     title: "Estas seguroo?",
@@ -19,7 +19,7 @@ const alert = () => {
       //$("#Aumentar").submit();
     }
   });
-};
+};*/
 
 //aumentar.onclick = alert;
 //eliminar.onclick = alert;
@@ -32,7 +32,7 @@ function state(){
     
         return true;
     });*/
-    alert();
+    alerta();
 }
 
 function Buscar(){
@@ -60,27 +60,48 @@ function Buscar(){
     });
 }
 
-/*function Buscar(){
-    document.querySelector('#dropdownMenuTask').click();
-}*/
-
 function agregarTask(){
     $.ajax({
-        url:"./../class/Gantt.php",
-        type:"post",
-        data:$("#subTask").serialize(),
-        success:function(res){
-          //let resp=JSON.parse(res);
-          document.getElementById("gantt").innerHTML;
-          //let g=document.getElementById("create-task");
-          $('div.create-task').html(res);
-          console.log(res);
-          document.getElementById("subTask").reset()
-          //alert(res);
-        },
-        error:function(xhr, status){
-            //alert("Error de conexión");
-        }
+      url:"./../class/Gantt.php",
+      type:"post",
+      data:$("#subTask").serialize(),
+      success:function(res){
+        //let resp=JSON.parse(res);
+        document.getElementById("gantt").innerHTML;
+        //let g=document.getElementById("create-task");
+        $('div.create-task').html(res);
+        console.log(res);
+        document.getElementById("subTask").reset()
+        //alert(res);
+      },
+      error:function(xhr, status){
+          //alert("Error de conexión");
+      }
     });
     return false;
+}
+
+function showFiles(){
+  Buscar();
+  //alert("hola");
+  $.ajax({
+    url:"./../partials/upload_files/upload_files.php",
+    type:"post",
+    data:$("#user").serialize(),
+    success:function(res){
+      //let resp=JSON.parse(res);
+      //document.getElementById("gantt").innerHTML;
+      //let g=document.getElementById("create-task");
+      //$('div.create-task').html(res);
+      //console.log(res);
+      //document.getElementById("subTask").reset()
+      //alert(res);
+      $('div#filesContain').html(res);
+      //alert(res);
+    },
+    error:function(xhr, status){
+        //alert("Error de conexión");
+    }
+  });
+  return false;
 }

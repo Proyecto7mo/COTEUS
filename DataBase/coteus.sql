@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2022 a las 02:44:46
+-- Tiempo de generación: 18-11-2022 a las 08:20:00
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,7 +63,8 @@ CREATE TABLE `chores_t` (
 
 INSERT INTO `chores_t` (`id_choresl`, `title`, `assignment`, `duration`, `startdate`, `enddate`, `id_predecessor`, `id_group`) VALUES
 (1, 'a', 'aa', '2000-01-01 16:25:06', '2004-01-09', '2004-01-10', NULL, 50),
-(2, 'b', 'bb', '2004-01-01 00:00:00', '2004-01-01', '2004-01-01', 1, 50);
+(2, 'b', 'bb', '2004-01-01 00:00:00', '2004-01-01', '2004-01-01', 1, 50),
+(103, 'h', 'h', '0000-00-00 00:00:00', '2022-11-03', '2022-11-05', 0, 59);
 
 -- --------------------------------------------------------
 
@@ -114,7 +115,7 @@ CREATE TABLE `files_encapsulation_t` (
   `id_file` int(11) NOT NULL,
   `id_employee` int(11) NOT NULL,
   `id_group` int(11) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `files_encapsulation_t`
@@ -125,7 +126,9 @@ INSERT INTO `files_encapsulation_t` (`id_file`, `id_employee`, `id_group`) VALUE
 (1, 98, 56),
 (2, 98, NULL),
 (3, 98, NULL),
-(4, 98, NULL);
+(4, 98, NULL),
+(11, 87, NULL),
+(12, 87, 59);
 
 -- --------------------------------------------------------
 
@@ -147,7 +150,11 @@ INSERT INTO `files_t` (`id_file`, `name`, `last_modification`) VALUES
 (1, '01_example.txt', '2022-11-14 22:35:06'),
 (2, '02_example.txt', '2022-11-14 22:35:51'),
 (3, '03_example.txt', '2022-11-14 22:35:51'),
-(4, '04_example.txt', '2022-11-14 22:35:51');
+(4, '04_example.txt', '2022-11-14 22:35:51'),
+(9, '2022-09-29 (1).png', '2022-11-17 23:41:31'),
+(10, '2022-11-07.png', '2022-11-18 02:59:29'),
+(11, '2022-11-17.png', '2022-11-18 03:03:17'),
+(12, '2020-05-15.png', '2022-11-18 03:29:14');
 
 -- --------------------------------------------------------
 
@@ -183,7 +190,8 @@ INSERT INTO `groups_t` (`id_group`, `name`, `description`, `date_created`, `key`
 (55, 'grupo', 'descripcion', '2022-11-10 21:52:55', 15632, 98),
 (56, 'dbdgb', 'dfgb', '2022-11-12 15:20:22', 63614, 98),
 (57, 'qqq', 'www', '2022-11-12 21:55:17', 80553, 98),
-(58, 'hh', 'jjjj', '2022-11-14 20:50:58', 79844, 98);
+(58, 'hh', 'jjjj', '2022-11-14 20:50:58', 79844, 98),
+(59, 'j', 'j', '2022-11-17 16:43:47', 29900, 87);
 
 -- --------------------------------------------------------
 
@@ -209,13 +217,15 @@ INSERT INTO `members_t` (`id_employee`, `id_group`, `rol`, `date_joined`) VALUES
 (57, 54, 'M', '2022-11-09 16:26:30'),
 (60, 54, 'M', '2022-11-09 16:26:57'),
 (80, 53, 'M', '2022-11-05 21:31:46'),
+(87, 59, 'A', '2022-11-17 16:43:47'),
 (93, 38, 'A', '2022-10-11 04:01:18'),
 (93, 42, 'A', '2022-10-11 04:08:34'),
 (97, 54, 'M', '2022-11-09 16:37:16'),
 (98, 55, 'A', '2022-11-10 21:52:55'),
 (98, 56, 'A', '2022-11-12 15:20:22'),
 (98, 57, 'A', '2022-11-12 21:55:17'),
-(98, 58, 'A', '2022-11-14 20:50:58');
+(98, 58, 'A', '2022-11-14 20:50:58'),
+(98, 59, 'M', '2022-11-17 20:15:06');
 
 --
 -- Índices para tablas volcadas
@@ -233,7 +243,8 @@ ALTER TABLE `calculators_t`
 ALTER TABLE `chores_t`
   ADD PRIMARY KEY (`id_choresl`),
   ADD KEY `id_groups` (`id_group`) USING BTREE,
-  ADD KEY `rl_chores_chores` (`id_predecessor`);
+  ADD KEY `rl_chores_chores` (`id_predecessor`) USING BTREE,
+  ADD KEY `id_predecessor` (`id_predecessor`);
 
 --
 -- Indices de la tabla `employees_t`
@@ -290,7 +301,7 @@ ALTER TABLE `calculators_t`
 -- AUTO_INCREMENT de la tabla `chores_t`
 --
 ALTER TABLE `chores_t`
-  MODIFY `id_choresl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id_choresl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT de la tabla `employees_t`
@@ -302,13 +313,13 @@ ALTER TABLE `employees_t`
 -- AUTO_INCREMENT de la tabla `files_t`
 --
 ALTER TABLE `files_t`
-  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `groups_t`
 --
 ALTER TABLE `groups_t`
-  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- Restricciones para tablas volcadas
@@ -318,7 +329,6 @@ ALTER TABLE `groups_t`
 -- Filtros para la tabla `chores_t`
 --
 ALTER TABLE `chores_t`
-  ADD CONSTRAINT `rl_chores_chores` FOREIGN KEY (`id_predecessor`) REFERENCES `chores_t` (`id_choresl`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rl_chores_groups` FOREIGN KEY (`id_group`) REFERENCES `groups_t` (`id_group`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
