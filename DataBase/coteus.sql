@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2022 a las 02:44:46
+-- Tiempo de generación: 25-11-2022 a las 23:35:54
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -63,7 +63,9 @@ CREATE TABLE `chores_t` (
 
 INSERT INTO `chores_t` (`id_choresl`, `title`, `assignment`, `duration`, `startdate`, `enddate`, `id_predecessor`, `id_group`) VALUES
 (1, 'a', 'aa', '2000-01-01 16:25:06', '2004-01-09', '2004-01-10', NULL, 50),
-(2, 'b', 'bb', '2004-01-01 00:00:00', '2004-01-01', '2004-01-01', 1, 50);
+(2, 'b', 'bb', '2004-01-01 00:00:00', '2004-01-01', '2004-01-01', 1, 50),
+(103, 'h', 'h', '0000-00-00 00:00:00', '2022-11-03', '2022-11-05', 0, 59),
+(104, 'aa', 'ss', '0000-00-00 00:00:00', '2004-01-09', '2004-01-10', 0, 58);
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,8 @@ INSERT INTO `employees_t` (`id_employee`, `name`, `surname`, `username`, `passwo
 (87, 'admin', 'admin', 'Jesús', '$2y$10$3fdK6iuvMDsXN3Oo1y3Ikup9Pc7SLJ6HXVUcG2tnu/o3Uy0WXV.bq', 'admin@mail.com', 1234567, 20, NULL),
 (93, 'y', 'y', 'Tobias', '$2y$10$salv1mZo8O4azNi3AbiVU.UNireaYXdR8Was4PooAHEL/q9Ao4ccS', 'y@y', 6, 0, NULL),
 (97, 'ramiro', 'chara', 'ramiro0101', '$2y$10$kj1MVN1TvSKqFIovns/KU.dSKChpDVdnq4hfFiT9gdZW.gBT46e36', 'ramiro@ramiro.com', 113266764, 321, NULL),
-(98, 'a', NULL, 'a', '$2y$10$7uDKNpji3lbuANA48.W/D.WQTIrP0iQyFhEDv1NFMWNPp3VmlP6Vm', 'a@a', NULL, NULL, NULL);
+(98, 'a', NULL, 'a', '$2y$10$7uDKNpji3lbuANA48.W/D.WQTIrP0iQyFhEDv1NFMWNPp3VmlP6Vm', 'a@a', NULL, NULL, NULL),
+(99, 'Jeremias', 'Cuello', 'Jeremias0902', '$2y$10$ChzeXTWGkNcPfNPN/mb4Luqzv/dI4pRoGy7Ic4fcIAJH5Z4WSLTBe', 'cuellojeremiasnatanael@gmail.com', NULL, 2147483647, NULL);
 
 -- --------------------------------------------------------
 
@@ -114,7 +117,7 @@ CREATE TABLE `files_encapsulation_t` (
   `id_file` int(11) NOT NULL,
   `id_employee` int(11) NOT NULL,
   `id_group` int(11) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `files_encapsulation_t`
@@ -124,8 +127,12 @@ INSERT INTO `files_encapsulation_t` (`id_file`, `id_employee`, `id_group`) VALUE
 (1, 98, 55),
 (1, 98, 56),
 (2, 98, NULL),
-(3, 98, NULL),
-(4, 98, NULL);
+(3, 98, 58),
+(4, 98, NULL),
+(11, 87, NULL),
+(12, 87, 59),
+(14, 98, NULL),
+(17, 60, 58);
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,13 @@ INSERT INTO `files_t` (`id_file`, `name`, `last_modification`) VALUES
 (1, '01_example.txt', '2022-11-14 22:35:06'),
 (2, '02_example.txt', '2022-11-14 22:35:51'),
 (3, '03_example.txt', '2022-11-14 22:35:51'),
-(4, '04_example.txt', '2022-11-14 22:35:51');
+(4, '04_example.txt', '2022-11-14 22:35:51'),
+(9, '2022-09-29 (1).png', '2022-11-17 23:41:31'),
+(10, '2022-11-07.png', '2022-11-18 02:59:29'),
+(11, '2022-11-17.png', '2022-11-18 03:03:17'),
+(12, '2020-05-15.png', '2022-11-18 03:29:14'),
+(14, '07_example.txt', '2022-11-25 19:22:10'),
+(17, '013_example.txt', '2022-11-25 19:27:51');
 
 -- --------------------------------------------------------
 
@@ -183,7 +196,8 @@ INSERT INTO `groups_t` (`id_group`, `name`, `description`, `date_created`, `key`
 (55, 'grupo', 'descripcion', '2022-11-10 21:52:55', 15632, 98),
 (56, 'dbdgb', 'dfgb', '2022-11-12 15:20:22', 63614, 98),
 (57, 'qqq', 'www', '2022-11-12 21:55:17', 80553, 98),
-(58, 'hh', 'jjjj', '2022-11-14 20:50:58', 79844, 98);
+(58, 'hh', 'jjjj', '2022-11-14 20:50:58', 79844, 98),
+(59, 'j', 'j', '2022-11-17 16:43:47', 29900, 87);
 
 -- --------------------------------------------------------
 
@@ -208,14 +222,18 @@ INSERT INTO `members_t` (`id_employee`, `id_group`, `rol`, `date_joined`) VALUES
 (57, 50, 'A', '2022-10-21 08:53:37'),
 (57, 54, 'M', '2022-11-09 16:26:30'),
 (60, 54, 'M', '2022-11-09 16:26:57'),
+(60, 58, 'A', '2022-11-25 17:55:25'),
 (80, 53, 'M', '2022-11-05 21:31:46'),
+(87, 59, 'A', '2022-11-17 16:43:47'),
 (93, 38, 'A', '2022-10-11 04:01:18'),
 (93, 42, 'A', '2022-10-11 04:08:34'),
 (97, 54, 'M', '2022-11-09 16:37:16'),
 (98, 55, 'A', '2022-11-10 21:52:55'),
 (98, 56, 'A', '2022-11-12 15:20:22'),
 (98, 57, 'A', '2022-11-12 21:55:17'),
-(98, 58, 'A', '2022-11-14 20:50:58');
+(98, 58, 'M', '2022-11-14 20:50:58'),
+(98, 59, 'M', '2022-11-17 20:15:06'),
+(99, 58, 'A', '2022-11-25 18:02:34');
 
 --
 -- Índices para tablas volcadas
@@ -233,7 +251,8 @@ ALTER TABLE `calculators_t`
 ALTER TABLE `chores_t`
   ADD PRIMARY KEY (`id_choresl`),
   ADD KEY `id_groups` (`id_group`) USING BTREE,
-  ADD KEY `rl_chores_chores` (`id_predecessor`);
+  ADD KEY `rl_chores_chores` (`id_predecessor`) USING BTREE,
+  ADD KEY `id_predecessor` (`id_predecessor`);
 
 --
 -- Indices de la tabla `employees_t`
@@ -258,8 +277,7 @@ ALTER TABLE `files_encapsulation_t`
 -- Indices de la tabla `files_t`
 --
 ALTER TABLE `files_t`
-  ADD PRIMARY KEY (`id_file`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD PRIMARY KEY (`id_file`);
 
 --
 -- Indices de la tabla `groups_t`
@@ -290,25 +308,25 @@ ALTER TABLE `calculators_t`
 -- AUTO_INCREMENT de la tabla `chores_t`
 --
 ALTER TABLE `chores_t`
-  MODIFY `id_choresl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id_choresl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT de la tabla `employees_t`
 --
 ALTER TABLE `employees_t`
-  MODIFY `id_employee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id_employee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT de la tabla `files_t`
 --
 ALTER TABLE `files_t`
-  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `groups_t`
 --
 ALTER TABLE `groups_t`
-  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- Restricciones para tablas volcadas
@@ -318,7 +336,6 @@ ALTER TABLE `groups_t`
 -- Filtros para la tabla `chores_t`
 --
 ALTER TABLE `chores_t`
-  ADD CONSTRAINT `rl_chores_chores` FOREIGN KEY (`id_predecessor`) REFERENCES `chores_t` (`id_choresl`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rl_chores_groups` FOREIGN KEY (`id_group`) REFERENCES `groups_t` (`id_group`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
