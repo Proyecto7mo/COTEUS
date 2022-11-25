@@ -64,45 +64,49 @@ else{
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COTEUS | Grupo</title>
-  <link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
+  <title>Nav</title>
+  
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="./css's/footer.css" />
   <link rel="stylesheet" href="./css's/nav.css" />
 
   <script src="js/index.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
 
   <!-- bootstrap -->
-
-  <link
+  <link rel="stylesheet" href="styles/bootstrap2.min.css">
+  <!-- <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
     rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
     crossorigin="anonymous"
-  />
-  <script
+  /> -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <!-- <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
     crossorigin="anonymous"
-  ></script>
+  ></script> -->
 
-  <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Roboto">		
-    <link rel="stylesheet" type="text/css" href="styles/gantt.css">
-    <script type="text/javascript" src="js/gantt.js"></script>
+  <!-- <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Roboto">		 -->
+  <link rel="stylesheet"  href="styles/css.css">
+  <link rel="stylesheet" type="text/css" href="styles/gantt.css">
+  <script type="text/javascript" src="js/gantt.js"></script>
 
   <!-- bootstrap -->
   </head>
-  
   <body>
+  <header class="d-flex justify-content-center">
+    <img src="./assets/Coteus Logo Blanco.png" alt="" />
+  </header>
 
   <div class="header">
     <?php

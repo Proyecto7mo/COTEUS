@@ -10,10 +10,6 @@
     text-align: center;
 }
 
-.cuadros{
-    z-index: -5;
-}
-
 #ng{
     position: absolute;
     top: 340px;

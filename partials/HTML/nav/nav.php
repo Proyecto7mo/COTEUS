@@ -26,6 +26,12 @@
             <li class="nav-item">
               <a class="nav-link" href="../Grupo/" id="navtext">GRUPO</a>
             </li>
+            <!--<li class="nav-item">
+              <a class="nav-link" href="../Gantt/" id="navtext">GANTT</a>
+            </li>-->
+            <!--<li class="nav-item">
+              <a class="nav-link" href="../Cuenta/" id="navtext">CUENTA</a>
+            </li>-->
             <li class="nav-item">
               <a class="nav-link" href="../partials/logout.php" id="navtext">SALIR</a>
             </li>
@@ -139,4 +145,4 @@
         
 	</div>
   
-</nav>
+    </nav>
