@@ -1,4 +1,11 @@
   <div class="object">  
+
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
   
   <!-- Calculadora -->
   
@@ -85,10 +92,34 @@
     <button class="AgForms" id="bAgForms" onclick="AgregarForm()"><p class="AgFormsText">+</p></button>
 
     </div>
-
+    holaaaa
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
+      <div class="col" id="cf">
+        <div class="card h-100">
+          <div class="card-img-top icon-card">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+              <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
+              <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
     <script src="Display.js"></script>
     <script src="Calculos.js"></script>
     <script src="Calculadora.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
     </div>

@@ -3,7 +3,7 @@
     .object {
     	z-index: 2000;
       display: none;
-      width: 570px;
+      width: 640px;
       height: 280px;
       background-color: #1259DE;
       left: 50%;
@@ -165,8 +165,9 @@ span{
 /*--------------------          Lista Deplegable de fórmulas          --------------------*/
 
 .listforms{
+      overflow: auto;
       display: none;
-      width: 230px;
+      width: 300px;
       height: 280px;
       background-color: #1259DE;
       left: -23%;

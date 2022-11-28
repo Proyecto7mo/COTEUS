@@ -134,7 +134,193 @@
 
       </div>
 
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
+      />
+    <div class="">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="input-group mb-3">
+              <button
+                class="btn btn-outline-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                select
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">action</a></li>
+                <li><a class="dropdown-item" href="#">action</a></li>
+              </ul>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Text input with dropdown button"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="container m-5">-->
+        <div class="row">
+          <div class="col">
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    Agregar nueva fromula
+                  </button>
+                </h2>
+
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <!-- formulario -->
+
+                    <form method="post" id="form1" name="form1" onsubmit="return state();">
+                      <div class="mb-3">
+                        <label for="" class="form-label">Nombre</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="nombre_formula"
+                          name="nombre_formula"
+                          aria-describedby="emailHelp"
+                        >
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="" class="form-label">Formula</label>
+                        <input type="text" class="form-control" id="formula" name="formula">
+                      </div>
+
+                      <button type="submit" class="btn btn-primary">
+                        Guardar Formula
+                      </button>
+                    </form>
+
+                    <!-- formulario -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+    <!--</div>-->
+
+      <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 p-5">
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="" id="" style="width: 40px;">
+            <!--<div class="card-img-top icon-card">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
+                <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+              </svg>
+            </div>-->
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="" id="" style="width: 40px;">
+            <!--<div class="card-img-top icon-card">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
+                <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+              </svg>
+            </div>-->
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="" id="" style="width: 40px;">
+            <!--<div class="card-img-top icon-card">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
+                <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+              </svg>
+            </div>-->
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="h" id="j" style="width: 40px;">
+            <!--<div class="card-img-top icon-card">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-files" width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
+                <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+              </svg>
+            </div>-->
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="h" id="j" style="width: 40px;">
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="h" id="j" style="width: 40px;">
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="h" id="j" style="width: 40px;">
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="h" id="j" style="width: 40px;">
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="h" id="j" style="width: 40px;">
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="h" id="j" style="width: 40px;">
+        </div>
+        <div class="col" id="" style="margin-top: 0px;">
+            <p>A</p>
+            <input type="text" name="h" id="j" style="width: 40px;">
+        </div>
+      </div>
+
+      <!--<script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"
+    ></script>-->
+
     </div>
+    
+
 
     <script src="../partials/HTML/nav/FormsSave.js"></script>
     <script src="../partials/HTML/nav/Display.js"></script>
