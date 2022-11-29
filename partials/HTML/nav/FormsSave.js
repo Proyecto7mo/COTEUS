@@ -2,27 +2,31 @@ var formul=NaN;
 var formulaux=NaN;
 var c=0;
 var c2=0;
-
 function state()
 {
     var nombreformula=document.getElementById("nombre_formula").value;
     var formula=document.getElementById("formula").value;
-    var dataen="nombre_formula="+nombreformula  +"&formula="+formula;
-
+    var dataen={
+        "nombre_formula" : nombreformula,
+        "formula" : formula
+    }
     $.ajax({
         type:'post',
-        url:'guard.php',
-        data:dataen
+        url:'http://localhost/coteus/partials/HTML/nav/guard.php',
+        data:dataen,
+        success:function(res){
+
+        }
     });
     setTimeout(function(){
-        $('#Tformulas').load('mostr.php');
+        $('#Tformulas').load('http://localhost/coteus/partials/HTML/nav/mostr.php');
     },400);
 
     return false;
 }
 
 $(document).ready(function(){
-            $('#Tformulas').load('mostr.php');
+            $('#Tformulas').load('http://localhost/coteus/partials/HTML/nav/mostr.php');
 });
 
 $(function() {
@@ -67,13 +71,20 @@ function AñInputs()
             contador++;
             var input=document.createElement("input");
             var np=document.createElement("p");
+            var divcol=document.createElement("div");
             np.textContent=leter.toUpperCase();
             input.type = "number";
+            input.className = "InpN";
             input.id = leter;
             input.name = leter;
             input.onchange=function(){operacion();};
-            divInputs.appendChild(np);
-            divInputs.appendChild(input);
+            //divInputs.appendChild(np);
+            //divInputs.appendChild(input);
+            divcol.className="col";
+            divcol.id="columna";
+            divcol.appendChild(np);
+            divcol.appendChild(input);
+            divInputs.appendChild(divcol)
             Words.splice(k,1);
         }
     }
@@ -84,7 +95,10 @@ function AñInputs()
     var arrids=[];
     function operacion()
     {
-        $("#Inputs > input[type=\"number\"]").each(function(){
+        /*$("#Inputs > div").each(function(){
+
+        });*/
+        $("#Inputs > div > input[type=\"number\"]").each(function(){
                 var para=document.getElementById($(this).attr('id')).value;
               if(para!="")
               {
@@ -138,3 +152,5 @@ function AñInputs()
             divRespuesta.innerHTML="";
         }
     }
+
+    

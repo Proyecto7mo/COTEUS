@@ -534,4 +534,26 @@ class datos{
     $stmt->bindParam(':id_group', $id_group);
     $stmt->execute();
   }
+
+  public static function add_formula($nFormula, $formula, $id_employee){
+    require '../../../database/database.php'; // para obtener la variable conexion
+
+    $query="insert into calculators_t(name_function, formula_function, id_employee) values (:nFormula, :formula, :id_employee)";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':nFormula', $nFormula);
+    $stmt->bindParam(':formula', $formula);
+    $stmt->bindParam(':id_employee', $id_employee);
+    $stmt->execute();
+  }
+
+  public static function list_formulas($id_employee){
+    require '../../../database/database.php'; // para obtener la variable conexion
+
+    $query="select name_function, formula_function from calculators_t where id_employee=:id_employee";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':id_employee', $id_employee);
+    $stmt->execute();
+
+    return $stmt;
+  }
 }

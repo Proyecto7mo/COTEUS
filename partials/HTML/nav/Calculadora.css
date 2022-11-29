@@ -198,6 +198,15 @@ span{
       overflow-y: scroll;
     }
 
+    .InpN{
+      width: 40px;
+    }
+
+    #columna{
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+
     .formulas {
       height: 450%;
       width: 90%

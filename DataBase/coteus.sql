@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2022 a las 23:35:54
+-- Tiempo de generación: 28-11-2022 a las 05:36:16
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,15 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `calculators_t` (
   `id_calculator` int(11) NOT NULL,
   `name_function` varchar(20) NOT NULL,
-  `formula_function` varchar(100) NOT NULL
+  `formula_function` varchar(100) NOT NULL,
+  `id_employee` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `calculators_t`
 --
 
-INSERT INTO `calculators_t` (`id_calculator`, `name_function`, `formula_function`) VALUES
-(1, 'Ley de Ohmn', 'z=a+b');
+INSERT INTO `calculators_t` (`id_calculator`, `name_function`, `formula_function`, `id_employee`) VALUES
+(1, 'Ley de Ohmn', 'z=a+b', 87),
+(2, 'ej', 'ej=m+n', 87);
 
 -- --------------------------------------------------------
 
@@ -63,9 +65,7 @@ CREATE TABLE `chores_t` (
 
 INSERT INTO `chores_t` (`id_choresl`, `title`, `assignment`, `duration`, `startdate`, `enddate`, `id_predecessor`, `id_group`) VALUES
 (1, 'a', 'aa', '2000-01-01 16:25:06', '2004-01-09', '2004-01-10', NULL, 50),
-(2, 'b', 'bb', '2004-01-01 00:00:00', '2004-01-01', '2004-01-01', 1, 50),
-(103, 'h', 'h', '0000-00-00 00:00:00', '2022-11-03', '2022-11-05', 0, 59),
-(104, 'aa', 'ss', '0000-00-00 00:00:00', '2004-01-09', '2004-01-10', 0, 58);
+(2, 'b', 'bb', '2004-01-01 00:00:00', '2004-01-01', '2004-01-01', 1, 50);
 
 -- --------------------------------------------------------
 
@@ -101,11 +101,11 @@ INSERT INTO `employees_t` (`id_employee`, `name`, `surname`, `username`, `passwo
 (79, 'Dainel', 'Beltrami', 'xXdanielXx', '$2y$10$9OPjMugsp37yxnw4SgehA.0LwgPoCUYDCc7LQ3aEMybqXTKMGvxxS', 'danie@gmail.com', 1132266768, 10, NULL),
 (80, 'Carlos', 'Acuña', 'carlos0101', '$2y$10$RDFVbrCNerfNMs02QlOp..0eXxkPNeDYLBL/LiR54GmomZTUNedhu', 'carlos@gmail.com', 11326565, 2, NULL),
 (81, 'paez', 'paez', 'paez0101', '$2y$10$TbFT.YJJv5Vul74zVA99buLvD6ZXzNCvZp29XVKw5tvBN1gwuwrSu', 'paez@gmail.com', 1231321, 1, NULL),
-(87, 'admin', 'admin', 'Jesús', '$2y$10$3fdK6iuvMDsXN3Oo1y3Ikup9Pc7SLJ6HXVUcG2tnu/o3Uy0WXV.bq', 'admin@mail.com', 1234567, 20, NULL),
+(87, 'admin', 'admin', 'Jesus', '$2y$10$3fdK6iuvMDsXN3Oo1y3Ikup9Pc7SLJ6HXVUcG2tnu/o3Uy0WXV.bq', 'admin@mail.com', 1234567, 20, NULL),
 (93, 'y', 'y', 'Tobias', '$2y$10$salv1mZo8O4azNi3AbiVU.UNireaYXdR8Was4PooAHEL/q9Ao4ccS', 'y@y', 6, 0, NULL),
 (97, 'ramiro', 'chara', 'ramiro0101', '$2y$10$kj1MVN1TvSKqFIovns/KU.dSKChpDVdnq4hfFiT9gdZW.gBT46e36', 'ramiro@ramiro.com', 113266764, 321, NULL),
 (98, 'a', NULL, 'a', '$2y$10$7uDKNpji3lbuANA48.W/D.WQTIrP0iQyFhEDv1NFMWNPp3VmlP6Vm', 'a@a', NULL, NULL, NULL),
-(99, 'Jeremias', 'Cuello', 'Jeremias0902', '$2y$10$ChzeXTWGkNcPfNPN/mb4Luqzv/dI4pRoGy7Ic4fcIAJH5Z4WSLTBe', 'cuellojeremiasnatanael@gmail.com', NULL, 2147483647, NULL);
+(99, 'u', 'u', 'u', '$2y$10$XY/U4jq8aW2ntBh6fxaaxu1KGpS6KqGrXjRP3vVJhDR0JlnwLSNwS', 'u@u', NULL, 12354, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,12 +127,16 @@ INSERT INTO `files_encapsulation_t` (`id_file`, `id_employee`, `id_group`) VALUE
 (1, 98, 55),
 (1, 98, 56),
 (2, 98, NULL),
-(3, 98, 58),
+(3, 98, NULL),
 (4, 98, NULL),
-(11, 87, NULL),
-(12, 87, 59),
-(14, 98, NULL),
-(17, 60, 58);
+(16, 87, NULL),
+(17, 87, NULL),
+(18, 87, NULL),
+(19, 87, NULL),
+(20, 87, NULL),
+(21, 87, NULL),
+(22, 87, NULL),
+(23, 87, NULL);
 
 -- --------------------------------------------------------
 
@@ -155,12 +159,14 @@ INSERT INTO `files_t` (`id_file`, `name`, `last_modification`) VALUES
 (2, '02_example.txt', '2022-11-14 22:35:51'),
 (3, '03_example.txt', '2022-11-14 22:35:51'),
 (4, '04_example.txt', '2022-11-14 22:35:51'),
-(9, '2022-09-29 (1).png', '2022-11-17 23:41:31'),
-(10, '2022-11-07.png', '2022-11-18 02:59:29'),
-(11, '2022-11-17.png', '2022-11-18 03:03:17'),
-(12, '2020-05-15.png', '2022-11-18 03:29:14'),
-(14, '07_example.txt', '2022-11-25 19:22:10'),
-(17, '013_example.txt', '2022-11-25 19:27:51');
+(16, '2022-11-07.png', '2022-11-27 16:28:44'),
+(17, '2022-09-29 (1).png', '2022-11-27 21:11:47'),
+(18, '2020-05-15.png', '2022-11-27 21:43:16'),
+(19, '2022-09-29 (2).png', '2022-11-27 21:43:16'),
+(20, '2022-10-18.png', '2022-11-27 21:43:16'),
+(21, '2022-11-02 (1).png', '2022-11-27 21:43:16'),
+(22, '2022-11-02 (2).png', '2022-11-27 21:43:16'),
+(23, '2022-11-27 (2).png', '2022-11-27 21:43:17');
 
 -- --------------------------------------------------------
 
@@ -222,7 +228,6 @@ INSERT INTO `members_t` (`id_employee`, `id_group`, `rol`, `date_joined`) VALUES
 (57, 50, 'A', '2022-10-21 08:53:37'),
 (57, 54, 'M', '2022-11-09 16:26:30'),
 (60, 54, 'M', '2022-11-09 16:26:57'),
-(60, 58, 'A', '2022-11-25 17:55:25'),
 (80, 53, 'M', '2022-11-05 21:31:46'),
 (87, 59, 'A', '2022-11-17 16:43:47'),
 (93, 38, 'A', '2022-10-11 04:01:18'),
@@ -232,8 +237,7 @@ INSERT INTO `members_t` (`id_employee`, `id_group`, `rol`, `date_joined`) VALUES
 (98, 56, 'A', '2022-11-12 15:20:22'),
 (98, 57, 'A', '2022-11-12 21:55:17'),
 (98, 58, 'M', '2022-11-14 20:50:58'),
-(98, 59, 'M', '2022-11-17 20:15:06'),
-(99, 58, 'A', '2022-11-25 18:02:34');
+(98, 59, 'M', '2022-11-18 06:29:01');
 
 --
 -- Índices para tablas volcadas
@@ -243,7 +247,8 @@ INSERT INTO `members_t` (`id_employee`, `id_group`, `rol`, `date_joined`) VALUES
 -- Indices de la tabla `calculators_t`
 --
 ALTER TABLE `calculators_t`
-  ADD PRIMARY KEY (`id_calculator`);
+  ADD PRIMARY KEY (`id_calculator`),
+  ADD KEY `id_employee` (`id_employee`);
 
 --
 -- Indices de la tabla `chores_t`
@@ -277,7 +282,8 @@ ALTER TABLE `files_encapsulation_t`
 -- Indices de la tabla `files_t`
 --
 ALTER TABLE `files_t`
-  ADD PRIMARY KEY (`id_file`);
+  ADD PRIMARY KEY (`id_file`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indices de la tabla `groups_t`
@@ -302,7 +308,7 @@ ALTER TABLE `members_t`
 -- AUTO_INCREMENT de la tabla `calculators_t`
 --
 ALTER TABLE `calculators_t`
-  MODIFY `id_calculator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_calculator` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `chores_t`
@@ -314,13 +320,13 @@ ALTER TABLE `chores_t`
 -- AUTO_INCREMENT de la tabla `employees_t`
 --
 ALTER TABLE `employees_t`
-  MODIFY `id_employee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id_employee` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT de la tabla `files_t`
 --
 ALTER TABLE `files_t`
-  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `groups_t`
@@ -333,16 +339,16 @@ ALTER TABLE `groups_t`
 --
 
 --
+-- Filtros para la tabla `calculators_t`
+--
+ALTER TABLE `calculators_t`
+  ADD CONSTRAINT `calculators_t_ibfk_1` FOREIGN KEY (`id_employee`) REFERENCES `employees_t` (`id_employee`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `chores_t`
 --
 ALTER TABLE `chores_t`
   ADD CONSTRAINT `rl_chores_groups` FOREIGN KEY (`id_group`) REFERENCES `groups_t` (`id_group`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `employees_t`
---
-ALTER TABLE `employees_t`
-  ADD CONSTRAINT `rl_employees_calculators` FOREIGN KEY (`id_calculator`) REFERENCES `calculators_t` (`id_calculator`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `files_encapsulation_t`

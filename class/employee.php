@@ -126,4 +126,20 @@ class employee{
 
     return $files;
   }
+
+  public static function addformula($nFormula, $formula, $id_employee){
+
+    require_once "../../../datos/datos.php";
+
+    datos::add_formula($nFormula, $formula, $id_employee);
+  }
+
+  public static function listformulas($id_employee){
+
+    require_once "../../../datos/datos.php";
+
+    $stmt=datos::list_formulas($id_employee);
+
+    return $stmt;
+  }
 }
