@@ -25,6 +25,27 @@ function state()
     return false;
 }
 
+function deleteF(){
+    var nombreformula=document.getElementById("nombre_formula").value;
+    var formula=document.getElementById("formula").value;
+    var id_for=$("#Tformulas option:selected").attr('id');
+    var dataen={
+        "valfor" : "EliminarF",
+        "id_calc" : id_for
+    }
+    $.ajax({
+        type:'post',
+        url:'http://localhost/coteus/partials/HTML/nav/guard.php',
+        data:dataen,
+        success:function(res){
+
+        }
+    });
+    setTimeout(function(){
+        $('#Tformulas').load('http://localhost/coteus/partials/HTML/nav/mostr.php');
+    },400);
+}
+
 $(document).ready(function(){
             $('#Tformulas').load('http://localhost/coteus/partials/HTML/nav/mostr.php');
 });
@@ -32,8 +53,12 @@ $(document).ready(function(){
 $(function() {
     $('#Tformulas').change(function() {
     var s=document.getElementById("Tformulas");
-    $("#nombre_formula").val($("#Tformulas option:selected").attr('id'));
-    $("#formula").val($("#Tformulas option:selected").val());
+    formulasComp=$("#Tformulas option:selected").val();
+    formulasComp=formulasComp.split('|');
+    $("#nombre_formula").val(formulasComp[0]);
+    $("#formula").val(formulasComp[1]);
+    //$("#nombre_formula").val($("#Tformulas option:selected").attr('id'));
+    //$("#formula").val($("#Tformulas option:selected").val());
     AñInputs();
     });
     });

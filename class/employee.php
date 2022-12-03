@@ -142,4 +142,11 @@ class employee{
 
     return $stmt;
   }
+
+  public static function deleteformulas($id_calc){
+
+    require_once "../../../datos/datos.php";
+
+    datos::delete_formulas($id_calc);
+  }
 }

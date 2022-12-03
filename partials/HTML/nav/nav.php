@@ -148,9 +148,11 @@
     <div class="">
       
 
-      <select name="Tformulas" id="Tformulas" class="Tformulas" style="margin-top: 15px;">
+      <select name="Tformulas" id="Tformulas" class="Tformulas" style="margin-top: 15px; width: 200px;">
 
       </select>
+
+      <button style="width: 60px ;" onclick="deleteF()">Eliminar</button>
 
       <!--<div class="container m-5">-->
         <div class="row" style="margin-top: 15px;">
@@ -187,14 +189,16 @@
                           class="form-control"
                           id="nombre_formula"
                           name="nombre_formula"
-                          aria-describedby="emailHelp"
+                          aria-describedby="emailHelp" placeholder="Ley de Ohm"
                         >
                       </div>
 
                       <div class="mb-3">
                         <label for="" class="form-label">Formula</label>
-                        <input type="text" class="form-control" id="formula" name="formula" onchange="AñInputs()">
+                        <input type="text" class="form-control" id="formula" name="formula" onchange="AñInputs()" placeholder="R=V/I">
                       </div>
+
+                      <input type="hidden" name="valfor" value="GuardarF">
 
                       <button type="submit" class="btn btn-primary">
                         Guardar Formula

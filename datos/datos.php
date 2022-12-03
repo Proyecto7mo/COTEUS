@@ -549,11 +549,20 @@ class datos{
   public static function list_formulas($id_employee){
     require '../../../database/database.php'; // para obtener la variable conexion
 
-    $query="select name_function, formula_function from calculators_t where id_employee=:id_employee";
+    $query="select id_calculator, name_function, formula_function from calculators_t where id_employee=:id_employee";
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':id_employee', $id_employee);
     $stmt->execute();
 
     return $stmt;
+  }
+
+  public static function delete_formulas($id_calc){
+    require '../../../database/database.php'; // para obtener la variable conexion
+
+    $query="delete from calculators_t where id_calculator=:id_calc";
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':id_calc', $id_calc);
+    $stmt->execute();
   }
 }
