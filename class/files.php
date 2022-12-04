@@ -7,6 +7,7 @@ class files{
   public $nameUserFile;
 
   public function __construct($file_record){
+    $this->id_employee = $file_record['id_employee'];
     $this->id_file = $file_record['id_file'];
     $this->name = $file_record['name'];
     $this->last_modification = $file_record['last_modification'];

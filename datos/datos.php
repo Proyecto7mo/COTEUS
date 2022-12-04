@@ -275,6 +275,7 @@ class datos{
     
     $query = "
       SELECT
+        `employees_t`.`id_employee`, 
         `files_t`.`id_file`,
         `files_t`.`name`,
         `files_t`.`last_modification`
@@ -319,7 +320,7 @@ class datos{
   public static function get_files_from_user($idGroup){
     require '../../database/database.php'; // para obtener la variable conexion
 
-    $query="SELECT e.username as nameuser, f.id_file, f.name, f.last_modification FROM files_t f INNER JOIN files_encapsulation_t fe ON f.id_file=fe.id_file INNER JOIN employees_t e ON fe.id_employee=e.id_employee WHERE fe.id_group=:idGroup;";
+    $query="SELECT e.id_employee, e.username as nameuser, f.id_file, f.name, f.last_modification FROM files_t f INNER JOIN files_encapsulation_t fe ON f.id_file=fe.id_file INNER JOIN employees_t e ON fe.id_employee=e.id_employee WHERE fe.id_group=:idGroup;";
 
     $stmt = $conexion->prepare($query);
     $stmt->bindParam(':idGroup',$idGroup);

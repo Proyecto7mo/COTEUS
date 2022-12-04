@@ -7,6 +7,7 @@ function state()
     var nombreformula=document.getElementById("nombre_formula").value;
     var formula=document.getElementById("formula").value;
     var dataen={
+        "valfor" : "GuardarF",
         "nombre_formula" : nombreformula,
         "formula" : formula
     }
@@ -15,7 +16,7 @@ function state()
         url:'http://localhost/coteus/partials/HTML/nav/guard.php',
         data:dataen,
         success:function(res){
-
+            
         }
     });
     setTimeout(function(){

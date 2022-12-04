@@ -82,6 +82,7 @@ if(isset($_POST['valF'])){
 function ShowF(){
   //echo($_POST['idUser']);
   //echo($_POST['idGroup']);
+  session_start();
 
   $useractip=$_POST['userRol'];
   require_once "../../class/files.php";
@@ -100,7 +101,7 @@ function ShowF(){
         <button class="card-title p-2 flex-grow-1" id="userbtn"><h5 class="card-title p-2 flex-grow-1"><a href="../files_users/'.$file->nameUserFile.'/'.$file->name.'" target="_blank">'.$file->name.'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <div id="tipf">Ultima modificacion: '.$file->last_modification.'</div></h5></button>';
 
         
-        if($useractip=="A"){
+        if($useractip=="A"||($file->id_employee==$_SESSION['user_id'])){
           $userfiles.='<button
           class="btn btn-primary"
           type="button"
@@ -115,7 +116,7 @@ function ShowF(){
           <form id="EliminarF" action="../partials/upload_files/upload_files.php" method="POST">
             <input type="hidden" name="valF" value="EliminarF">
             <input type="hidden" name="idfile" value="'.$file->id_file.'">
-            <input type="hidden" name="userRol" value="'.$useractip.'">
+            <input type="hidden" name="userRol" value="A">
             <input type="hidden" name="idGroup" value="'.$_POST['idGroup'].'">
             <input class="dropdown-item" type="submit" value="Eliminar archivo">
           </form>
