@@ -34,7 +34,15 @@
   $employee_record=new employee();
   $emp=employee::record_to_object($employee_record->get($_SESSION['user_id']));
   $empUsName=$emp->username;
-  rename ("../files_users/$empUsNameOld", "../files_users/$empUsName");
+  if(!file_exists("../files_users/$empUsNameOld")){ // si existe una carpeta/archivo
+    // en el caso de que no exista la carpeta, se crea.
+
+    // crea la carpeta del usuario con los permisos 0777
+    mkdir("../files_users/$empUsNameOld", 0777);
+  }
+  if($empUsNameOld!=$empUsName){
+    rename ("../files_users/$empUsNameOld", "../files_users/$empUsName");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

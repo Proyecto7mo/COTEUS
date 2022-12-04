@@ -43,6 +43,10 @@ if(isset($_SESSION['user_id'])){
       break;
     case 'EliminarM':
       group::deletemember($iduser, $idgrup);
+      if($iduser==$_SESSION['user_id']){
+        unset($_SESSION['gr']);
+        header('Location: index.php');
+      }
       break;
     case 'BajarM':
       group::modifyrank("M", $iduser, $idgrup);

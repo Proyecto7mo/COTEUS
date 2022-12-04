@@ -101,7 +101,9 @@ class employee{
   }
 
   public static function Delete($id_user){
+    require_once "../datos/datos.php";
 
+    datos::Delete($id_user);
   }
 
   public function uploadfile($file_name){
