@@ -40,6 +40,27 @@ class datos{
     
     return $result;
   }
+
+  public static function Modify($key, $value, $id_user){
+
+    require '../database/database.php'; // para obtener la variable conexion
+
+    $query="UPDATE employees_t SET `$key` = '$value' WHERE id_employee=:id_user";
+
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':id_user', $id_user);
+    $stmt->execute();
+  }
+
+  public static function Delete($id_user){
+    require '../database/database.php'; // para obtener la variable conexion
+
+    $query="DELETE FROM employees_t WHERE id_employee=:id_user";
+
+    $stmt = $conexion->prepare($query);
+    $stmt->bindParam(':id_user', $id_user);
+    $stmt->execute();
+  }
   
   public static function public_file_in_group($employee, $id_file, $id_group){
     

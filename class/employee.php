@@ -94,6 +94,16 @@ class employee{
 
   }
 
+  public static function Modify($key, $value, $id_user){
+    require_once "../datos/datos.php";
+
+    datos::Modify($key, $value, $id_user);
+  }
+
+  public static function Delete($id_user){
+
+  }
+
   public function uploadfile($file_name){
     require_once "../datos/datos.php";
 
