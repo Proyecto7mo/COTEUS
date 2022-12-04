@@ -184,6 +184,7 @@ if($_FILES){
       }
     }
   }
+  header('Location: http://localhost/coteus/Home/');
 }
 
 /* function get_number_of_copies($directroy, $file_name){
