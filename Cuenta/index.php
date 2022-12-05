@@ -51,7 +51,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../img/COTEUS_Emblema_Azul.svg">
-  <title>Cuenta</title>
+  <title>COTEUS | Cuenta</title>
   <?php
       require '../partials/linkCSS.php'
   ?>
@@ -103,11 +103,11 @@
         <input type="text" class="form-control" name="username" id="username" value="<?php echo $emp->username;?>">
         </div>
         <div class="col-md-6">
-        <label for="email" class="form-label">Email</label>
+        <label for="email" class="form-label">E-mail</label>
         <input type="email" class="form-control" name="email" id="email" value="<?php echo $emp->email;?>">
         </div>
         <div class="col-md-6">
-        <label for="phone" class="form-label" style="">Telefono</label>
+        <label for="phone" class="form-label" style="">Teléfono</label>
         <input type="number" class="form-control" name="phone" id="phone" value="<?php echo $emp->telephone;?>">
         </div>
         <div class="col-md-12">
@@ -165,6 +165,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script> 
   <!-- bootstrap -->
+  
+  <?php require '../partials/HTML/footer/footer.php' ?>
 
 </body>
 </html>
