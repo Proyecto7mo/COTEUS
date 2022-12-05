@@ -109,9 +109,6 @@ else{
   <!-- bootstrap -->
   </head>
   <body>
-  <header class="d-flex justify-content-center">
-    <img src="./assets/Coteus Logo Blanco.png" alt="" />
-  </header>
 
   <div class="header">
     <?php
