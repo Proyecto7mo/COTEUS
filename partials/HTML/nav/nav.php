@@ -1,7 +1,7 @@
 <nav
       class="navbar navbar-expand-lg navbar-light d-flex justify-content-center">
 
-    <link rel="stylesheet" type="text/css" href="C:/xampp/htdocs/COTEUS/partials/HTML/nav/nav.css">
+    <link rel="stylesheet" type="text/css" href="../partials/HTML/nav/nav.css">
     <script
     src="https://code.jquery.com/jquery-3.6.0.js"
     integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
