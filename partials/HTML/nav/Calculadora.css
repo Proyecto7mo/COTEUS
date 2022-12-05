@@ -3,7 +3,7 @@
     .object {
     	z-index: 2000;
       display: none;
-      width: 640px;
+      width: 575px;
       height: 280px;
       background-color: #1259DE;
       left: 50%;
@@ -57,7 +57,7 @@
 
 .display{
   margin-top: 15px;
-  margin-left: 12px;
+  margin-left: 15px;
   height: 50px;
   width: 520px;
   position: relative;
@@ -170,7 +170,7 @@ span{
       width: 300px;
       height: 280px;
       background-color: #1259DE;
-      left: -23%;
+      left: -29%;
       top: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
@@ -181,7 +181,7 @@ span{
       }
 
       .listforms .linemov{
-       height: 5%;
+      height: 5%;
       background-color: #10227C;
       border-bottom: 2px solid #cccccc;
       position: relative; 
@@ -205,43 +205,4 @@ span{
     #columna{
       margin-top: 0px;
       margin-bottom: 10px;
-    }
-
-    .formulas {
-      height: 450%;
-      width: 90%
-      margin-top: 10%;
-      background-color: #9ec1ff;
-      position: absolute;
-      cursor: move;
-    }
-
-    .AgForms{
-      margin-top: 10%;
-      height: 250%;
-      width: 80%;
-      border: solid bold 2px;
-      border-color:  #9ec1ff;
-      border-radius: 20px;
-      color: #9ec1ff;
-      font-size: 200%;
-      font-weight: 5%;
-      font-family: arial;
-      background-color: #9921FD;
-      cursor: pointer;
-    }
-
-
-    .AgFormsText{
-      margin-top: -7%;
-    }
-
-    .formulas .FormName{
-      color: #10227C;
-      font-size: 150%;
-    }
-
-    .formulas .FormBody{
-      color: #10227C;
-      font-size: 150%;
     }
