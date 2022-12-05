@@ -133,9 +133,7 @@
           <div class="formulas">
               <div class="FormName"></div>
               <div class="FormBody"></div>
-          </div>
-
-          
+          </div>        
 
       </div>
 
@@ -145,14 +143,13 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous"
       />
-    <div class="">
-      
+    <div class="">   
 
-      <select name="Tformulas" id="Tformulas" class="Tformulas" style="margin-top: 15px; width: 200px;">
+      <select name="Tformulas" id="Tformulas" class="Tformulas">
 
       </select>
-
-      <button style="width: 60px ;" onclick="deleteF()">Eliminar</button>
+      <br>
+      <button id="Deletefrmbtn" onclick="deleteF()">Eliminar</button>
 
       <!--<div class="container m-5">-->
         <div class="row" style="margin-top: 15px;">
@@ -168,7 +165,7 @@
                     aria-expanded="true"
                     aria-controls="collapseOne"
                   >
-                    Agregar nueva fromula
+                    Agregar nueva fórmula
                   </button>
                 </h2>
 
@@ -194,14 +191,14 @@
                       </div>
 
                       <div class="mb-3">
-                        <label for="" class="form-label">Formula</label>
+                        <label for="" class="form-label">Fórmula</label>
                         <input type="text" class="form-control" id="formula" name="formula" onchange="AñInputs()" placeholder="R=V/I">
                       </div>
 
                       <input type="hidden" name="valfor" value="GuardarF">
 
                       <button type="submit" class="btn btn-primary">
-                        Guardar Formula
+                        Guardar Fórmula
                       </button>
                     </form>
 
@@ -211,7 +208,6 @@
               </div>
             </div>
           </div>
-
           
         </div>
     <!--</div>-->
@@ -223,10 +219,10 @@
       <div id="resp" style="margin-bottom: 10px;">
         <label for=""></label>
       </div>
-
+      
+   <link rel="stylesheet" href="../partials/HTML/nav/forms.css">
+     
     </div>
-    
-
 
     <script src="../partials/HTML/nav/FormsSave.js"></script>
     <script src="../partials/HTML/nav/Display.js"></script>
@@ -237,4 +233,4 @@
         
 	</div>
   
-    </nav>
+</nav>
