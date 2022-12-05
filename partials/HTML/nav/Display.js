@@ -1,17 +1,3 @@
-const ResultAnt = document.getElementById('.ResultAnt');
-const ResultAct = document.getElementById('.ResultAct');
-const numero = document.getElementByAll('.numero');
-const operador = document.getElementByAll('.Operador');
-
-const display = new Display(ResultAnt, ResultAct);
-
-numero.forEach(boton => {
-	boton.addEventListener('click', () => display.AgNum(boton.innerHTML))
-});
-
-operador.forEach(boton =>{
-	boton.addEventListener('click', () => display.Computar(boton.value))
-});
 
 
 class Display{
@@ -21,13 +7,13 @@ class Display{
 		this.ResultAct = ResultAct;
 		this.calculador = new Calculos();
 		this.operacion = undefined;
-		this.valorAnt = '';
-		this.valorAct = '';
+		this.valAnt = '';
+		this.valAct = '';
 		this.signos = {
 			sumar: '+',
 			restar: '─',
 			multiplicar: 'X',
-			ddividir: '÷',
+			dividir: '÷',
 		}
 	}
 
@@ -45,21 +31,21 @@ class Display{
 
 	Computar(tipo){
 		this.operacion !== 'igual' && this.Calcular();
-		this.tipo = tipo;
-		this.valAnt = this.valAct || valAnt;
+		this.operacion = tipo;
+		this.valAnt = this.valAct || this.valAnt;
 		this.valAct = '';
 		this.Imprimir();
 	}
 
-	AgNum(){
-		if(numero =='.' && this.valAct.includes('.'))
-			return this.valAct = this.valAct() + numero.toString();
+	AgNum(numero){
+		if(numero ==='.' && this.valAct.includes('.')) return
+		this.valAct = this.valAct.toString() + numero.toString();
 		this.Imprimir();
 	}
 
 	Imprimir(){
-		this.ResultAct = this.valAct;
-		this.ResultAnt = `${this.valAnt;} ${this.signos[this.tiempo]}`;
+		this.ResultAct.textContent = this.valAct;
+		this.ResultAnt.textContent = `${this.valAnt} ${this.signos[this.operacion] || ''}`;
 	}
 
 	Calcular(){
@@ -70,3 +56,4 @@ class Display{
 			return this.valAct = this.calculador[this.operacion](valAnt,valAct);
 	}
 }
+

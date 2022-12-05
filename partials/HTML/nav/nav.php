@@ -79,9 +79,9 @@
           <button class="Cient" id="but14" name="Operador"><span>&#177;</span></button>
           <button class="Cient" id="but15" name="Operador"><span>√</span></button>
           <button class="Cient" id="but16" name="Operador"><span>x^n</span></button>
-          <button class="Basic" id="but17" name="numero"><span>7</span></button>
-          <button class="Basic" id="but18" name="numero"><span>8</span></button>
-          <button class="Basic" id="but19" name="numero"><span>9</span></button>
+          <button class="numero" id="but17" name="numero"><span>7</span></button>
+          <button class="numero" id="but18" name="numero"><span>8</span></button>
+          <button class="numero" id="but19" name="numero"><span>9</span></button>
           <button class="Basic" id="but20" name="Operador" value="dividir"><span>÷</span></button>
           <br>
           <button class="Cient" id="but21" name="Operador"><span>&pi;</span></button>
@@ -90,9 +90,9 @@
           <button class="Cient" id="but24" name="Operador"><span>sec</span></button>
           <button class="Cient" id="but25" name="Operador"><span>csc</span></button>
           <button class="Cient" id="but26" name="Operador"><span>cot</span></button>
-          <button class="Basic" id="but27" name="numero"><span>4</span></button>
-          <button class="Basic" id="but28" name="numero"><span>5</span></button>
-          <button class="Basic" id="but29" name="numero"><span>6</span></button>
+          <button class="numero" id="but27" name="numero"><span>4</span></button>
+          <button class="numero" id="but28" name="numero"><span>5</span></button>
+          <button class="numero" id="but29" name="numero"><span>6</span></button>
           <button class="Basic" id="but30" name="Operador" value="multiplicar"><span>X</span></button>
           <br>
           <button class="Cient" id="but31" name="numero"><span>e</span></button>
@@ -101,9 +101,9 @@
           <button class="Cient" id="but34" name="Operador"><span>|x|</span></button>
           <button class="Cient" id="but35" name="Operador"><span>└2┘</span></button>
           <button class="Cient" id="but36" name="Operador"><span>┌2┐</span></button>
-          <button class="Basic" id="but37" name="numero"><span>1</span></button>
-          <button class="Basic" id="but38" name="numero"><span>2</span></button>
-          <button class="Basic" id="but39" name="numero"><span>3</span></button>
+          <button class="numero" id="but37" name="numero"><span>1</span></button>
+          <button class="numero" id="but38" name="numero"><span>2</span></button>
+          <button class="numero" id="but39" name="numero"><span>3</span></button>
           <button class="Basic" id="but40" name="Operador" value="restar"><span>─</span></button>
           <br>
           <button class="Cient" id="but41" name="Operador"><span>Ans</span></button>
@@ -112,8 +112,8 @@
           <button class="Cient" id="but44" name="Operador"><span>rand</span></button>
           <button class="Cient" id="but45" name="Operador"><span>dms</span></button>
           <button class="Cient" id="but46" name="Operador"><span>deg</span></button>
-          <button class="Basic" id="but47" name="numero"><span>.</span></button>
-          <button class="Basic" id="but48" name="numero"><span>0</span></button>
+          <button class="numero" id="but47" name="numero"><span>.</span></button>
+          <button class="numero" id="but48" name="numero"><span>0</span></button>
           <button class="Basic" id="but49" name="Operador"><span>=</span></button>
           <button class="Basic" id="but50" name="Operador" value="sumar"><span>+</span></button>
     </div>
@@ -228,6 +228,7 @@
     <script src="../partials/HTML/nav/Display.js"></script>
     <script src="../partials/HTML/nav/Calculos.js"></script>
     <script src="../partials/HTML/nav/Calculadora.js"></script>
+    <script src="../partials/HTML/nav/index.js"></script>
     
     </div>
         

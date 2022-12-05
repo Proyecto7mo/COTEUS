@@ -136,6 +136,21 @@ span{
   background-color: #1EA3FF;
 }
 
+.numero{
+  height: 10%;
+  width: 8%;
+  background-color: white;
+  border-radius: 20px;
+  border-color: #9ec1ff;
+  font-size: 95%;
+  color: #9ec1ff;
+  font-weight: bolder;
+  font-family: arial;
+  margin-top: 1%;
+  position: relative;
+  background-color: #1EA3FF;
+}
+
 
 .Result .ResulAnt{
   font-size: 70%;
