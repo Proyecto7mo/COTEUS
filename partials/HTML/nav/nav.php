@@ -47,8 +47,8 @@
     <div class="BarraHerramientas">
 		    <a class="ClcIcon" href="javascript:" onclick="Calculator()">
         <img class="toolICON" src="../img/tools_bar/Calculadora_Icon.svg"></a>
-		    <a class="ConfIcon" href="../Configuracion/">
-        <img class="toolICON" id="Gear" src="../img/tools_bar/Configuracion_Icon.svg"></a>
+		    <!--<a class="ConfIcon" href="../Configuracion/">
+        <img class="toolICON" id="Gear" src="../img/tools_bar/Configuracion_Icon.svg"></a>-->
         <a><img src="../img/tools_bar/null.svg"></a>
 
  <!-- Calculadora -->
