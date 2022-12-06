@@ -1,9 +1,0 @@
-@import 'https://localhost/COTEUS/partials/HTML/footer/footer.css';
-@import 'https://localhost/COTEUS/partials/HTML/nav/nav.css';
-
-.functions{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: nowrap;
-}
