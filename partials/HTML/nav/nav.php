@@ -58,12 +58,12 @@
     <div class="hd"></div>
       <div class="display">
         <div class="Result">
-          <div id="valor-anterior"></div>
+          <div id="valor-anterior">0</div>
           <div id="valor-actual"></div>
        </div>
       </div>
     <div class="bd">
-          <!--<button class="Esp"   id="but1" name="Save" onclick="SendData()"><span class="BEText">Guardar</span></button>-->
+          <button class="Esp" disabled="disabled" id="but1" name="Save" onclick="SendData()"><span class="BEText">Guardar</span></button>
           <button class="Cient" id="but3" name="Operador"><span>Rad</span></button>
           <button class="Cient" id="but4" name="Operador"><span>Deg</span></button>
           <button class="Cient" id="but5" name="Operador"><span>x!</span></button>
@@ -118,7 +118,7 @@
           <button class="operador" id="but50" name="Operador" value="sumar"><span>+</span></button>
     </div>
 
-    <div class="container">
+    <!--<div class="container">
         <div class="calculadora">
             <div class="display">
                 <div id="valor-anterior"></div>
@@ -143,7 +143,7 @@
             <button class="numero">.</button>
             <button class="operador" value="igual">=</button>
         </div>
-    </div>
+    </div>-->
 
     <!-- head buttons -->
     

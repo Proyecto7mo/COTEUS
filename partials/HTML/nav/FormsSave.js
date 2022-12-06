@@ -56,8 +56,10 @@ $(function() {
     var s=document.getElementById("Tformulas");
     formulasComp=$("#Tformulas option:selected").val();
     formulasComp=formulasComp.split('|');
-    $("#nombre_formula").val(formulasComp[0]);
-    $("#formula").val(formulasComp[1]);
+    if(formulasComp[0]!="Seleccione una formula"){
+        $("#nombre_formula").val(formulasComp[0]);
+        $("#formula").val(formulasComp[1]);
+    }
     //$("#nombre_formula").val($("#Tformulas option:selected").attr('id'));
     //$("#formula").val($("#Tformulas option:selected").val());
     AñInputs();
